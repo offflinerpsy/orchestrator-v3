@@ -1,0 +1,26 @@
+{
+  "name": "orchestrator-v3",
+  "version": "3.0.0",
+  "private": true,
+  "type": "module",
+  "description": "AI Generation Orchestrator: Flux Ultra + ComfyUI (SDXL/SD3.5/SVD)",
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "scripts": {
+    "paths:check": "node scripts/paths-check.mjs",
+    "models:import": "node scripts/import-models.mjs",
+    "dev": "pnpm --filter admin dev",
+    "build": "pnpm --filter admin build",
+    "start": "pnpm --filter admin start"
+  },
+  "devDependencies": {
+    "@huggingface/hub": "^2.6.12",
+    "@types/node": "^20.11.0",
+    "dotenv": "^16.6.1"
+  },
+  "pnpm": {
+    "overrides": {}
+  }
+}

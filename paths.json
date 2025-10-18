@@ -1,0 +1,10 @@
+{
+  "projectRoot": "C:\\Work\\Orchestrator",
+  "comfyRoot": "F:\\ComfyUI",
+  "modelsRoot": "F:\\Models",
+  "hfCache": "F:\\Cache\\HF",
+  "dropIn": "F:\\Drop\\in",
+  "dropOut": "F:\\Drop\\out",
+  "workflows": "F:\\Workflows",
+  "logs": "C:\\Work\\Orchestrator\\logs"
+}

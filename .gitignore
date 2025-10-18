@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+.pnp.*
+.yarn/*
+
+# Environment variables
+.env
+.env.local
+.env*.local
+
+# Next.js
+.next/
+out/
+dist/
+build/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Test files
+coverage/
+.nyc_output/
+
+# Temp files
+*.tmp
+.test-*
+
+# Jobs and results (опционально, в зависимости от потребности)
+# jobs/
+# results/
