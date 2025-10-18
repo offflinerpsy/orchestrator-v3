@@ -18,6 +18,8 @@
 import { useState } from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Button } from '@/components/ui/button'
+import { QueuePanel } from '@/components/queue-panel'
+import { GenerationForm } from '@/components/generation-form'
 import { 
   Sparkles, 
   Image as ImageIcon, 
@@ -113,18 +115,7 @@ export default function BuilderPage() {
                 <ListTodo className="h-4 w-4" />
                 Queue
               </div>
-              <div className="space-y-2 text-sm">
-                <div className="flex items-center gap-2 p-2 bg-accent rounded">
-                  <span className="text-xs">⚡</span>
-                  <span className="flex-1 truncate">Task #1</span>
-                  <span className="text-xs text-muted-foreground">Running</span>
-                </div>
-                <div className="flex items-center gap-2 p-2 hover:bg-accent rounded cursor-pointer">
-                  <span className="text-xs">⏳</span>
-                  <span className="flex-1 truncate">Task #2</span>
-                  <span className="text-xs text-muted-foreground">Queued</span>
-                </div>
-              </div>
+              <QueuePanel />
             </div>
           </div>
         </aside>
@@ -182,24 +173,7 @@ export default function BuilderPage() {
                 <ImageIcon className="h-4 w-4" />
                 Generate
               </div>
-              <div className="space-y-2 text-sm">
-                <Button variant="outline" size="sm" className="w-full justify-start">
-                  <Sparkles className="mr-2 h-4 w-4" />
-                  FLUX 1.1 Ultra
-                </Button>
-                <Button variant="outline" size="sm" className="w-full justify-start">
-                  <ImageIcon className="mr-2 h-4 w-4" />
-                  SDXL (ComfyUI)
-                </Button>
-                <Button variant="outline" size="sm" className="w-full justify-start">
-                  <ImageIcon className="mr-2 h-4 w-4" />
-                  SD 3.5 (ComfyUI)
-                </Button>
-                <Button variant="outline" size="sm" className="w-full justify-start">
-                  <Play className="mr-2 h-4 w-4" />
-                  SVD Video (ComfyUI)
-                </Button>
-              </div>
+              <GenerationForm />
             </div>
 
             {/* UI Code Section */}

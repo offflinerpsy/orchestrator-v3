@@ -13,7 +13,8 @@
     "models:import": "node scripts/import-models.mjs",
     "dev": "pnpm --filter admin dev",
     "build": "pnpm --filter admin build",
-    "start": "pnpm --filter admin start"
+    "start": "pnpm --filter admin start",
+    "guard:models": "node scripts/guard-model-paths.mjs"
   },
   "devDependencies": {
     "@huggingface/hub": "^2.6.12",
