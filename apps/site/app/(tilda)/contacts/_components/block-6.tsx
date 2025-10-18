@@ -1,0 +1,12 @@
+export function ContactsBlock6() {
+  return (
+    <div 
+      id="rec1130390026" 
+      data-record-type="555"
+      dangerouslySetInnerHTML={{ __html: `<div id="rec1130390026" class="r t-rec t-rec_pt_30 t-rec_pb_60" style="padding-top:30px;padding-bottom:60px;background-color:#f5f5f5; " data-animationappear="off" data-record-type="555" data-bg-color="#f5f5f5">  <div class="t555"> <div class="t-container" style="margin:0 auto;"> <div class="t-col t-col_8 "> <div class="t-map-lazyload t555__map"
+style="height:500px;overflow:hidden;" data-maplazy-load="false"> <div class="t-map"
+id="separateMap1130390026" data-map-language="" data-map-x="-74.005941" data-map-y="40.7127837" data-map-zoom="14" data-map-title="Москва" data-map-mode=""
+style="width:100%; position: relative; height:500px;"> </div> <script type="text/javascript">var arMapMarkers1130390026=[{title:"Aswad Home",descr:"Выставочный дом",lat:"55.895328",lng:"37.689653",color:null,url:null,isOpen:false,isHidden:false,offset:null,},];t_onReady(function() {t_map_lazyload_add_map();window.addEventListener('scroll',t_throttle(t_map_lazyload_add_map,300));function t_map_lazyload_add_map() {var windowHeight=window.innerHeight;var scrollDiffHeigth=700;var rec=document.getElementById('rec' + 1130390026);if(!rec) return;var map=rec.querySelector('.t-map-lazyload');if(!map) return;var blockTop=map.getBoundingClientRect().top + window.pageYOffset;if(window.pageYOffset>blockTop - windowHeight - scrollDiffHeigth) {if(map.getAttribute('data-maplazy-load')==='false') {map.setAttribute('data-maplazy-load','true');t_onFuncLoad('t_appendYandexMap',function() {t_appendYandexMap("1130390026","4f58c91a-364d-41fc-98ba-81c9c6a60a3f");});}}}});</script> </div> </div> <div class="t-col t-col_4 "> <div class="t555__contentbox" style="height:500px;"> <div class="t555__contentwrapper"> <div class="t555__title t-heading t-heading_sm" field="title">Москва</div> <div class="t-text t-text_md" field="text"><br><a href="tel:+78002505533" target="_blank" rel="noreferrer noopener" style="color: rgb(0, 0, 0); font-size: 26px;">8-800-250-55-33</a><br><br><span style="font-weight: 600;">Выставочные дома:</span><br>Москва, Московская область, Дзержинское шоссе, 42</div> </div> </div> </div> </div> </div> <style> #rec1130390026 .t555__title{font-size:24px;color:#000000;font-family:'Jost';}#rec1130390026 .t-text{font-size:18px;color:#000000;}</style> <style>#rec1130390026 .t555__map {box-shadow:0px 0px 20px rgba(0,0,0,0.1);}</style> </div>` }}
+    />
+  );
+}

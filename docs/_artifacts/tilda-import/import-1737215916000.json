@@ -1,0 +1,79 @@
+{
+  "timestamp": "2025-01-18T15:58:36.000Z",
+  "dumpPath": "C:\\Users\\Makkaroshka\\Desktop\\aswad\\сайт\\content\\tilda\\",
+  "pagesProcessed": 10,
+  "componentsGenerated": 205,
+  "routesGenerated": 10,
+  "pages": [
+    {
+      "slug": "comingsoon",
+      "title": "Coming Soon",
+      "route": "/(tilda)/comingsoon",
+      "blocks": 19,
+      "sourceFile": "comingsoon.html"
+    },
+    {
+      "slug": "company",
+      "title": "Company",
+      "route": "/(tilda)/company",
+      "blocks": 22,
+      "sourceFile": "company.html"
+    },
+    {
+      "slug": "contacts",
+      "title": "Contacts",
+      "route": "/(tilda)/contacts",
+      "blocks": 18,
+      "sourceFile": "contacts.html"
+    },
+    {
+      "slug": "doma-iz-gazobetona",
+      "title": "Дома из газобетона",
+      "route": "/(tilda)/doma-iz-gazobetona",
+      "blocks": 21,
+      "sourceFile": "doma-iz-gazobetona.html"
+    },
+    {
+      "slug": "footer",
+      "title": "Footer",
+      "route": "/(tilda)/footer",
+      "blocks": 9,
+      "sourceFile": "footer.html"
+    },
+    {
+      "slug": "gotovye-doma",
+      "title": "Готовые дома",
+      "route": "/(tilda)/gotovye-doma",
+      "blocks": 24,
+      "sourceFile": "gotovye-doma.html"
+    },
+    {
+      "slug": "header",
+      "title": "Header",
+      "route": "/(tilda)/header",
+      "blocks": 6,
+      "sourceFile": "header.html"
+    },
+    {
+      "slug": "modulnie-doma",
+      "title": "Модульные дома",
+      "route": "/(tilda)/modulnie-doma",
+      "blocks": 23,
+      "sourceFile": "modulnie-doma.html"
+    },
+    {
+      "slug": "policy",
+      "title": "Политика конфиденциальности",
+      "route": "/(tilda)/policy",
+      "blocks": 17,
+      "sourceFile": "policy.html"
+    },
+    {
+      "slug": "projects",
+      "title": "Наши проекты",
+      "route": "/(tilda)/projects",
+      "blocks": 27,
+      "sourceFile": "projects.html"
+    }
+  ]
+}
