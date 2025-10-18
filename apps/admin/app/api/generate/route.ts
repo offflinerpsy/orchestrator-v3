@@ -286,8 +286,9 @@ async function executeComfyUI(job: Job) {
       
       // Extract output filename from history
       // (Simplified — actual parsing depends on workflow structure)
-      const outputs = historyData[prompt_id].outputs
-      const filename = Object.values(outputs)[0]?.images?.[0]?.filename
+      const outputs = historyData[prompt_id].outputs as any
+      const firstOutput = Object.values(outputs)[0] as any
+      const filename = firstOutput?.images?.[0]?.filename
 
       if (filename) {
         job.result = {
