@@ -1,0 +1,21 @@
+{
+  "folders": [
+    { "name": "Orchestrator", "path": "." },
+    { "name": "ASWAD Site", "path": "c:\\Users\\Makkaroshka\\Desktop\\aswad\\сайт" }
+  ],
+  "settings": {
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "files.exclude": {
+      "**/.next": true
+    },
+    "search.exclude": {
+      "**/.next": true
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "esbenp.prettier-vscode",
+      "dbaeumer.vscode-eslint"
+    ]
+  }
+}

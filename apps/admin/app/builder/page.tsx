@@ -15,7 +15,7 @@
 
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Button } from '@/components/ui/button'
 import { QueuePanel } from '@/components/queue-panel'
@@ -37,6 +37,24 @@ import {
 export default function BuilderPage() {
   const [prompt, setPrompt] = useState('')
   const [activeTab, setActiveTab] = useState('preview')
+  const [items, setItems] = useState<Array<{name:string;url:string;ext:string}>>([])
+  const [page, setPage] = useState(1)
+  const [total, setTotal] = useState(0)
+  const [loadingCanvas, setLoadingCanvas] = useState(false)
+
+  const loadCanvas = (p = 1) => {
+    setLoadingCanvas(true)
+    fetch(`/api/canvas/list?page=${p}&limit=30`, { cache: 'no-store' })
+      .then(r => r.json())
+      .then(d => {
+        setItems(Array.isArray(d.items) ? d.items : [])
+        setTotal(typeof d.total === 'number' ? d.total : 0)
+        setPage(typeof d.page === 'number' ? d.page : p)
+      })
+      .finally(() => setLoadingCanvas(false))
+  }
+
+  useEffect(() => { if (activeTab === 'canvas') loadCanvas(page) }, [activeTab])
 
   return (
     <div className="h-screen flex flex-col bg-background">
@@ -140,14 +158,34 @@ export default function BuilderPage() {
             </TabsContent>
 
             <TabsContent value="canvas" className="flex-1 m-0 p-4">
-              <div className="h-full border rounded-lg bg-card p-4">
-                <div className="grid grid-cols-3 gap-4">
-                  {/* Placeholder for generated images/videos */}
-                  {[1, 2, 3, 4, 5, 6].map((i) => (
-                    <div key={i} className="aspect-video bg-muted rounded-lg border flex items-center justify-center">
-                      <ImageIcon className="h-8 w-8 text-muted-foreground" />
-                    </div>
-                  ))}
+              <div className="h-full border rounded-lg bg-card p-4 flex flex-col">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="text-sm text-muted-foreground">Items: {total}</div>
+                  <div className="flex gap-2">
+                    <Button variant="outline" size="sm" onClick={() => loadCanvas(page)} disabled={loadingCanvas}>
+                      {loadingCanvas ? 'Loading…' : 'Refresh'}
+                    </Button>
+                  </div>
+                </div>
+                <div className="grid grid-cols-3 gap-4 flex-1 overflow-auto">
+                  {items.length === 0 && !loadingCanvas ? (
+                    <div className="col-span-3 text-center text-sm text-muted-foreground">Нет файлов в F:\\Drop\\out</div>
+                  ) : (
+                    items.map((it) => (
+                      <div key={it.name} className="aspect-video bg-muted rounded-lg border flex items-center justify-center overflow-hidden">
+                        {it.ext === '.mp4' ? (
+                          <video src={it.url} className="h-full" controls />
+                        ) : (
+                          <img src={it.url} alt={it.name} className="object-contain h-full" />
+                        )}
+                      </div>
+                    ))
+                  )}
+                </div>
+                <div className="mt-4 flex items-center justify-between">
+                  <Button variant="outline" size="sm" onClick={() => { const p = Math.max(1, page - 1); loadCanvas(p) }} disabled={page <= 1 || loadingCanvas}>Prev</Button>
+                  <div className="text-xs text-muted-foreground">Page {page} / {Math.max(1, Math.ceil(total / 30))}</div>
+                  <Button variant="outline" size="sm" onClick={() => { const p = page + 1; const max = Math.max(1, Math.ceil(total / 30)); if (p <= max) loadCanvas(p) }} disabled={page >= Math.max(1, Math.ceil(total / 30)) || loadingCanvas}>Next</Button>
                 </div>
               </div>
             </TabsContent>
