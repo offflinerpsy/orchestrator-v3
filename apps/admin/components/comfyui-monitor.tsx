@@ -16,7 +16,7 @@ export function ComfyUIMonitor() {
 
   const checkStatus = async () => {
     try {
-      const response = await fetch('/api/comfyui/status')
+      const response = await fetch('/api/comfyui/status', { cache: 'no-store' })
       const data = await response.json()
       setStatus(data)
     } catch { setStatus({ online: false }) } finally { setLoading(false) }
@@ -44,9 +44,25 @@ export function ComfyUIMonitor() {
         )}
         {status.models && <div className="text-xs">Models: {status.models.checkpoints} checkpoints</div>}
         <div>
-          <Button size="sm" variant="outline" disabled={loading} onClick={checkStatus}>
-            {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : 'Recheck'}
-          </Button>
+          <div className="flex gap-2">
+            <Button size="sm" variant="outline" disabled={loading} onClick={checkStatus}>
+              {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : 'Recheck'}
+            </Button>
+            <Button size="sm" variant="default" disabled={loading || status.online} onClick={async () => {
+              setLoading(true)
+              await fetch('/api/comfyui/service', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'start' }) })
+              setTimeout(checkStatus, 3000)
+            }}>
+              <Play className="h-4 w-4 mr-1" /> Start
+            </Button>
+            <Button size="sm" variant="outline" disabled={loading || !status.online} onClick={async () => {
+              setLoading(true)
+              await fetch('/api/comfyui/service', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'stop' }) })
+              setTimeout(checkStatus, 1500)
+            }}>
+              <Square className="h-4 w-4 mr-1" /> Stop
+            </Button>
+          </div>
         </div>
       </CardContent>
     </Card>

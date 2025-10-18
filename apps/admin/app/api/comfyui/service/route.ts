@@ -1,139 +1,53 @@
-/**
- * ComfyUI Service Control API
- * Start/Stop ComfyUI server and check status
- * @see https://www.viewcomfy.com/blog/building-a-production-ready-comfyui-api
- */
+import { NextResponse } from 'next/server'
+import os from 'node:os'
+import fs from 'node:fs'
+import path from 'node:path'
+import { spawn } from 'node:child_process'
 
-import { NextRequest, NextResponse } from 'next/server'
-import { exec, spawn } from 'child_process'
-import { promisify } from 'util'
+export const runtime = 'nodejs'
+export const revalidate = 0
 
-const execAsync = promisify(exec)
+function json(data: any, status = 200) { return NextResponse.json(data, { status }) }
 
-const COMFYUI_PATH = 'F:\\ComfyUI'
-const COMFYUI_PORT = 8188
-const COMFYUI_URL = `http://127.0.0.1:${COMFYUI_PORT}`
-
-// Global process reference
-let comfyProcess: ReturnType<typeof spawn> | null = null
-
-/**
- * Check if ComfyUI is running by hitting /system_stats
- */
-async function checkComfyUIStatus(): Promise<boolean> {
-  try {
-    const response = await fetch(`${COMFYUI_URL}/system_stats`, {
-      method: 'GET',
-      signal: AbortSignal.timeout(3000)
-    })
-    return response.ok
-  } catch {
-    return false
-  }
-}
-
-/**
- * GET /api/comfyui/service - Check ComfyUI status
- */
 export async function GET() {
-  const isRunning = await checkComfyUIStatus()
-  
-  return NextResponse.json({
-    status: isRunning ? 'online' : 'offline',
-    url: COMFYUI_URL,
-    port: COMFYUI_PORT,
-    path: COMFYUI_PATH
-  })
+  return json({ ok: true })
 }
 
-/**
- * POST /api/comfyui/service - Start/Stop ComfyUI
- */
-export async function POST(request: NextRequest) {
-  const { action } = await request.json()
+export async function POST(request: Request) {
+  const contentType = request.headers.get('content-type') || ''
+  const isJson = contentType.includes('application/json')
+  if (!isJson) return json({ success: false, message: 'Content-Type must be application/json' }, 400)
+
+  const body = await request.json().catch(() => ({})) as { action?: string }
+  const action = (body?.action || '').toLowerCase()
+  if (!action) return json({ success: false, message: 'Missing action' }, 400)
+
+  // Only Windows supported here (local dev environment)
+  if (os.platform() !== 'win32') return json({ success: false, message: 'Service control supported only on Windows' }, 400)
+
+  const comfyRoot = 'F:/ComfyUI'
+  const gpuBat = path.join(comfyRoot, 'run_nvidia_gpu.bat')
+  const cpuBat = path.join(comfyRoot, 'run_cpu.bat')
 
   if (action === 'start') {
-    // Check if already running
-    const isRunning = await checkComfyUIStatus()
-    if (isRunning) {
-      return NextResponse.json({ 
-        success: false, 
-        message: 'ComfyUI is already running',
-        url: COMFYUI_URL
-      })
-    }
+    const candidate = fs.existsSync(gpuBat) ? gpuBat : (fs.existsSync(cpuBat) ? cpuBat : '')
+    if (!candidate) return json({ success: false, message: 'No start script found (run_nvidia_gpu.bat or run_cpu.bat)' }, 404)
 
-    // Start ComfyUI process
-    try {
-      comfyProcess = spawn(
-        'cmd.exe',
-        ['/c', 'run_nvidia_gpu.bat'],
-        {
-          cwd: COMFYUI_PATH,
-          detached: false,
-          stdio: 'ignore'
-        }
-      )
-
-      // Wait 5 seconds for startup
-      await new Promise(resolve => setTimeout(resolve, 5000))
-
-      const isOnline = await checkComfyUIStatus()
-      
-      if (isOnline) {
-        return NextResponse.json({
-          success: true,
-          message: 'ComfyUI started successfully',
-          url: COMFYUI_URL,
-          pid: comfyProcess.pid
-        })
-      } else {
-        return NextResponse.json({
-          success: false,
-          message: 'ComfyUI process started but not responding. Check F:\\ComfyUI\\comfyui.log'
-        }, { status: 500 })
-      }
-    } catch (error: any) {
-      return NextResponse.json({
-        success: false,
-        message: `Failed to start ComfyUI: ${error.message}`
-      }, { status: 500 })
-    }
+    // Start detached process via cmd to open its own window, avoid blocking
+    const child = spawn('cmd.exe', ['/c', 'start', '""', candidate], {
+      cwd: comfyRoot,
+      detached: true,
+      windowsHide: false,
+      stdio: 'ignore',
+    })
+    child.unref()
+    return json({ success: true, message: `Started: ${path.basename(candidate)}` })
   }
 
   if (action === 'stop') {
-    try {
-      // Kill process by port on Windows
-      if (process.platform === 'win32') {
-        await execAsync(`powershell "Get-Process | Where-Object {$_.MainWindowTitle -like '*ComfyUI*'} | Stop-Process -Force"`)
-      } else {
-        // Linux/Mac
-        await execAsync(`lsof -ti:${COMFYUI_PORT} | xargs kill -9`)
-      }
-
-      if (comfyProcess) {
-        comfyProcess.kill()
-        comfyProcess = null
-      }
-
-      // Verify stopped
-      await new Promise(resolve => setTimeout(resolve, 2000))
-      const isRunning = await checkComfyUIStatus()
-
-      return NextResponse.json({
-        success: !isRunning,
-        message: isRunning ? 'Failed to stop ComfyUI' : 'ComfyUI stopped successfully'
-      })
-    } catch (error: any) {
-      return NextResponse.json({
-        success: false,
-        message: `Error stopping ComfyUI: ${error.message}`
-      }, { status: 500 })
-    }
+    // Not implemented: safe stopping requires tracking PID; return soft message
+    return json({ success: false, message: 'Stop not implemented. Close ComfyUI window manually.' }, 501)
   }
 
-  return NextResponse.json({
-    success: false,
-    message: 'Invalid action. Use "start" or "stop"'
-  }, { status: 400 })
+  return json({ success: false, message: `Unknown action: ${action}` }, 400)
 }
