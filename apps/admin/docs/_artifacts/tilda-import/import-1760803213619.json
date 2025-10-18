@@ -1,0 +1,79 @@
+{
+  "timestamp": "2025-10-18T16:00:13.619Z",
+  "dumpPath": "C:\\Users\\Makkaroshka\\Desktop\\aswad\\сайт\\content\\tilda\\",
+  "pagesProcessed": 10,
+  "componentsGenerated": 205,
+  "routesGenerated": 10,
+  "pages": [
+    {
+      "slug": "comingsoon",
+      "title": "Страница в разработке",
+      "route": "/(tilda)/comingsoon",
+      "blocks": 18,
+      "sourceFile": "comingsoon.html"
+    },
+    {
+      "slug": "company",
+      "title": "О компании ASWAD Home Factory",
+      "route": "/(tilda)/company",
+      "blocks": 26,
+      "sourceFile": "company.html"
+    },
+    {
+      "slug": "contacts",
+      "title": "Контакты",
+      "route": "/(tilda)/contacts",
+      "blocks": 25,
+      "sourceFile": "contacts.html"
+    },
+    {
+      "slug": "doma-iz-gazobetona",
+      "title": "Дома из газобетона СПБ",
+      "route": "/(tilda)/doma-iz-gazobetona",
+      "blocks": 23,
+      "sourceFile": "doma-iz-gazobetona.html"
+    },
+    {
+      "slug": "footer",
+      "title": "Footer",
+      "route": "/(tilda)/footer",
+      "blocks": 14,
+      "sourceFile": "footer.html"
+    },
+    {
+      "slug": "gotovye-doma",
+      "title": "Модульные дома в наличии",
+      "route": "/(tilda)/gotovye-doma",
+      "blocks": 25,
+      "sourceFile": "gotovye-doma.html"
+    },
+    {
+      "slug": "header",
+      "title": "Header",
+      "route": "/(tilda)/header",
+      "blocks": 3,
+      "sourceFile": "header.html"
+    },
+    {
+      "slug": "modulnie-doma",
+      "title": "Модульные дома СПБ",
+      "route": "/(tilda)/modulnie-doma",
+      "blocks": 26,
+      "sourceFile": "modulnie-doma.html"
+    },
+    {
+      "slug": "policy",
+      "title": "Политика защиты персональный данных",
+      "route": "/(tilda)/policy",
+      "blocks": 18,
+      "sourceFile": "policy.html"
+    },
+    {
+      "slug": "projects",
+      "title": "Наши проекты",
+      "route": "/(tilda)/projects",
+      "blocks": 27,
+      "sourceFile": "projects.html"
+    }
+  ]
+}
