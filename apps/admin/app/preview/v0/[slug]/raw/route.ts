@@ -6,8 +6,8 @@ function filePath(slug: string) {
   return path.join(process.cwd(), 'docs', '_artifacts', 'v0', `preview-${slug}.html`);
 }
 
-export async function GET(_: Request, { params }: { params: { slug: string } }) {
-  const slug = params.slug;
+export async function GET(_: Request, { params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const file = filePath(slug);
   const buf = await fs.readFile(file).catch(() => null as Buffer | null);
   if (!buf) return NextResponse.json({ ok: false, error: 'Preview not found' }, { status: 404 });

@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-type Props = { params: { slug: string } };
+type Props = { params: Promise<{ slug: string }> };
 
 async function readPreviewHtml(slug: string): Promise<string | null> {
   const artifactsDir = path.join(process.cwd(), 'docs', '_artifacts', 'v0');
@@ -15,7 +15,7 @@ async function readPreviewHtml(slug: string): Promise<string | null> {
 }
 
 export default async function PreviewV0Page({ params }: Props) {
-  const slug = params.slug;
+  const { slug } = await params;
   const html = await readPreviewHtml(slug);
 
   return (

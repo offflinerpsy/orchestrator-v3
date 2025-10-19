@@ -6,5 +6,6 @@
   "dropIn": "F:\\Drop\\in",
   "dropOut": "F:\\Drop\\out",
   "workflows": "F:\\Workflows",
-  "logs": "C:\\Work\\Orchestrator\\logs"
+  "logs": "C:\\Work\\Orchestrator\\logs",
+  "data": "C:\\Work\\Orchestrator\\data"
 }

@@ -1,33 +1,27 @@
 /**
  * Прокси для ComfyUI /interrupt эндпоинта
  * Прерывание текущей генерации
+ * 
+ * Используется ТОЛЬКО для браузерных запросов.
+ * Внутренняя логика сервера должна импортировать lib/comfy-client.ts напрямую.
  */
 
-export const runtime = 'nodejs';
-export const revalidate = 0;
+import { interruptExecution } from '@/lib/comfy-client'
 
-const COMFY_URL = process.env.COMFY_URL || 'http://127.0.0.1:8188';
+export const runtime = 'nodejs'
+export const revalidate = 0
 
 export async function POST() {
   try {
-    const response = await fetch(`${COMFY_URL}/interrupt`, {
-      method: 'POST',
-    });
+    // Вызываем shared client напрямую
+    await interruptExecution()
 
-    if (!response.ok) {
-      const error = await response.text();
-      return Response.json(
-        { error: `ComfyUI ошибка: ${error}` },
-        { status: response.status }
-      );
-    }
-
-    return Response.json({ success: true });
+    return Response.json({ success: true })
   } catch (error: any) {
-    console.error('[COMFY PROXY] /interrupt error:', error);
+    console.error('[COMFY PROXY] /interrupt error:', error)
     return Response.json(
       { error: `Не удалось подключиться к ComfyUI: ${error.message}` },
       { status: 503 }
-    );
+    )
   }
 }

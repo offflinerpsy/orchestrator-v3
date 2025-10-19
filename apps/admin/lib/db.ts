@@ -10,14 +10,55 @@
 
 import Database from 'better-sqlite3'
 import { join } from 'path'
-import { existsSync, mkdirSync } from 'fs'
+import { existsSync, mkdirSync, readFileSync } from 'fs'
 
-const DATA_DIR = join(process.cwd(), '../../data')
+/**
+ * Resolve DATA_DIR from environment or paths.json
+ * CRITICAL: process.cwd() varies depending on launch context!
+ * Use explicit env variable or paths.json for deterministic paths.
+ */
+function resolveDataDir(): string {
+  // Import env validation (trigger validation at module load)
+  const { env } = require('./env')
+
+  // 1. Env variable (highest priority)
+  if (env.DATA_DIR) {
+    return env.DATA_DIR
+  }
+
+  // 2. paths.json (project-level config)
+  try {
+    const pathsJsonPath = join(process.cwd(), '../../paths.json')
+    if (existsSync(pathsJsonPath)) {
+      const paths = JSON.parse(readFileSync(pathsJsonPath, 'utf-8'))
+      if (paths.data) {
+        return paths.data
+      }
+      // Fallback: use projectRoot from paths.json
+      if (paths.projectRoot) {
+        return join(paths.projectRoot, 'data')
+      }
+    }
+  } catch (err) {
+    console.warn('[DB] Failed to read paths.json:', err)
+  }
+
+  // 3. Fallback: relative to process.cwd()
+  // WARNING: This may break if running from different directories!
+  console.warn('[DB] DATA_DIR not configured, using fallback: process.cwd() + ../../data')
+  return join(process.cwd(), '../../data')
+}
+
+const DATA_DIR = resolveDataDir()
 const DB_PATH = join(DATA_DIR, 'orchestrator.db')
+
+console.log('[DB] Using DATA_DIR:', DATA_DIR)
+console.log('[DB] Database path:', DB_PATH)
 
 // Создаём data/ если не существует
 if (!existsSync(DATA_DIR)) {
   mkdirSync(DATA_DIR, { recursive: true })
+  console.log('[DB] Created DATA_DIR:', DATA_DIR)
 }
 
 // Singleton instance

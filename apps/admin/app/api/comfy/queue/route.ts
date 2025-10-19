@@ -1,34 +1,27 @@
 /**
  * Прокси для ComfyUI /queue эндпоинта
  * Получение текущей очереди задач
+ * 
+ * Используется ТОЛЬКО для браузерных запросов.
+ * Внутренняя логика сервера должна импортировать lib/comfy-client.ts напрямую.
  */
 
-export const runtime = 'nodejs';
-export const revalidate = 0;
+import { getQueue } from '@/lib/comfy-client'
 
-const COMFY_URL = process.env.COMFY_URL || 'http://127.0.0.1:8188';
+export const runtime = 'nodejs'
+export const revalidate = 0
 
 export async function GET() {
   try {
-    const response = await fetch(`${COMFY_URL}/queue`, {
-      method: 'GET',
-    });
+    // Вызываем shared client напрямую
+    const data = await getQueue()
 
-    if (!response.ok) {
-      const error = await response.text();
-      return Response.json(
-        { error: `ComfyUI ошибка: ${error}` },
-        { status: response.status }
-      );
-    }
-
-    const data = await response.json();
-    return Response.json(data);
+    return Response.json(data)
   } catch (error: any) {
-    console.error('[COMFY PROXY] /queue error:', error);
+    console.error('[COMFY PROXY] /queue error:', error)
     return Response.json(
       { error: `Не удалось подключиться к ComfyUI: ${error.message}` },
       { status: 503 }
-    );
+    )
   }
 }
