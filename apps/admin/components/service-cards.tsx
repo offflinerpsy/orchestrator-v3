@@ -32,7 +32,7 @@ export function ServiceCards() {
   const fetchStatus = async () => {
     try {
       const [comfyRes, keysRes] = await Promise.all([
-        fetch('/api/comfyui/service'),
+        fetch('/api/system/comfy/status'),
         fetch('/api/keys/validate')
       ])
 
@@ -41,8 +41,8 @@ export function ServiceCards() {
 
       setStatus({
         comfyui: { 
-          online: comfyData.status === 'online', 
-          url: comfyData.url 
+          online: comfyData.running === true, 
+          url: 'http://127.0.0.1:8188' 
         },
         flux: keysData.flux,
         v0: keysData.v0
@@ -63,17 +63,15 @@ export function ServiceCards() {
   const handleComfyUIAction = async (action: 'start' | 'stop') => {
     setActionLoading(action)
     try {
-      const res = await fetch('/api/comfyui/service', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action })
-      })
+      const endpoint = action === 'start' ? '/api/system/comfy/start' : '/api/system/comfy/stop'
+      const res = await fetch(endpoint, { method: 'POST' })
       const data = await res.json()
       
       if (data.success) {
+        await new Promise(resolve => setTimeout(resolve, 2000))
         await fetchStatus()
       } else {
-        alert(data.message)
+        alert(data.message || data.error)
       }
     } catch (error) {
       alert(`Failed to ${action} ComfyUI`)
