@@ -6,7 +6,9 @@
  * Внутренняя логика сервера должна импортировать lib/flux-client.ts напрямую.
  */
 
+import { NextRequest, NextResponse } from 'next/server'
 import { generateFlux } from '@/lib/flux-client'
+import { logger } from '@/lib/logger'
 
 export const runtime = 'nodejs'
 export const revalidate = 0
@@ -38,7 +40,11 @@ export async function POST(request: Request) {
 
     return Response.json(data)
   } catch (error: any) {
-    console.error('[FLUX PROXY] /generate error:', error)
+    logger.error({
+      message: 'FLUX proxy /generate error',
+      error: error.message,
+      stack: error.stack
+    })
     return Response.json(
       { error: `Ошибка генерации FLUX: ${error.message}` },
       { status: 500 }

@@ -7,6 +7,7 @@
  */
 
 import { getModels } from '@/lib/comfy-client'
+import { logger } from '@/lib/logger'
 
 export const runtime = 'nodejs'
 export const revalidate = 0
@@ -26,7 +27,11 @@ export async function GET() {
       online: true,
     })
   } catch (error: any) {
-    console.error('[COMFY PROXY] /object_info error:', error)
+    logger.error({
+      message: 'ComfyUI proxy /object_info error',
+      error: error.message,
+      stack: error.stack
+    })
     return Response.json(
       {
         error: `Не удалось подключиться к ComfyUI: ${error.message}`,

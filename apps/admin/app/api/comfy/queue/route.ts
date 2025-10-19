@@ -7,6 +7,7 @@
  */
 
 import { getQueue } from '@/lib/comfy-client'
+import { logger } from '@/lib/logger'
 
 export const runtime = 'nodejs'
 export const revalidate = 0
@@ -18,7 +19,11 @@ export async function GET() {
 
     return Response.json(data)
   } catch (error: any) {
-    console.error('[COMFY PROXY] /queue error:', error)
+    logger.error({
+      message: 'ComfyUI proxy /queue error',
+      error: error.message,
+      stack: error.stack
+    })
     return Response.json(
       { error: `Не удалось подключиться к ComfyUI: ${error.message}` },
       { status: 503 }

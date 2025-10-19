@@ -6,7 +6,9 @@
  * Внутренняя логика сервера должна импортировать lib/flux-client.ts напрямую.
  */
 
+import { NextRequest, NextResponse } from 'next/server'
 import { pollFlux } from '@/lib/flux-client'
+import { logger } from '@/lib/logger'
 
 export const runtime = 'nodejs'
 export const revalidate = 0
@@ -28,7 +30,11 @@ export async function GET(
       error: data.error,
     })
   } catch (error: any) {
-    console.error('[FLUX PROXY] /poll error:', error)
+    logger.error({
+      message: 'FLUX proxy /poll error',
+      error: error.message,
+      stack: error.stack
+    })
     return Response.json(
       { error: `Ошибка опроса FLUX: ${error.message}` },
       { status: 500 }

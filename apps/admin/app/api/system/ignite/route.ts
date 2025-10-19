@@ -8,63 +8,69 @@
  * 3. OrchestratorWorker (если установлен)
  */
 
-import { spawn } from 'child_process';
+import { spawn } from 'child_process'
+import { logger } from '@/lib/logger'
 
-export const runtime = 'nodejs';
-export const revalidate = 0;
+export const runtime = 'nodejs'
+export const revalidate = 0
 
 export async function POST() {
-  const results: any[] = [];
+  const results: any[] = []
   
   try {
     // 1. ComfyUI
-    console.log('[IGNITE] Starting ComfyUI...');
+    logger.info({ message: 'IGNITE: Starting ComfyUI' })
     try {
-      const comfyResult = await startService('OrchestratorComfyUI');
-      results.push({ service: 'ComfyUI', success: true, output: comfyResult });
+      const comfyResult = await startService('OrchestratorComfyUI')
+      results.push({ service: 'ComfyUI', success: true, output: comfyResult })
     } catch (error: any) {
-      results.push({ service: 'ComfyUI', success: false, error: error.message });
+      results.push({ service: 'ComfyUI', success: false, error: error.message })
     }
     
     // Ждём 3 секунды, чтобы ComfyUI успел инициализироваться
-    await new Promise(resolve => setTimeout(resolve, 3000));
+    await new Promise(resolve => setTimeout(resolve, 3000))
     
     // 2. Panel (только если в production режиме)
     if (process.env.NODE_ENV === 'production') {
-      console.log('[IGNITE] Starting Panel...');
+      logger.info({ message: 'IGNITE: Starting Panel' })
       try {
-        const panelResult = await startService('OrchestratorPanel');
-        results.push({ service: 'Panel', success: true, output: panelResult });
+        const panelResult = await startService('OrchestratorPanel')
+        results.push({ service: 'Panel', success: true, output: panelResult })
       } catch (error: any) {
-        results.push({ service: 'Panel', success: false, error: error.message });
+        results.push({ service: 'Panel', success: false, error: error.message })
       }
     } else {
-      results.push({ service: 'Panel', success: true, note: 'Пропущено (dev режим)' });
+      results.push({ service: 'Panel', success: true, note: 'Пропущено (dev режим)' })
     }
     
     // 3. Worker (опционально)
-    console.log('[IGNITE] Starting Worker...');
+    logger.info({ message: 'IGNITE: Starting Worker' })
     try {
-      const workerResult = await startService('OrchestratorWorker');
-      results.push({ service: 'Worker', success: true, output: workerResult });
+      const workerResult = await startService('OrchestratorWorker')
+      results.push({ service: 'Worker', success: true, output: workerResult })
     } catch (error: any) {
       results.push({
         service: 'Worker',
         success: false,
         error: error.message,
         note: 'Не критично, если worker не установлен',
-      });
+      })
     }
     
-    const allSuccess = results.filter(r => r.service !== 'Worker').every(r => r.success);
+    const allSuccess = results.filter(r => r.service !== 'Worker').every(r => r.success)
     
     return Response.json({
       success: allSuccess,
       message: allSuccess ? 'Система запущена' : 'Запуск завершён с ошибками',
       services: results,
-    });
+    })
   } catch (error: any) {
-    console.error('[IGNITE] Error:', error);
+    logger.error({
+      message: 'IGNITE error',
+      error: error.message,
+      stack: error.stack,
+      services: results
+    })
     return Response.json(
       {
         success: false,
@@ -72,7 +78,7 @@ export async function POST() {
         services: results,
       },
       { status: 500 }
-    );
+    )
   }
 }
 

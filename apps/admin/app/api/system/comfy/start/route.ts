@@ -3,22 +3,23 @@
  * POST /api/system/comfy/start
  */
 
-import { spawn } from 'child_process';
+import { spawn } from 'child_process'
+import { logger } from '@/lib/logger'
 
-export const runtime = 'nodejs';
-export const revalidate = 0;
+export const runtime = 'nodejs'
+export const revalidate = 0
 
 export async function POST() {
   try {
     // Используем sc start (Windows Service Control)
-    const result = await runCommand('sc', ['start', 'OrchestratorComfyUI']);
+    const result = await runCommand('sc', ['start', 'OrchestratorComfyUI'])
     
     if (result.includes('START_PENDING') || result.includes('RUNNING')) {
       return Response.json({
         success: true,
         message: 'ComfyUI служба запущена',
         output: result,
-      });
+      })
     }
     
     return Response.json(
@@ -28,13 +29,17 @@ export async function POST() {
         output: result,
       },
       { status: 500 }
-    );
+    )
   } catch (error: any) {
-    console.error('[SYSTEM] ComfyUI start error:', error);
+    logger.error({
+      message: 'ComfyUI start error',
+      error: error.message,
+      stack: error.stack
+    })
     return Response.json(
       { success: false, error: error.message },
       { status: 500 }
-    );
+    )
   }
 }
 

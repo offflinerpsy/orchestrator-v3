@@ -6,6 +6,7 @@
 
 import { createMessage, listMessages, type Message } from '@/lib/db'
 import { randomUUID } from 'crypto'
+import { logger } from '@/lib/logger'
 
 export const runtime = 'nodejs'
 export const revalidate = 0
@@ -27,7 +28,12 @@ export async function GET(request: Request) {
       count: messages.length,
     })
   } catch (error: any) {
-    console.error('[CHAT API] GET error:', error)
+    logger.error({
+      message: 'Chat API GET error',
+      error: error.message,
+      stack: error.stack,
+      url: request.url
+    })
     return Response.json({ ok: false, error: error.message }, { status: 500 })
   }
 }
@@ -66,7 +72,12 @@ export async function POST(request: Request) {
 
     return Response.json({ ok: true, message })
   } catch (error: any) {
-    console.error('[CHAT API] POST error:', error)
+    logger.error({
+      message: 'Chat API POST error',
+      error: error.message,
+      stack: error.stack,
+      url: request.url
+    })
     return Response.json({ ok: false, error: error.message }, { status: 500 })
   }
 }

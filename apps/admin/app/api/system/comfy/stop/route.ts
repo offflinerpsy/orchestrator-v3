@@ -3,21 +3,22 @@
  * POST /api/system/comfy/stop
  */
 
-import { spawn } from 'child_process';
+import { spawn } from 'child_process'
+import { logger } from '@/lib/logger'
 
-export const runtime = 'nodejs';
-export const revalidate = 0;
+export const runtime = 'nodejs'
+export const revalidate = 0
 
 export async function POST() {
   try {
-    const result = await runCommand('sc', ['stop', 'OrchestratorComfyUI']);
+    const result = await runCommand('sc', ['stop', 'OrchestratorComfyUI'])
     
     if (result.includes('STOP_PENDING') || result.includes('STOPPED')) {
       return Response.json({
         success: true,
         message: 'ComfyUI служба остановлена',
         output: result,
-      });
+      })
     }
     
     return Response.json(
@@ -27,13 +28,17 @@ export async function POST() {
         output: result,
       },
       { status: 500 }
-    );
+    )
   } catch (error: any) {
-    console.error('[SYSTEM] ComfyUI stop error:', error);
+    logger.error({
+      message: 'ComfyUI stop error',
+      error: error.message,
+      stack: error.stack
+    })
     return Response.json(
       { success: false, error: error.message },
       { status: 500 }
-    );
+    )
   }
 }
 

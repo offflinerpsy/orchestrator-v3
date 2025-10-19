@@ -3,18 +3,19 @@
  * GET /api/system/comfy/status
  */
 
-import { spawn } from 'child_process';
+import { spawn } from 'child_process'
+import { logger } from '@/lib/logger'
 
-export const runtime = 'nodejs';
-export const revalidate = 0;
+export const runtime = 'nodejs'
+export const revalidate = 0
 
 export async function GET() {
   try {
-    const result = await runCommand('sc', ['query', 'OrchestratorComfyUI']);
+    const result = await runCommand('sc', ['query', 'OrchestratorComfyUI'])
     
-    const running = result.includes('RUNNING');
-    const stopped = result.includes('STOPPED');
-    const startPending = result.includes('START_PENDING');
+    const running = result.includes('RUNNING')
+    const stopped = result.includes('STOPPED')
+    const startPending = result.includes('START_PENDING')
     
     return Response.json({
       running: running || startPending,
@@ -22,17 +23,21 @@ export async function GET() {
       pending: startPending,
       status: running ? 'running' : stopped ? 'stopped' : startPending ? 'starting' : 'unknown',
       output: result,
-    });
+    })
   } catch (error: any) {
     // Служба не установлена или ошибка
-    console.error('[SYSTEM] ComfyUI status error:', error);
+    logger.error({
+      message: 'ComfyUI status error',
+      error: error.message,
+      stack: error.stack
+    })
     return Response.json({
       running: false,
       stopped: true,
       pending: false,
       status: 'not-installed',
       error: error.message,
-    });
+    })
   }
 }
 

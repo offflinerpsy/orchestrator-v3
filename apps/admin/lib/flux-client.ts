@@ -9,6 +9,7 @@
  */
 
 import { env } from '@/lib/env'
+import { logger } from '@/lib/logger'
 
 export const runtime = 'nodejs'
 
@@ -65,9 +66,12 @@ export async function generateFlux(params: FluxGenerateParams): Promise<FluxTask
     output_format: params.output_format || 'jpeg',
   }
 
-  console.log('[FLUX CLIENT] Генерация:', { 
-    prompt: payload.prompt.slice(0, 50), 
-    params: { ...payload, prompt: undefined } 
+  logger.info({
+    message: 'FLUX generation started',
+    prompt: payload.prompt.slice(0, 50),
+    width: payload.width,
+    height: payload.height,
+    raw: payload.raw
   })
 
   const response = await fetch(`${FLUX_API_URL}/flux-pro-1.1-ultra`, {
@@ -82,12 +86,19 @@ export async function generateFlux(params: FluxGenerateParams): Promise<FluxTask
 
   if (!response.ok) {
     const errorText = await response.text()
-    console.error('[FLUX CLIENT] Ошибка API:', response.status, errorText)
+    logger.error({
+      message: 'FLUX API error',
+      status: response.status,
+      error: errorText
+    })
     throw new Error(`FLUX API error (${response.status}): ${errorText}`)
   }
 
   const data = await response.json()
-  console.log('[FLUX CLIENT] Task создан:', { id: data.id })
+  logger.info({
+    message: 'FLUX task created',
+    taskId: data.id
+  })
 
   return data
 }

@@ -11,9 +11,17 @@ import { writeFile, mkdir, readFile } from 'fs/promises'
 import { existsSync } from 'fs'
 import { join } from 'path'
 import { randomUUID } from 'crypto'
+import { resolvePath } from '@/lib/paths'
+import { logger } from '@/lib/logger'
 
-const JOBS_DIR = 'C:\\Work\\Orchestrator\\jobs'
-const OUT_DIR = 'F:\\Drop\\out'
+// Lazy evaluation — resolve paths on first use
+function getJobsDir() {
+  return resolvePath('jobs')
+}
+
+function getOutDir() {
+  return resolvePath('dropOut')
+}
 
 export const runtime = 'nodejs'
 export const revalidate = 0
@@ -63,8 +71,9 @@ export async function POST(request: NextRequest) {
     }
 
     // Create jobs directory if not exists
-    if (!existsSync(JOBS_DIR)) {
-      await mkdir(JOBS_DIR, { recursive: true })
+    const jobsDir = getJobsDir()
+    if (!existsSync(jobsDir)) {
+      await mkdir(jobsDir, { recursive: true })
     }
 
     // Create job
@@ -81,14 +90,20 @@ export async function POST(request: NextRequest) {
     }
 
     // Save job to disk
-    const jobPath = join(JOBS_DIR, `${jobId}.json`)
+    const jobPath = join(jobsDir, `${jobId}.json`)
     await writeFile(jobPath, JSON.stringify(job, null, 2))
 
     // If runNow, execute immediately (otherwise just queue it)
     if (runNow) {
       // Execute in background without blocking response
       executeJob(job).catch(err => {
-        console.error(`Job ${jobId} failed:`, err)
+        logger.error({
+          message: 'Job execution failed',
+          jobId,
+          backend,
+          error: err.message,
+          stack: err.stack
+        })
       })
     }
 
@@ -99,7 +114,12 @@ export async function POST(request: NextRequest) {
       message: runNow ? 'Job queued for execution' : 'Job created'
     })
   } catch (error: any) {
-    console.error('Generate API error:', error)
+    logger.error({
+      message: 'Generate API error',
+      error: error.message,
+      stack: error.stack,
+      url: request.url
+    })
     return NextResponse.json(
       { error: error.message },
       { status: 500 }
@@ -111,7 +131,8 @@ export async function POST(request: NextRequest) {
  * Execute job based on backend
  */
 async function executeJob(job: Job) {
-  const jobPath = join(JOBS_DIR, `${job.id}.json`)
+  const jobsDir = getJobsDir()
+  const jobPath = join(jobsDir, `${job.id}.json`)
   
   try {
     // Update status to running
@@ -194,9 +215,10 @@ async function executeFlux(job: Job) {
       const imageResponse = await fetch(imageUrl)
       const imageBuffer = await imageResponse.arrayBuffer()
       
-      // Save to F:\Drop\out
+      // Save to dropOut directory
+      const outDir = getOutDir()
       const filename = `flux_${job.id}.jpg`
-      const outputPath = join(OUT_DIR, filename)
+      const outputPath = join(outDir, filename)
       await writeFile(outputPath, Buffer.from(imageBuffer))
 
       job.result = {
@@ -294,8 +316,9 @@ async function executeComfyUI(job: Job) {
       const filename = firstOutput?.images?.[0]?.filename
 
       if (filename) {
+        const outDir = getOutDir()
         job.result = {
-          file: join(OUT_DIR, filename)
+          file: join(outDir, filename)
         }
         job.logs.push(`Result: ${filename}`)
       }

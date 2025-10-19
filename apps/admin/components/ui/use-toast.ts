@@ -1,52 +1,44 @@
 /**
- * use-toast hook (shadcn/ui)
- * Упрощённая версия для уведомлений
+ * Toast notifications — Sonner integration
+ * 
+ * USAGE:
+ * import { toast } from '@/components/ui/use-toast'
+ * 
+ * toast({ title: 'Success!', description: 'IGNITE started' })
+ * toast({ title: 'Error', description: 'Failed', variant: 'destructive' })
+ * 
+ * OR use sonner directly:
+ * import { toast } from 'sonner'
+ * toast.success('Success!')
+ * toast.error('Error!')
  */
 
-import { useState, useCallback } from 'react'
+import { toast as sonnerToast } from 'sonner'
 
 type ToastVariant = 'default' | 'destructive'
 
-interface Toast {
-  id: string
+interface ToastProps {
   title: string
   description?: string
   variant?: ToastVariant
 }
 
-const toasts: Toast[] = []
-const listeners: Array<(toasts: Toast[]) => void> = []
-
-function notify(listeners: Array<(toasts: Toast[]) => void>) {
-  listeners.forEach((listener) => listener([...toasts]))
-}
-
 export function useToast() {
-  const [, setToasts] = useState<Toast[]>([])
-
-  const toast = useCallback((props: Omit<Toast, 'id'>) => {
-    const id = Math.random().toString(36).substring(7)
-    const newToast: Toast = { id, ...props }
-    
-    toasts.push(newToast)
-    notify(listeners)
-
-    // Автоматически убираем через 5 секунд
-    setTimeout(() => {
-      const index = toasts.findIndex((t) => t.id === id)
-      if (index > -1) {
-        toasts.splice(index, 1)
-        notify(listeners)
-      }
-    }, 5000)
-
-    // Для простоты используем alert (можно заменить на реальный Toast компонент)
+  const toast = (props: ToastProps) => {
     if (props.variant === 'destructive') {
-      console.error(`[TOAST] ${props.title}`, props.description)
+      sonnerToast.error(props.title, {
+        description: props.description,
+      })
     } else {
-      console.log(`[TOAST] ${props.title}`, props.description)
+      sonnerToast.success(props.title, {
+        description: props.description,
+      })
     }
-  }, [])
+  }
 
   return { toast }
 }
+
+// Export sonner toast for direct usage
+export { toast as sonnerToast } from 'sonner'
+
