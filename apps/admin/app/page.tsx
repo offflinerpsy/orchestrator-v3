@@ -1,5 +1,6 @@
 /**
  * Orchestrator V6 — Home Page
+ * «IGNITE» — автозапуск всего стека одной кнопкой
  * Services control panel with toggle cards for ComfyUI/FLUX/v0
  * Quick launch to Builder UI
  */
@@ -8,11 +9,13 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { ServiceCards } from '@/components/service-cards'
+import { IgniteButton } from '@/components/ignite-button'
 import { 
   Sparkles, 
   Server,
   ExternalLink,
-  ArrowRight
+  ArrowRight,
+  Zap
 } from 'lucide-react'
 
 export default function Home() {
@@ -25,13 +28,18 @@ export default function Home() {
           <p className="text-xl text-muted-foreground mb-8">
             Ultra Builder — Your AI-powered design & code generation suite
           </p>
-          <Link href="/builder">
-            <Button size="lg" className="gap-2">
-              <Sparkles className="h-5 w-5" />
-              Open Builder
-              <ArrowRight className="h-5 w-5" />
-            </Button>
-          </Link>
+          
+          {/* Кнопка IGNITE — запуск всего стека */}
+          <div className="flex justify-center gap-4 mb-6">
+            <IgniteButton />
+            <Link href="/builder">
+              <Button size="lg" className="gap-2">
+                <Sparkles className="h-5 w-5" />
+                Open Builder
+                <ArrowRight className="h-5 w-5" />
+              </Button>
+            </Link>
+          </div>
         </div>
 
         {/* Services Status Cards */}
