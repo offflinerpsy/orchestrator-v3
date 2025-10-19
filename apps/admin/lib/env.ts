@@ -42,24 +42,47 @@ const envSchema = z.object({
 
 /**
  * Parse and validate environment variables
- * Throws if validation fails (app won't start)
+ * Uses safeParse to avoid throwing during module initialization
+ * 
+ * Ref: https://nextjs.org/docs/app/building-your-configuration/environment-variables
  */
 function parseEnv() {
-  try {
-    return envSchema.parse(process.env)
-  } catch (error) {
-    if (error instanceof z.ZodError) {
-      console.error('❌ Environment validation failed:')
-      console.error(JSON.stringify(error.flatten().fieldErrors, null, 2))
-      throw new Error('Invalid environment variables. Check .env.local against .env.example')
+  const result = envSchema.safeParse(process.env)
+  
+  if (!result.success) {
+    const errors = result.error.flatten().fieldErrors
+    
+    // Log to console (visible in Next.js output)
+    console.error('❌ Environment validation failed:')
+    console.error(JSON.stringify(errors, null, 2))
+    
+    // Return safe defaults + error marker
+    return {
+      HF_TOKEN: undefined,
+      BFL_API_KEY: 'missing',
+      COMFY_URL: 'http://127.0.0.1:8188',
+      V0_API_KEY: undefined,
+      DATA_DIR: undefined,
+      NEXT_PUBLIC_APP_URL: 'http://localhost:3000',
+      LOG_LEVEL: 'info' as const,
+      NODE_ENV: 'development' as const,
+      ALLOW_GENERATION: 'false' as const,
+      _validationErrors: errors,
+      _isValid: false,
     }
-    throw error
+  }
+  
+  return {
+    ...result.data,
+    _validationErrors: undefined,
+    _isValid: true,
   }
 }
 
 /**
  * Validated environment variables
  * Safe to use throughout the app
+ * Check env._isValid in layout.tsx to show error UI
  */
 export const env = parseEnv()
 

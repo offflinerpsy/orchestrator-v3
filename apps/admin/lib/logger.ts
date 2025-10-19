@@ -1,8 +1,10 @@
 /**
- * Structured Logger — pino
+ * Structured Logger — pino (Lazy Initialization)
  * 
  * Замена console.log для production.
  * JSON logs в production, pretty-print в dev.
+ * 
+ * Lazy initialization prevents module-level crashes if env validation fails.
  * 
  * USAGE:
  * import { logger } from '@/lib/logger'
@@ -13,29 +15,47 @@
 import pino from 'pino'
 import { env } from './env'
 
+let _logger: pino.Logger | null = null
+
 /**
- * Create pino logger instance
+ * Get or create pino logger instance (lazy initialization)
  * - Pretty format for development
  * - JSON format for production
  */
-export const logger = pino({
-  level: env.LOG_LEVEL,
-  // Pretty-print in development
-  transport: env.NODE_ENV === 'development' ? {
-    target: 'pino-pretty',
-    options: {
-      colorize: true,
-      translateTime: 'HH:MM:ss.l',
-      ignore: 'pid,hostname',
-      singleLine: false,
-    }
-  } : undefined,
-  // Base fields for all logs
-  base: {
-    env: env.NODE_ENV,
-  },
-  // Timestamp format
-  timestamp: () => `,"time":"${new Date().toISOString()}"`,
+function getLogger(): pino.Logger {
+  if (!_logger) {
+    _logger = pino({
+      level: env.LOG_LEVEL,
+      // Pretty-print in development
+      transport: env.NODE_ENV === 'development' ? {
+        target: 'pino-pretty',
+        options: {
+          colorize: true,
+          translateTime: 'HH:MM:ss.l',
+          ignore: 'pid,hostname',
+          singleLine: false,
+        }
+      } : undefined,
+      // Base fields for all logs
+      base: {
+        env: env.NODE_ENV,
+      },
+      // Timestamp format
+      timestamp: () => `,"time":"${new Date().toISOString()}"`,
+    })
+  }
+  return _logger
+}
+
+/**
+ * Logger proxy for lazy initialization
+ * Prevents crashes during module load if env is invalid
+ */
+export const logger = new Proxy({} as pino.Logger, {
+  get(_target, prop) {
+    const log = getLogger()
+    return log[prop as keyof pino.Logger]
+  }
 })
 
 /**
