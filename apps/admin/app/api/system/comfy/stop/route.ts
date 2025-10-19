@@ -3,32 +3,60 @@
  * POST /api/system/comfy/stop
  */
 
-import { spawn } from 'child_process'
 import { logger } from '@/lib/logger'
+import { runServiceCommand, waitForServiceStop } from '@/lib/service-control'
 
 export const runtime = 'nodejs'
 export const revalidate = 0
 
+const SERVICE_NAME = 'OrchestratorComfyUI'
+
 export async function POST() {
   try {
-    const result = await runCommand('sc', ['stop', 'OrchestratorComfyUI'])
+    logger.info({ message: 'ComfyUI service stop requested' })
     
-    if (result.includes('STOP_PENDING') || result.includes('STOPPED')) {
-      return Response.json({
-        success: true,
-        message: 'ComfyUI служба остановлена',
-        output: result,
+    const result = await runServiceCommand('stop', SERVICE_NAME)
+    
+    if (!result.success) {
+      logger.error({
+        message: 'ComfyUI service stop failed',
+        output: result.output,
+        error: result.error
       })
+      return Response.json(
+        {
+          success: false,
+          message: 'Не удалось остановить службу',
+          status: result.status,
+          error: result.error
+        },
+        { status: 500 }
+      )
     }
     
-    return Response.json(
-      {
-        success: false,
-        message: 'Не удалось остановить ComfyUI службу',
-        output: result,
-      },
-      { status: 500 }
-    )
+    // Ожидание остановки (до 15 секунд)
+    logger.info({ message: 'Waiting for service to stop...' })
+    const stopped = await waitForServiceStop(SERVICE_NAME, 15000, 500)
+    
+    if (!stopped) {
+      logger.warn({ message: 'Service stop timeout' })
+      return Response.json(
+        {
+          success: false,
+          message: 'Служба не остановилась за 15 секунд',
+          status: 'timeout'
+        },
+        { status: 500 }
+      )
+    }
+    
+    logger.info({ message: 'ComfyUI service stopped successfully' })
+    return Response.json({
+      success: true,
+      message: 'ComfyUI служба остановлена',
+      status: 'stopped'
+    })
+    
   } catch (error: any) {
     logger.error({
       message: 'ComfyUI stop error',
@@ -40,34 +68,4 @@ export async function POST() {
       { status: 500 }
     )
   }
-}
-
-function runCommand(command: string, args: string[]): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const proc = spawn(command, args, {
-      shell: true,
-      windowsHide: true,
-    });
-
-    let stdout = '';
-    let stderr = '';
-
-    proc.stdout.on('data', (data) => {
-      stdout += data.toString();
-    });
-
-    proc.stderr.on('data', (data) => {
-      stderr += data.toString();
-    });
-
-    proc.on('close', (code) => {
-      if (code === 0 || stdout.includes('STOP_PENDING') || stdout.includes('STOPPED')) {
-        resolve(stdout + stderr);
-      } else {
-        reject(new Error(`Команда завершилась с кодом ${code}: ${stderr || stdout}`));
-      }
-    });
-
-    proc.on('error', reject);
-  });
 }
