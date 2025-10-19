@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "predev": "node scripts/check-port.js",
+    "dev": "cross-env NODE_OPTIONS=\"--trace-uncaught --unhandled-rejections=strict\" next dev",
     "build": "next build",
-    "start": "next start",
+    "prestart": "node scripts/check-port.js",
+    "start": "cross-env NODE_OPTIONS=\"--trace-uncaught --unhandled-rejections=strict\" next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -39,6 +41,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
+    "cross-env": "^10.1.0",
     "eslint": "^8",
     "eslint-config-next": "15.0.3",
     "postcss": "^8",
