@@ -8,12 +8,11 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Zap, Loader2, CheckCircle2, XCircle } from 'lucide-react'
-import { useToast } from '@/components/ui/use-toast'
+import { toast } from 'sonner'
 
 export function IgniteButton() {
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
-  const { toast } = useToast()
 
   async function handleIgnite() {
     setLoading(true)
@@ -28,26 +27,21 @@ export function IgniteButton() {
 
       if (data.success) {
         setSuccess(true)
-        toast({
-          title: '✅ Система запущена',
+        toast.success('✅ Система запущена', {
           description: 'ComfyUI, Panel и Worker успешно стартовали',
         })
 
         // Убираем галочку через 5 секунд
         setTimeout(() => setSuccess(false), 5000)
       } else {
-        toast({
-          title: '⚠️ Запуск завершён с ошибками',
+        toast.error('⚠️ Запуск завершён с ошибками', {
           description: data.message || 'Проверьте статус служб',
-          variant: 'destructive',
         })
       }
     } catch (error: any) {
       console.error('[IGNITE] Error:', error)
-      toast({
-        title: '❌ Ошибка запуска',
+      toast.error('❌ Ошибка запуска', {
         description: error.message || 'Не удалось запустить систему',
-        variant: 'destructive',
       })
     } finally {
       setLoading(false)

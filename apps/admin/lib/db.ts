@@ -18,12 +18,10 @@ import { existsSync, mkdirSync, readFileSync } from 'fs'
  * Use explicit env variable or paths.json for deterministic paths.
  */
 function resolveDataDir(): string {
-  // Import env validation (trigger validation at module load)
-  const { env } = require('./env')
-
   // 1. Env variable (highest priority)
-  if (env.DATA_DIR) {
-    return env.DATA_DIR
+  const dataDir = process.env.DATA_DIR
+  if (dataDir) {
+    return dataDir
   }
 
   // 2. paths.json (project-level config)
@@ -40,28 +38,22 @@ function resolveDataDir(): string {
       }
     }
   } catch (err) {
-    console.warn('[DB] Failed to read paths.json:', err)
+    if (typeof window === 'undefined') {
+      console.warn('[DB] Failed to read paths.json:', err)
+    }
   }
 
   // 3. Fallback: relative to process.cwd()
   // WARNING: This may break if running from different directories!
-  console.warn('[DB] DATA_DIR not configured, using fallback: process.cwd() + ../../data')
+  if (typeof window === 'undefined') {
+    console.warn('[DB] DATA_DIR not configured, using fallback: process.cwd() + ../../data')
+  }
   return join(process.cwd(), '../../data')
 }
 
-const DATA_DIR = resolveDataDir()
-const DB_PATH = join(DATA_DIR, 'orchestrator.db')
-
-console.log('[DB] Using DATA_DIR:', DATA_DIR)
-console.log('[DB] Database path:', DB_PATH)
-
-// Создаём data/ если не существует
-if (!existsSync(DATA_DIR)) {
-  mkdirSync(DATA_DIR, { recursive: true })
-  console.log('[DB] Created DATA_DIR:', DATA_DIR)
-}
-
-// Singleton instance
+// Lazy evaluation: resolve paths only when getDb() is called
+let DATA_DIR: string | null = null
+let DB_PATH: string | null = null
 let dbInstance: Database.Database | null = null
 
 /**
@@ -69,7 +61,18 @@ let dbInstance: Database.Database | null = null
  */
 export function getDb(): Database.Database {
   if (!dbInstance) {
-    dbInstance = new Database(DB_PATH)
+    // Lazy init: resolve paths only on first call
+    if (!DATA_DIR) {
+      DATA_DIR = resolveDataDir()
+      DB_PATH = join(DATA_DIR, 'orchestrator.db')
+      
+      // Create data dir if needed
+      if (!existsSync(DATA_DIR)) {
+        mkdirSync(DATA_DIR, { recursive: true })
+      }
+    }
+    
+    dbInstance = new Database(DB_PATH!)
     dbInstance.pragma('journal_mode = WAL') // Write-Ahead Logging для производительности
     initTables(dbInstance)
   }
@@ -128,7 +131,7 @@ function initTables(db: Database.Database) {
     CREATE INDEX IF NOT EXISTS idx_attachments_messageId ON attachments(messageId);
   `)
 
-  console.log('[DB] Таблицы инициализированы:', DB_PATH)
+  // Tables initialized (logged in getDb on first call)
 }
 
 /**

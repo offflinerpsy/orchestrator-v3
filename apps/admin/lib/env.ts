@@ -63,9 +63,4 @@ function parseEnv() {
  */
 export const env = parseEnv()
 
-console.log('[ENV] ✅ Environment variables validated')
-console.log('[ENV] NODE_ENV:', env.NODE_ENV)
-console.log('[ENV] COMFY_URL:', env.COMFY_URL)
-console.log('[ENV] DATA_DIR:', env.DATA_DIR || '(using paths.json fallback)')
-console.log('[ENV] LOG_LEVEL:', env.LOG_LEVEL)
-console.log('[ENV] BFL_API_KEY:', env.BFL_API_KEY ? '***' + env.BFL_API_KEY.slice(-4) : '(not set)')
+// Environment validated (logs removed to prevent Next.js module eval issues)

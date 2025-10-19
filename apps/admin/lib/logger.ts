@@ -48,18 +48,5 @@ export const logger = pino({
  * logger.fatal() - fatal errors (app crash)
  */
 
-// Log startup
-if (env.NODE_ENV === 'development') {
-  logger.info({
-    message: 'Logger initialized',
-    level: env.LOG_LEVEL,
-    format: 'pretty',
-  })
-} else {
-  logger.info({
-    message: 'Logger initialized',
-    level: env.LOG_LEVEL,
-    format: 'json',
-  })
-}
+// Startup log removed (causes Next.js module eval crash)
 

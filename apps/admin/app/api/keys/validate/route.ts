@@ -25,12 +25,13 @@ export async function GET() {
     results.flux.error = 'BFL_API_KEY not found in environment'
   } else {
     try {
-      // Dry-run validation: check if key format is valid (starts with "bfl_")
+      // Dry-run validation: check if key is present and has valid length
+      // BFL API keys can be UUID format or "bfl_" prefixed
       // We don't make actual API call to avoid charges
-      if (fluxKey.startsWith('bfl_')) {
+      if (fluxKey.length >= 32) {
         results.flux.valid = true
       } else {
-        results.flux.error = 'Invalid key format (should start with "bfl_")'
+        results.flux.error = 'Invalid key format (too short)'
       }
     } catch (error: any) {
       results.flux.error = error.message
