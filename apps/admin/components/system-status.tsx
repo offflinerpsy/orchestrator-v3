@@ -16,7 +16,7 @@ import {
 } from 'lucide-react'
 
 interface SystemStatusData {
-  overall: 'healthy' | 'degraded' | 'error'
+  status: 'healthy' | 'degraded' | 'unhealthy' | 'error'
   timestamp: string
   services: {
     comfy: {
@@ -27,14 +27,26 @@ interface SystemStatusData {
       models: number
     }
   }
+  system?: {
+    diskF?: {
+      free: string
+      total: string
+      freeBytes: number
+    }
+    memory?: {
+      used: string
+      total: string
+      usedPercent: number
+    }
+  }
   environment: {
     allowGeneration: boolean
     fluxKeyConfigured: boolean
     v0KeyConfigured: boolean
     nodeEnv: string
-    logLevel: string
+    logLevel?: string
   }
-  endpoints: {
+  endpoints?: {
     comfyUrl: string
     dataDir: string
   }
@@ -49,7 +61,7 @@ export function SystemStatus() {
     setLoading(true)
     setError(null)
     try {
-      const response = await fetch('/api/status', { cache: 'no-store' })
+      const response = await fetch('/api/health', { cache: 'no-store' })
       if (!response.ok) throw new Error('Failed to fetch status')
       const data = await response.json()
       setStatus(data)
@@ -102,18 +114,18 @@ export function SystemStatus() {
   if (!status) return null
 
   const overallIcon =
-    status.overall === 'healthy' ? (
+    status.status === 'healthy' ? (
       <CheckCircle className="h-6 w-6 text-green-500" />
-    ) : status.overall === 'degraded' ? (
+    ) : status.status === 'degraded' ? (
       <AlertCircle className="h-6 w-6 text-yellow-500" />
     ) : (
       <XCircle className="h-6 w-6 text-red-500" />
     )
 
   const overallColor =
-    status.overall === 'healthy'
+    status.status === 'healthy'
       ? 'text-green-500'
-      : status.overall === 'degraded'
+      : status.status === 'degraded'
       ? 'text-yellow-500'
       : 'text-red-500'
 
@@ -127,7 +139,7 @@ export function SystemStatus() {
               {overallIcon}
               <div>
                 <CardTitle className={overallColor}>
-                  System {status.overall.charAt(0).toUpperCase() + status.overall.slice(1)}
+                  System {status.status.charAt(0).toUpperCase() + status.status.slice(1)}
                 </CardTitle>
                 <CardDescription>
                   Last check: {new Date(status.timestamp).toLocaleTimeString()}
@@ -263,6 +275,35 @@ export function SystemStatus() {
         </Card>
       </div>
 
+      {/* System Resources */}
+      {status.system && (
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-base">System Resources</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-2 gap-4 text-sm">
+              {status.system.diskF && (
+                <div>
+                  <span className="text-muted-foreground block mb-1">Disk F: Free:</span>
+                  <span className="font-mono text-xs">
+                    {status.system.diskF.free} / {status.system.diskF.total}
+                  </span>
+                </div>
+              )}
+              {status.system.memory && (
+                <div>
+                  <span className="text-muted-foreground block mb-1">Memory Used:</span>
+                  <span className="font-mono text-xs">
+                    {status.system.memory.used} / {status.system.memory.total} ({status.system.memory.usedPercent}%)
+                  </span>
+                </div>
+              )}
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
       {/* Environment Details */}
       <Card>
         <CardHeader>
@@ -274,18 +315,24 @@ export function SystemStatus() {
               <span className="text-muted-foreground block mb-1">Node Env:</span>
               <span className="font-mono text-xs">{status.environment.nodeEnv}</span>
             </div>
-            <div>
-              <span className="text-muted-foreground block mb-1">Log Level:</span>
-              <span className="font-mono text-xs">{status.environment.logLevel}</span>
-            </div>
-            <div>
-              <span className="text-muted-foreground block mb-1">ComfyUI URL:</span>
-              <span className="font-mono text-xs">{status.endpoints.comfyUrl}</span>
-            </div>
-            <div>
-              <span className="text-muted-foreground block mb-1">Data Dir:</span>
-              <span className="font-mono text-xs truncate">{status.endpoints.dataDir}</span>
-            </div>
+            {status.environment.logLevel && (
+              <div>
+                <span className="text-muted-foreground block mb-1">Log Level:</span>
+                <span className="font-mono text-xs">{status.environment.logLevel}</span>
+              </div>
+            )}
+            {status.endpoints && (
+              <>
+                <div>
+                  <span className="text-muted-foreground block mb-1">ComfyUI URL:</span>
+                  <span className="font-mono text-xs">{status.endpoints.comfyUrl}</span>
+                </div>
+                <div>
+                  <span className="text-muted-foreground block mb-1">Data Dir:</span>
+                  <span className="font-mono text-xs truncate">{status.endpoints.dataDir}</span>
+                </div>
+              </>
+            )}
           </div>
         </CardContent>
       </Card>

@@ -1,6 +1,8 @@
 /**
- * System Status Endpoint
- * Aggregated health check for all services
+ * System Status Endpoint (DEPRECATED)
+ * 
+ * @deprecated Use /api/health instead. This endpoint is kept for backward compatibility.
+ * Will be removed in v2.0.
  */
 
 import { logger } from '@/lib/logger'
@@ -11,6 +13,7 @@ export const runtime = 'nodejs'
 export const revalidate = 0
 
 export async function GET() {
+  logger.warn('[DEPRECATED] /api/status called. Use /api/health instead.');
   try {
     // Check ComfyUI service
     const comfyServiceResult = await runServiceCommand('query', 'OrchestratorComfyUI', 5000)
