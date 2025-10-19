@@ -35,6 +35,9 @@ const envSchema = z.object({
 
   // Node environment (auto-detected, don't override)
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
+
+  // Allow real API generation (FLUX, ComfyUI) — по умолчанию false для безопасности
+  ALLOW_GENERATION: z.enum(['true', 'false']).default('false'),
 })
 
 /**
