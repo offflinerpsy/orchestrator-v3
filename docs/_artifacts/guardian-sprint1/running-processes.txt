@@ -1,0 +1,11 @@
+=== NODE.JS PROCESSES ===
+
+
+=== LISTENING PORTS (3000, 3001, 8188) ===
+
+LocalPort  State OwningProces
+                            s
+---------  ----- ------------
+     8188 Listen         8812
+
+

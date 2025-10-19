@@ -1,0 +1,5 @@
+=== SOFTWARE VERSIONS ===
+Node.js: v22.20.0
+pnpm: 10.18.3
+Git: git version 2.51.0.windows.2
+PowerShell: 7.5.3

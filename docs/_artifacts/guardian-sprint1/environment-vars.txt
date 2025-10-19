@@ -1,0 +1,2 @@
+=== ENVIRONMENT VARIABLES (AdminPanel .env.local) ===
+HF_TOKEN=***REDACTED*** BFL_API_KEY=***REDACTED*** COMFYUI_URL=http://127.0.0.1:8188 V0_API_KEY=***REDACTED*** DATA_DIR=C:\Work\Orchestrator\data COMFY_URL=http://127.0.0.1:8188

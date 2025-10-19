@@ -1,0 +1,12 @@
+=== GUARDIAN DEPENDENCIES ===
+{
+  "pino": "^9.5.0",
+  "pino-pretty": "^11.3.0"
+}
+
+=== GUARDIAN DEV DEPENDENCIES ===
+{
+  "@types/node": "^22.10.2",
+  "tsx": "^4.19.2",
+  "typescript": "^5.7.2"
+}

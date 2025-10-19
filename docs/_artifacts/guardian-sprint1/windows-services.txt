@@ -1,0 +1,5 @@
+=== WINDOWS SERVICES STATUS ===
+
+
+=== NSSM INSTALLED ===
+NSSM Path: ИНФОРМАЦИЯ: не удается найти файлы по заданным шаблонам.

@@ -1,0 +1,12 @@
+=== PROJECT STRUCTURE ===
+Root: C:\Work\Orchestrator
+Monorepo: pnpm workspace
+
+Apps:
+  - admin   - site
+
+Services:
+  - guardian
+
+Packages:
+  - connectors

@@ -1,0 +1,11 @@
+=== GIT REPOSITORY STATUS ===
+Branch: feat/tilda-import
+Remote: https://github.com/offflinerpsy/orchestrator-v3.git
+Commit: 941cf17f87ccb340062c2c48db3bd594aeba484e
+Commit (short): 941cf17
+
+=== LAST 10 COMMITS ===
+941cf17 feat(guardian): implement V1 Guardian Sprint 1 - autonomous monitoring service e89caf1 docs: add V1 Guardian master plan and action plan 9b2f1c8 fix(runtime): prevent Next.js crash on startup 8a2fb2b docs: add Sprint 1 final report b5efb23 refactor(ignite): use service-control utilities 7669e5a feat(diagnostics): enhance diagnostics page with system status 0d62dbc feat(proxy): add ComfyUI catch-all proxy e2942fb refactor(comfyui): remove direct spawn endpoint 575abdd feat(flux): add dry-run mode with ALLOW_GENERATION flag 58ca305 feat(error-handling): add error boundaries
+
+=== CURRENT GIT STATUS ===
+ D apps/admin/app/api/health/route.ts  M apps/admin/next.config.js ?? docs/_artifacts/guardian-sprint1/ADMINPANEL-CRASH-AUDIT.md ?? docs/_artifacts/guardian-sprint1/adminpanel-deps.txt ?? docs/_artifacts/guardian-sprint1/guardian-deps.txt ?? docs/_artifacts/guardian-sprint1/software-versions.txt ?? docs/_artifacts/guardian-sprint1/system-info.txt

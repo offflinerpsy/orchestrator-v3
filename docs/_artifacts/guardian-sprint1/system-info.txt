@@ -1,0 +1,10 @@
+=== SYSTEM INFORMATION ===
+OS: Майкрософт Windows 11 Pro
+Version: 10.0.26200
+Build: 26200
+Architecture: 64-разрядная
+CPU: Intel(R) Core(TM) i7-10700K CPU @ 3.80GHz
+Cores: 8 cores, 16 threads
+RAM: 64 GB
+Computer: DESKTOP-P0V2V04
+User: Alex
