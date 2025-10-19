@@ -151,12 +151,9 @@ async function executeJob(job: Job) {
  * @see https://docs.bfl.ai/api-reference/tasks/generate-an-image-with-flux-11-%5Bpro%5D-with-ultra-mode-and-optional-raw-mode
  */
 async function executeFlux(job: Job) {
-  const BFL_API_KEY = process.env.BFL_API_KEY
-  if (!BFL_API_KEY) {
-    throw new Error('BFL_API_KEY not configured')
-  }
+  job.logs.push('Calling FLUX 1.1 Pro Ultra API (через прокси)...')
 
-  job.logs.push('Calling FLUX 1.1 Pro Ultra API...')
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
 
   const requestBody: any = {
     prompt: job.prompt,
@@ -171,12 +168,11 @@ async function executeFlux(job: Job) {
     requestBody.image_prompt_strength = job.params.imagePromptStrength || 0.5
   }
 
-  // POST to FLUX API
-  const response = await fetch('https://api.bfl.ai/v1/flux-pro-1.1-ultra', {
+  // POST to /api/flux/generate (прокси)
+  const response = await fetch(`${baseUrl}/api/flux/generate`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'X-Key': BFL_API_KEY
     },
     body: JSON.stringify(requestBody)
   })
@@ -187,12 +183,11 @@ async function executeFlux(job: Job) {
   }
 
   const data = await response.json()
-  const { id: taskId, polling_url } = data
+  const { id: taskId } = data
 
   job.logs.push(`FLUX task created: ${taskId}`)
-  job.logs.push(`Polling URL: ${polling_url}`)
 
-  // Poll for result
+  // Poll for result (через /api/flux/poll)
   let attempts = 0
   const maxAttempts = 60 // 5 minutes (5s interval)
   
@@ -200,9 +195,7 @@ async function executeFlux(job: Job) {
     await new Promise(resolve => setTimeout(resolve, 5000)) // Wait 5s
     attempts++
 
-    const pollResponse = await fetch(polling_url, {
-      headers: { 'X-Key': BFL_API_KEY }
-    })
+    const pollResponse = await fetch(`${baseUrl}/api/flux/poll/${taskId}`)
 
     if (!pollResponse.ok) {
       throw new Error(`Polling failed: ${pollResponse.status}`)
@@ -292,8 +285,9 @@ async function executeComfyUI(job: Job) {
 
   job.logs.push(`Workflow loaded: ${Object.keys(workflow).length} nodes`)
 
-  // POST /prompt
-  const response = await fetch(`${COMFYUI_URL}/prompt`, {
+  // POST /api/comfy/prompt (через прокси)
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
+  const response = await fetch(`${baseUrl}/api/comfy/prompt`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ prompt: workflow })
@@ -309,7 +303,7 @@ async function executeComfyUI(job: Job) {
 
   job.logs.push(`ComfyUI prompt ID: ${prompt_id}`)
 
-  // Poll /history for result
+  // Poll /api/comfy/history for result (через прокси)
   let attempts = 0
   const maxAttempts = 120 // 10 minutes
 
@@ -317,7 +311,7 @@ async function executeComfyUI(job: Job) {
     await new Promise(resolve => setTimeout(resolve, 5000))
     attempts++
 
-    const historyResponse = await fetch(`${COMFYUI_URL}/history/${prompt_id}`)
+    const historyResponse = await fetch(`${baseUrl}/api/comfy/history/${prompt_id}`)
     const historyData = await historyResponse.json()
 
     if (historyData[prompt_id]?.status?.completed) {

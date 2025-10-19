@@ -28,9 +28,10 @@ export async function GET() {
     out.modelsRoot = paths.modelsRoot || paths.models?.root || null;
   } catch {}
 
-  // 2) Try to query ComfyUI for object_info → checkpoint options
+  // 2) Try to query ComfyUI for object_info → checkpoint options (через прокси)
   const base = out.comfyui.url;
   try {
+    // Можно использовать прямой вызов или через /api/comfy/models (если создадим отдельный эндпоинт)
     const res = await fetch(`${base}/object_info`, { signal: AbortSignal.timeout(2000) });
     if (res.ok) {
       const data = await res.json();
