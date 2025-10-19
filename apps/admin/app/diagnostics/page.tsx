@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PathValidator } from "@/components/path-validator";
 import { ComfyUIMonitor } from "@/components/comfyui-monitor";
+import { SystemStatus } from "@/components/system-status";
 
 export default function DiagnosticsPage() {
 	return (
@@ -8,13 +9,15 @@ export default function DiagnosticsPage() {
 			<div className="container mx-auto px-4 py-8">
 				<div className="mb-6">
 					<h1 className="text-2xl font-semibold">Diagnostics</h1>
-					<p className="text-sm text-muted-foreground">Быстрая проверка окружения: пути и статус ComfyUI</p>
+					<p className="text-sm text-muted-foreground">System health checks and service status</p>
 				</div>
 
-								<div className="grid gap-4 md:grid-cols-2">
-									<PathValidator />
-									<ComfyUIMonitor />
-								</div>
+				<SystemStatus />
+
+				<div className="grid gap-4 md:grid-cols-2 mt-6">
+					<PathValidator />
+					<ComfyUIMonitor />
+				</div>
 
 				<div className="mt-6">
 					<Card>
