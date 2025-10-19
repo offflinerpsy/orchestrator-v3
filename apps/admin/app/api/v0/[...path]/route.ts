@@ -15,30 +15,34 @@ const V0_API_BASE = 'https://api.v0.dev'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { path: string[] } }
+  { params }: { params: Promise<{ path: string[] }> }
 ) {
-  return proxyToV0(request, params.path, 'GET')
+  const { path } = await params
+  return proxyToV0(request, path, 'GET')
 }
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { path: string[] } }
+  { params }: { params: Promise<{ path: string[] }> }
 ) {
-  return proxyToV0(request, params.path, 'POST')
+  const { path } = await params
+  return proxyToV0(request, path, 'POST')
 }
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { path: string[] } }
+  { params }: { params: Promise<{ path: string[] }> }
 ) {
-  return proxyToV0(request, params.path, 'PUT')
+  const { path } = await params
+  return proxyToV0(request, path, 'PUT')
 }
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { path: string[] } }
+  { params }: { params: Promise<{ path: string[] }> }
 ) {
-  return proxyToV0(request, params.path, 'DELETE')
+  const { path } = await params
+  return proxyToV0(request, path, 'DELETE')
 }
 
 async function proxyToV0(
