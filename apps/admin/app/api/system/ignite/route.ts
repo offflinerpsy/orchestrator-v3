@@ -8,8 +8,9 @@
  * 3. OrchestratorWorker (если установлен)
  */
 
-import { spawn } from 'child_process'
 import { logger } from '@/lib/logger'
+import { runServiceCommand, waitForServiceStart } from '@/lib/service-control'
+import { env } from '@/lib/env'
 
 export const runtime = 'nodejs'
 export const revalidate = 0
@@ -21,47 +22,93 @@ export async function POST() {
     // 1. ComfyUI
     logger.info({ message: 'IGNITE: Starting ComfyUI' })
     try {
-      const comfyResult = await startService('OrchestratorComfyUI')
-      results.push({ service: 'ComfyUI', success: true, output: comfyResult })
+      const startResult = await runServiceCommand('start', 'OrchestratorComfyUI')
+      
+      if (startResult.success) {
+        // Ждём фактического запуска (до 30 секунд)
+        const started = await waitForServiceStart('OrchestratorComfyUI', 30000, 1000)
+        
+        if (started) {
+          // Проверяем API доступность
+          await new Promise(resolve => setTimeout(resolve, 3000))
+          try {
+            const apiCheck = await fetch(`${env.COMFY_URL}/system_stats`, {
+              signal: AbortSignal.timeout(5000)
+            })
+            results.push({
+              service: 'ComfyUI',
+              success: true,
+              status: 'running',
+              apiOnline: apiCheck.ok
+            })
+          } catch {
+            results.push({
+              service: 'ComfyUI',
+              success: true,
+              status: 'running',
+              apiOnline: false,
+              note: 'Service started but API not responding yet'
+            })
+          }
+        } else {
+          results.push({
+            service: 'ComfyUI',
+            success: false,
+            error: 'Service start timeout (30s)'
+          })
+        }
+      } else {
+        results.push({
+          service: 'ComfyUI',
+          success: false,
+          error: startResult.error || 'Failed to start'
+        })
+      }
     } catch (error: any) {
       results.push({ service: 'ComfyUI', success: false, error: error.message })
     }
     
-    // Ждём 3 секунды, чтобы ComfyUI успел инициализироваться
-    await new Promise(resolve => setTimeout(resolve, 3000))
-    
     // 2. Panel (только если в production режиме)
-    if (process.env.NODE_ENV === 'production') {
+    if (env.NODE_ENV === 'production') {
       logger.info({ message: 'IGNITE: Starting Panel' })
       try {
-        const panelResult = await startService('OrchestratorPanel')
-        results.push({ service: 'Panel', success: true, output: panelResult })
+        const panelResult = await runServiceCommand('start', 'OrchestratorPanel')
+        results.push({
+          service: 'Panel',
+          success: panelResult.success,
+          status: panelResult.status
+        })
       } catch (error: any) {
         results.push({ service: 'Panel', success: false, error: error.message })
       }
     } else {
-      results.push({ service: 'Panel', success: true, note: 'Пропущено (dev режим)' })
+      results.push({ service: 'Panel', success: true, status: 'dev-mode', note: 'Skipped (dev mode)' })
     }
     
     // 3. Worker (опционально)
-    logger.info({ message: 'IGNITE: Starting Worker' })
+    logger.info({ message: 'IGNITE: Checking Worker' })
     try {
-      const workerResult = await startService('OrchestratorWorker')
-      results.push({ service: 'Worker', success: true, output: workerResult })
+      const workerResult = await runServiceCommand('start', 'OrchestratorWorker', 5000)
+      results.push({
+        service: 'Worker',
+        success: workerResult.success,
+        status: workerResult.status
+      })
     } catch (error: any) {
       results.push({
         service: 'Worker',
         success: false,
-        error: error.message,
-        note: 'Не критично, если worker не установлен',
+        status: 'not-installed',
+        note: 'Optional service'
       })
     }
     
-    const allSuccess = results.filter(r => r.service !== 'Worker').every(r => r.success)
+    const criticalServices = results.filter(r => r.service === 'ComfyUI' || r.service === 'Panel')
+    const allSuccess = criticalServices.every(r => r.success)
     
     return Response.json({
       success: allSuccess,
-      message: allSuccess ? 'Система запущена' : 'Запуск завершён с ошибками',
+      message: allSuccess ? 'System started successfully' : 'Some services failed to start',
       services: results,
     })
   } catch (error: any) {
@@ -80,42 +127,4 @@ export async function POST() {
       { status: 500 }
     )
   }
-}
-
-async function startService(serviceName: string): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const proc = spawn('sc', ['start', serviceName], {
-      shell: true,
-      windowsHide: true,
-    });
-
-    let stdout = '';
-    let stderr = '';
-
-    proc.stdout.on('data', (data) => {
-      stdout += data.toString();
-    });
-
-    proc.stderr.on('data', (data) => {
-      stderr += data.toString();
-    });
-
-    proc.on('close', (code) => {
-      const output = stdout + stderr;
-      
-      // Служба уже запущена или успешно стартует
-      if (
-        code === 0 ||
-        output.includes('START_PENDING') ||
-        output.includes('RUNNING') ||
-        output.includes('already running')
-      ) {
-        resolve(output);
-      } else {
-        reject(new Error(`Код ${code}: ${output}`));
-      }
-    });
-
-    proc.on('error', reject);
-  });
 }
