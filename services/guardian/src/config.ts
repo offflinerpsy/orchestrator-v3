@@ -7,8 +7,8 @@
 export const config = {
   /** Monitoring intervals (milliseconds) */
   intervals: {
-    healthCheck: 30_000,      // 30 seconds - check /api/health
-    serviceWatch: 60_000,     // 60 seconds - check Windows services
+    healthCheck: 15_000,      // 15 seconds - check /api/health
+    serviceWatch: 30_000,     // 30 seconds - check Windows services
     diskCheck: 300_000,       // 5 minutes - check disk space
   },
 
