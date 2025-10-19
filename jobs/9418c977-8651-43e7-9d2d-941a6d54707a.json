@@ -1,0 +1,25 @@
+{
+  "id": "9418c977-8651-43e7-9d2d-941a6d54707a",
+  "backend": "sd35",
+  "status": "failed",
+  "input": {
+    "backend": "sd35",
+    "prompt": "красивая бутылка водки \"столичная\", в стиле СССР, на фоне футуристического города. Бутылка должна выглядеть гипер реалистичной.",
+    "params": {},
+    "runNow": true
+  },
+  "prompt": "красивая бутылка водки \"столичная\", в стиле СССР, на фоне футуристического города. Бутылка должна выглядеть гипер реалистичной.",
+  "params": {},
+  "createdAt": "2025-10-19T16:31:31.439Z",
+  "logs": [
+    "Job created with backend: sd35",
+    "Job execution started",
+    "Calling ComfyUI API (sd35)...",
+    "Error: Cannot find module 'F:\\Workflows\\sd35-i2i.json'"
+  ],
+  "startedAt": "2025-10-19T16:31:31.440Z",
+  "finishedAt": "2025-10-19T16:31:31.450Z",
+  "result": {
+    "error": "Cannot find module 'F:\\Workflows\\sd35-i2i.json'"
+  }
+}

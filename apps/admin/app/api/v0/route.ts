@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
 import { createClient, type ChatDetail } from 'v0-sdk';
 
+export const runtime = 'nodejs';
+export const revalidate = 0;
+
 type V0File = { path?: string; name?: string; content: string };
 type ReqBody = { prompt?: string; refs?: string[]; slug?: string };
 

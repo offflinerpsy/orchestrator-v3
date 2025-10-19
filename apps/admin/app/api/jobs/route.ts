@@ -9,6 +9,9 @@ import { readdir, readFile } from 'fs/promises'
 import { existsSync } from 'fs'
 import { join } from 'path'
 
+export const runtime = 'nodejs'
+export const revalidate = 0
+
 const JOBS_DIR = 'C:\\Work\\Orchestrator\\jobs'
 
 /**

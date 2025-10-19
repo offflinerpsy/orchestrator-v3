@@ -3,6 +3,9 @@ import fs from 'fs/promises';
 import path from 'path';
 import { parse } from 'node-html-parser';
 
+export const runtime = 'nodejs';
+export const revalidate = 0;
+
 type TildaBlock = {
   id: string;
   type: string;

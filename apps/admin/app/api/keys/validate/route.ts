@@ -7,6 +7,9 @@
 
 import { NextResponse } from 'next/server'
 
+export const runtime = 'nodejs'
+export const revalidate = 0
+
 /**
  * GET /api/keys/validate - Validate API keys
  */

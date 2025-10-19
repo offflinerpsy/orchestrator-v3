@@ -1,1 +1,6 @@
-import { NextResponse } from 'next/server'; export async function POST(req: Request) { const body = await req.json(); const errors: string[] = []; if (!body.prompt) errors.push('prompt required'); return NextResponse.json({ valid: errors.length === 0, errors, payload: body, note: 'DRY RUN' }); }
+import { NextResponse } from 'next/server';
+
+export const runtime = 'nodejs';
+export const revalidate = 0;
+
+export async function POST(req: Request) { const body = await req.json(); const errors: string[] = []; if (!body.prompt) errors.push('prompt required'); return NextResponse.json({ valid: errors.length === 0, errors, payload: body, note: 'DRY RUN' }); }

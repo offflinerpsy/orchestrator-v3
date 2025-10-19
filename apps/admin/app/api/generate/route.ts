@@ -7,13 +7,16 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server'
-import { writeFile, mkdir } from 'fs/promises'
+import { writeFile, mkdir, readFile } from 'fs/promises'
 import { existsSync } from 'fs'
 import { join } from 'path'
 import { randomUUID } from 'crypto'
 
 const JOBS_DIR = 'C:\\Work\\Orchestrator\\jobs'
 const OUT_DIR = 'F:\\Drop\\out'
+
+export const runtime = 'nodejs'
+export const revalidate = 0
 
 type JobStatus = 'created' | 'queued' | 'running' | 'done' | 'failed'
 
@@ -248,11 +251,46 @@ async function executeComfyUI(job: Job) {
 
   // Load workflow JSON based on backend
   const workflowPath = `F:\\Workflows\\${job.backend}-i2i.json`
-  const workflow = require(workflowPath)
+  
+  if (!existsSync(workflowPath)) {
+    throw new Error(`Workflow not found: ${workflowPath}`)
+  }
 
-  // Inject prompt and params into workflow
-  // (This is simplified — actual implementation would need to parse workflow nodes)
-  // TODO: Implement proper workflow node injection
+  const workflowText = await readFile(workflowPath, 'utf-8')
+  const workflow = JSON.parse(workflowText)
+
+  // Inject prompt into workflow (replace PLACEHOLDER_POSITIVE)
+  if (workflow['75']?.inputs?.text === 'PLACEHOLDER_POSITIVE') {
+    workflow['75'].inputs.text = job.prompt
+  }
+
+  // Inject parameters into workflow
+  if (workflow['3']?.inputs) {
+    // Seed
+    if (job.params.seed !== undefined) {
+      workflow['3'].inputs.seed = Number(job.params.seed)
+    }
+    // Steps
+    if (job.params.steps !== undefined) {
+      workflow['3'].inputs.steps = Math.min(150, Math.max(1, Number(job.params.steps)))
+    }
+    // CFG
+    if (job.params.cfg !== undefined) {
+      workflow['3'].inputs.cfg = Math.min(30, Math.max(0, Number(job.params.cfg)))
+    }
+  }
+
+  // Inject size into EmptyLatentImage node
+  if (workflow['68']?.inputs) {
+    if (job.params.width !== undefined) {
+      workflow['68'].inputs.width = Math.min(2048, Math.max(256, Number(job.params.width)))
+    }
+    if (job.params.height !== undefined) {
+      workflow['68'].inputs.height = Math.min(2048, Math.max(256, Number(job.params.height)))
+    }
+  }
+
+  job.logs.push(`Workflow loaded: ${Object.keys(workflow).length} nodes`)
 
   // POST /prompt
   const response = await fetch(`${COMFYUI_URL}/prompt`, {
@@ -262,7 +300,8 @@ async function executeComfyUI(job: Job) {
   })
 
   if (!response.ok) {
-    throw new Error(`ComfyUI API error: ${response.status}`)
+    const errorText = await response.text()
+    throw new Error(`ComfyUI API error (${response.status}): ${errorText}`)
   }
 
   const data = await response.json()
