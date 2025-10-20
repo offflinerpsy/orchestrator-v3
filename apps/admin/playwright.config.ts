@@ -18,7 +18,7 @@ export default defineConfig({
   // Shared settings
   use: {
     // Base URL for navigation
-    baseURL: 'http://localhost:3000',
+    baseURL: 'http://localhost:3001',
     
     // Screenshot on failure
     screenshot: 'only-on-failure',
@@ -39,10 +39,10 @@ export default defineConfig({
   ],
 
   // Run local dev server before tests (optional)
-  // webServer: {
-  //   command: 'pnpm dev',
-  //   url: 'http://localhost:3000',
-  //   reuseExistingServer: !process.env.CI,
-  //   timeout: 120 * 1000,
-  // },
+  webServer: {
+    command: 'pnpm dev',
+    url: 'http://localhost:3001',
+    reuseExistingServer: !process.env.CI,
+    timeout: 120 * 1000,
+  },
 })

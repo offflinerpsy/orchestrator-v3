@@ -4434,3 +4434,74 @@
 **❌ Error:** HTTP 400: {"error": {"type": "invalid_prompt", "message": "Cannot execute because node VHS_VideoCombine does not exist.", "details": "Node ID '#6'", "extra_info": {}}, "node_errors": {}}
 
 ---
+
+### [2025-10-20 20:39:43] Job 499b1737 Status Change
+**Old Status:** unknown  
+**New Status:** failed  
+**Backend:** svd  
+**Prompt:** "сделай реалистичное видео кометы которая падает на..."  
+
+**❌ Error:** HTTP 400: {"error": {"type": "invalid_prompt", "message": "Cannot execute because node VHS_VideoCombine does not exist.", "details": "Node ID '#6'", "extra_info": {}}, "node_errors": {}}
+
+---
+
+### [2025-10-20 20:39:43] Job a695e219 Status Change
+**Old Status:** unknown  
+**New Status:** done  
+**Backend:** sdxl  
+**Prompt:** "Test cleanup: beautiful sunset over mountains..."  
+**✅ Output:** F:\Drop\out\sdxl_00004_.png
+
+
+---
+
+### [2025-10-20 20:39:43] Job aed591b2 Status Change
+**Old Status:** unknown  
+**New Status:** failed  
+**Backend:** sdxl  
+**Prompt:** "Хочу картинку с бутылкой крафтового оливкого масла..."  
+
+**❌ Error:** ComfyUI generation timeout (10 minutes)
+
+---
+
+### [2025-10-20 20:39:43] Job c900a04b Status Change
+**Old Status:** unknown  
+**New Status:** done  
+**Backend:** sdxl  
+**Prompt:** "futuristic cyberpunk city at night, neon lights, r..."  
+**✅ Output:** F:\Drop\out\sdxl_00002_.png
+
+
+---
+
+### [2025-10-20 20:39:43] Job 9d414c23 Status Change
+**Old Status:** unknown  
+**New Status:** done  
+**Backend:** sdxl  
+**Prompt:** "futuristic cyberpunk city at night, neon lights, r..."  
+**✅ Output:** F:\Drop\out\sdxl_00002_.png
+
+
+---
+
+### [2025-10-20 20:39:43] Job 20dbbfcb Status Change
+**Old Status:** unknown  
+**New Status:** done  
+**Backend:** sdxl  
+**Prompt:** "mountain sunset..."  
+**✅ Output:** F:\Drop\out\sdxl_00001_.png
+
+
+---
+
+### [2025-10-20 20:39:43] Job 54818843 Status Change
+**Old Status:** unknown  
+**New Status:** failed  
+**Backend:** sdxl  
+**Prompt:** "a majestic mountain landscape..."  
+
+**❌ Error:** Error while deserializing header: invalid UTF-8 in header: invalid utf-8 sequence of 1 bytes from index 14595
+
+
+---
