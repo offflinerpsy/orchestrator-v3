@@ -379,7 +379,7 @@ export function Inspector() {
                         {generatedJobs.length} шт.
                       </span>
                     </div>
-                    <div className="mt-2 space-y-2 max-h-64 overflow-y-auto">
+                    <div className="mt-2 space-y-2 max-h-64 overflow-y-auto" data-testid="gallery-grid">
                       {generatedJobs
                         .slice(galleryPage * IMAGES_PER_PAGE, (galleryPage + 1) * IMAGES_PER_PAGE)
                         .map(job => (

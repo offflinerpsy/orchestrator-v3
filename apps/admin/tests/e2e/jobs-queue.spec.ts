@@ -8,11 +8,16 @@ import { test, expect } from '@playwright/test'
 test.describe('Builder v0 — Jobs Queue (SSE)', () => {
   test('should open queue modal and verify SSE connection', async ({ page }) => {
     await page.goto('/builder-v0')
+    await page.waitForLoadState('networkidle')
     
     await test.step('Open queue modal', async () => {
-      // Ищем ≡ меню или кнопку "Очередь задач"
-      const queueButton = page.getByRole('button', { name: /очередь|queue/i })
-      await queueButton.click()
+      // Ищем ≡ меню (3 точки/три линии) в ChatSidebar header
+      const menuButton = page.locator('button:has([class*="lucide-menu"])')
+      await menuButton.click()
+      
+      // Кликаем на пункт меню "Очередь задач"
+      const queueMenuItem = page.getByRole('menuitem', { name: /очередь|queue/i })
+      await queueMenuItem.click()
       
       await page.waitForTimeout(2000)
       await page.screenshot({ path: 'reports/playwright/screenshots/queue-01-modal-open.png' })
@@ -24,7 +29,10 @@ test.describe('Builder v0 — Jobs Queue (SSE)', () => {
       await page.waitForTimeout(5000)
       
       // Проверить, что модал показывает список job (если есть)
-      const jobItems = page.locator('[data-job-status]')
+      const jobQueue = page.getByTestId('job-queue')
+      await expect(jobQueue).toBeVisible()
+      
+      const jobItems = jobQueue.locator('[data-testid^="job-row-"]')
       const count = await jobItems.count()
       
       console.log(`[REVISOR] Found ${count} jobs in queue modal`)

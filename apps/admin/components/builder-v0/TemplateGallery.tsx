@@ -165,6 +165,7 @@ export function TemplateGallery() {
                     onClick={() => handleImport(template)}
                     disabled={importing === template.id}
                     className="flex-1 flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-md bg-primary text-primary-foreground text-xs font-medium hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed"
+                    data-testid="import-template"
                   >
                     <Download className="h-3 w-3" />
                     {importing === template.id ? 'Импорт...' : 'Импортировать'}

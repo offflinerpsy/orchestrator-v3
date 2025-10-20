@@ -344,12 +344,15 @@ export function ChatSidebar() {
             onChange={(e) => setInput(e.target.value)}
             placeholder="Введите команду или вопрос... (Ctrl+K для фокуса)"
             className="flex-1 px-3 py-2 rounded-md border bg-background text-sm"
+            data-testid="chat-input"
+            aria-label="Message"
           />
           <Tooltip>
             <TooltipTrigger asChild>
               <button
                 type="submit"
                 className="px-3 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90"
+                data-testid="chat-send"
               >
                 <Send className="h-4 w-4" />
               </button>

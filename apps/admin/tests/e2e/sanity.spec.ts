@@ -17,14 +17,15 @@ test.describe('Builder v0 — Sanity Check', () => {
     // Шаг 1: Открыть главную страницу Builder v0
     await test.step('Navigate to /builder-v0', async () => {
       await page.goto('/builder-v0')
+      await page.waitForURL('/builder-v0')
+      await page.waitForLoadState('networkidle')
       await expect(page).toHaveTitle(/Orchestrator/i)
     })
 
     // Шаг 2: Проверить наличие ChatSidebar (левая панель)
     await test.step('Verify ChatSidebar exists', async () => {
-      // Ищем элемент с role="complementary" или data-testid (если есть)
-      // Либо просто проверяем textarea для ввода
-      const chatInput = page.getByPlaceholder(/сообщение|message/i)
+      // Используем data-testid (Playwright best practices)
+      const chatInput = page.getByTestId('chat-input')
       await expect(chatInput).toBeVisible({ timeout: 10000 })
       
       // Screenshot для артефактов
@@ -33,25 +34,14 @@ test.describe('Builder v0 — Sanity Check', () => {
 
     // Шаг 3: Проверить наличие CanvasPreview (центральная панель с iframe)
     await test.step('Verify CanvasPreview iframe loaded', async () => {
-      const iframe = page.frameLocator('iframe[title*="preview" i], iframe[name*="canvas" i]')
-      
-      // Если iframe не найден по title/name, пробуем первый iframe на странице
-      const iframes = page.locator('iframe')
-      const count = await iframes.count()
-      
-      if (count === 0) {
-        throw new Error('REVISOR FAIL: No iframe found on page. Expected CanvasPreview iframe.')
-      }
-      
-      // Проверяем, что iframe загрузился (readyState="complete")
-      // Playwright автоматически ждёт загрузки, но явно проверим
-      const firstIframe = iframes.first()
-      await expect(firstIframe).toBeVisible()
+      // Используем data-testid для iframe (stable locator)
+      const iframe = page.getByTestId('canvas-iframe')
+      await expect(iframe).toBeVisible()
       
       // Screenshot iframe area
       await page.screenshot({ path: 'reports/playwright/screenshots/02-canvas-preview.png', fullPage: false })
       
-      console.log(`[REVISOR] Found ${count} iframe(s) on page`)
+      console.log('[REVISOR] Canvas iframe found and visible')
     })
 
     // Шаг 4: Проверить наличие Inspector (правая панель с табами)

@@ -123,6 +123,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
         className="relative w-full max-w-2xl bg-background border rounded-lg shadow-2xl overflow-hidden"
         value={search}
         onValueChange={setSearch}
+        data-testid="cmdk-root"
       >
         {/* Search Input */}
         <div className="flex items-center gap-3 px-4 py-3 border-b">

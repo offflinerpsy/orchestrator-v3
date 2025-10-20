@@ -126,13 +126,14 @@ export function JobQueue() {
             Нет задач в очереди
           </div>
         ) : (
-          <div className="divide-y">
+          <div className="divide-y" data-testid="job-queue">
             {jobs.map(job => (
               <JobItem
                 key={job.id}
                 job={job}
                 onDelete={handleDeleteJob}
                 onRetry={handleRetryJob}
+                data-testid={`job-row-${job.id}`}
               />
             ))}
           </div>
@@ -146,9 +147,10 @@ interface JobItemProps {
   job: Job
   onDelete: (id: string) => void
   onRetry: (id: string) => void
+  'data-testid'?: string
 }
 
-function JobItem({ job, onDelete, onRetry }: JobItemProps) {
+function JobItem({ job, onDelete, onRetry, 'data-testid': testId }: JobItemProps) {
   const statusConfig = {
     created: { icon: Clock, color: 'text-gray-500', label: 'Создан' },
     queued: { icon: Clock, color: 'text-blue-500', label: 'В очереди' },
@@ -161,7 +163,7 @@ function JobItem({ job, onDelete, onRetry }: JobItemProps) {
   const Icon = config.icon
 
   return (
-    <div className="px-4 py-3 hover:bg-muted/50 transition-colors">
+    <div className="px-4 py-3 hover:bg-muted/50 transition-colors" data-testid={testId}>
       {/* Status + Backend */}
       <div className="flex items-center justify-between mb-1">
         <div className="flex items-center gap-2">

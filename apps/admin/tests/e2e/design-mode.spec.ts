@@ -14,10 +14,11 @@ import { test, expect } from '@playwright/test'
 test.describe('Builder v0 — Design Mode', () => {
   test('should activate design mode via /design on command', async ({ page }) => {
     await page.goto('/builder-v0')
+    await page.waitForLoadState('networkidle')
     
     // Шаг 1: Найти chat input
     await test.step('Type /design on command', async () => {
-      const chatInput = page.getByPlaceholder(/сообщение|message/i)
+      const chatInput = page.getByTestId('chat-input')
       await chatInput.fill('/design on')
       await chatInput.press('Enter')
       
@@ -29,8 +30,8 @@ test.describe('Builder v0 — Design Mode', () => {
     
     // Шаг 2: Проверить, что появился overlay в iframe
     await test.step('Verify design overlay is active', async () => {
-      // Если overlay — это элемент внутри iframe, нужно переключиться в iframe context
-      const iframe = page.frameLocator('iframe').first()
+      // Используем frameLocator с data-testid
+      const iframe = page.frameLocator('[data-testid="canvas-iframe"]')
       
       // Ищем элемент с id/class связанным с overlay
       // Если overlay внешний (в parent) — ищем в page
@@ -48,7 +49,7 @@ test.describe('Builder v0 — Design Mode', () => {
     
     // Шаг 3: Деактивировать design mode
     await test.step('Deactivate design mode', async () => {
-      const chatInput = page.getByPlaceholder(/сообщение|message/i)
+      const chatInput = page.getByTestId('chat-input')
       await chatInput.fill('/design off')
       await chatInput.press('Enter')
       await page.waitForTimeout(1000)
@@ -59,9 +60,10 @@ test.describe('Builder v0 — Design Mode', () => {
   
   test('should select element and show properties', async ({ page }) => {
     await page.goto('/builder-v0')
+    await page.waitForLoadState('networkidle')
     
     // Активировать design mode
-    const chatInput = page.getByPlaceholder(/сообщение|message/i)
+    const chatInput = page.getByTestId('chat-input')
     await chatInput.fill('/design on')
     await chatInput.press('Enter')
     await page.waitForTimeout(2000)
@@ -82,8 +84,9 @@ test.describe('Builder v0 — Design Mode', () => {
   
   test('should apply changes to element (runtime patch)', async ({ page }) => {
     await page.goto('/builder-v0')
+    await page.waitForLoadState('networkidle')
     
-    const chatInput = page.getByPlaceholder(/сообщение|message/i)
+    const chatInput = page.getByTestId('chat-input')
     
     // Design on
     await chatInput.fill('/design on')
@@ -101,7 +104,7 @@ test.describe('Builder v0 — Design Mode', () => {
       await page.waitForTimeout(2000)
       
       // Проверить, что iframe обновился (ищем текст "REVISOR TEST" внутри iframe)
-      const iframe = page.frameLocator('iframe').first()
+      const iframe = page.frameLocator('[data-testid="canvas-iframe"]')
       const testText = iframe.locator('text=REVISOR TEST')
       
       // Если текст не найден — это warning, не fail (возможно API не применил изменение)
