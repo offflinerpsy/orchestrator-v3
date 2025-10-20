@@ -13,6 +13,7 @@ import { join } from 'path'
 import { randomUUID } from 'crypto'
 import { resolvePath } from '@/lib/paths'
 import { logger } from '@/lib/logger'
+import { env } from '@/lib/env'
 
 // Lazy evaluation — resolve paths on first use
 function getJobsDir() {
@@ -217,6 +218,7 @@ async function executeFlux(job: Job) {
       
       // Save to dropOut directory
       const outDir = getOutDir()
+      await ensureDir(outDir)
       const filename = `flux_${job.id}.jpg`
       const outputPath = join(outDir, filename)
       await writeFile(outputPath, Buffer.from(imageBuffer))
@@ -246,9 +248,11 @@ async function executeComfyUI(job: Job) {
   const { submitPrompt, getHistory } = await import('@/lib/comfy-client')
   
   job.logs.push(`Calling ComfyUI API (${job.backend}) — прямой вызов...`)
+  await persistJob(job)
 
   // Load workflow JSON based on backend
-  const workflowPath = `F:\\Workflows\\${job.backend}-i2i.json`
+  const workflowsDir = getWorkflowsDir()
+  const workflowPath = join(workflowsDir, `${job.backend}-i2i.json`)
   
   if (!existsSync(workflowPath)) {
     throw new Error(`Workflow not found: ${workflowPath}`)
@@ -276,7 +280,43 @@ async function executeComfyUI(job: Job) {
     if (job.params.cfg !== undefined) {
       workflow['3'].inputs.cfg = Math.min(30, Math.max(0, Number(job.params.cfg)))
     }
+
+    // Validate sampler_name against ComfyUI object_info and auto-fix
+    try {
+      const allowedSamplers = await getAllowedSamplerNames()
+      const preferred = 'euler'
+      const fixSampler = (inputsObj: any) => {
+        const currentSampler = inputsObj.sampler_name
+        if (Array.isArray(allowedSamplers) && allowedSamplers.length > 0) {
+          const fallback = allowedSamplers.includes(preferred) ? preferred : allowedSamplers[0]
+          if (!currentSampler || !allowedSamplers.includes(currentSampler)) {
+            job.logs.push(`Sampler set: ${currentSampler || '(none)'} -> ${fallback}`)
+            inputsObj.sampler_name = fallback
+          }
+        } else {
+          inputsObj.sampler_name = preferred
+        }
+        // Force replace euler_a -> euler as last resort
+        if (inputsObj.sampler_name === 'euler_a') {
+          job.logs.push(`Replacing disallowed sampler 'euler_a' -> 'euler'`)
+          inputsObj.sampler_name = 'euler'
+        }
+      }
+      fixSampler(workflow['3'].inputs)
+    } catch (e: any) {
+      job.logs.push(`Sampler validation error: ${e?.message || 'unknown error'}. Forcing sampler_name='euler'`)
+      workflow['3'].inputs.sampler_name = 'euler'
+    }
   }
+  // As an additional safety, if some other node id is KSampler, normalize it too
+  Object.keys(workflow).forEach((nodeId) => {
+    const node = (workflow as any)[nodeId]
+    if (node?.class_type === 'KSampler' && node?.inputs) {
+      if (node.inputs.sampler_name === 'euler_a') {
+        node.inputs.sampler_name = 'euler'
+      }
+    }
+  })
 
   // Inject size into EmptyLatentImage node
   if (workflow['68']?.inputs) {
@@ -289,12 +329,23 @@ async function executeComfyUI(job: Job) {
   }
 
   job.logs.push(`Workflow loaded: ${Object.keys(workflow).length} nodes`)
+  await persistJob(job)
 
   // Прямой вызов ComfyUI API через lib/comfy-client.ts (НЕ через HTTP fetch)
+  job.logs.push(`KSampler[3].sampler_name before submit: ${workflow['3']?.inputs?.sampler_name}`)
+  // Final safety: normalize any 'euler_a' across all KSampler nodes to 'euler'
+  Object.keys(workflow).forEach((nodeId) => {
+    const node = (workflow as any)[nodeId]
+    if (node?.class_type === 'KSampler' && node?.inputs?.sampler_name === 'euler_a') {
+      node.inputs.sampler_name = 'euler'
+    }
+  })
+  job.logs.push(`KSampler[3].sampler_name after normalize: ${workflow['3']?.inputs?.sampler_name}`)
   const data = await submitPrompt({ prompt: workflow })
   const { prompt_id } = data
 
   job.logs.push(`ComfyUI prompt ID: ${prompt_id}`)
+  await persistJob(job)
 
   // Poll /history for result (прямой вызов через lib/comfy-client.ts)
   let attempts = 0
@@ -316,17 +367,70 @@ async function executeComfyUI(job: Job) {
       const filename = firstOutput?.images?.[0]?.filename
 
       if (filename) {
+        // Download from Comfy view and save into dropOut
         const outDir = getOutDir()
-        job.result = {
-          file: join(outDir, filename)
+        await ensureDir(outDir)
+        const ext = filename.split('.').pop() || 'png'
+        const outputPath = join(outDir, `comfy_${job.id}.${ext}`)
+        const viewUrl = `${env.COMFY_URL}/view?filename=${encodeURIComponent(filename)}&type=output`
+        const imageResponse = await fetch(viewUrl)
+        if (!imageResponse.ok) {
+          job.logs.push(`Failed to download from Comfy /view: HTTP ${imageResponse.status}`)
+        } else {
+          const buf = await imageResponse.arrayBuffer()
+          await writeFile(outputPath, Buffer.from(buf))
+          job.result = {
+            file: outputPath
+          }
+          job.logs.push(`Saved to: ${outputPath}`)
         }
-        job.logs.push(`Result: ${filename}`)
       }
+      await persistJob(job)
       return
     }
 
     job.progress = (attempts / maxAttempts) * 100
+    if (attempts % 6 === 0) {
+      await persistJob(job)
+    }
   }
 
   throw new Error('ComfyUI generation timeout (10 minutes)')
+}
+
+function getWorkflowsDir() {
+  return resolvePath('workflows')
+}
+
+async function ensureDir(dir: string) {
+  if (!existsSync(dir)) {
+    await mkdir(dir, { recursive: true })
+  }
+}
+
+async function getAllowedSamplerNames(): Promise<string[] | null> {
+  try {
+    const r = await fetch(`${env.COMFY_URL}/object_info`, { signal: AbortSignal.timeout(5000) })
+    if (!r.ok) return null
+    const data = await r.json()
+    // KSampler.input.required.sampler_name -> [[ 'samplerA', ... ]] or similar
+    const fromRequired = data?.KSampler?.input?.required?.sampler_name
+    const fromOptional = data?.KSampler?.input?.optional?.sampler_name
+    const pick = Array.isArray(fromRequired) ? fromRequired : (Array.isArray(fromOptional) ? fromOptional : null)
+    if (Array.isArray(pick) && pick.length > 0) {
+      const first = pick[0]
+      return Array.isArray(first) ? first : pick
+    }
+    return null
+  } catch {
+    return null
+  }
+}
+
+async function persistJob(job: Job) {
+  try {
+    const jobsDir = getJobsDir()
+    const jobPath = join(jobsDir, `${job.id}.json`)
+    await writeFile(jobPath, JSON.stringify(job, null, 2))
+  } catch {}
 }

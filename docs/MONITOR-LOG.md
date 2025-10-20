@@ -152,3 +152,824 @@
 
 
 ---
+
+### [2025-10-20 13:23:25] Job 9d414c23 Status Change
+**Old Status:** unknown  
+**New Status:** done  
+**Backend:** sdxl  
+**Prompt:** "futuristic cyberpunk city at night, neon lights, r..."  
+**✅ Output:** F:\Drop\out\sdxl_00002_.png
+
+
+---
+
+### [2025-10-20 13:23:25] Job 20dbbfcb Status Change
+**Old Status:** unknown  
+**New Status:** done  
+**Backend:** sdxl  
+**Prompt:** "mountain sunset..."  
+**✅ Output:** F:\Drop\out\sdxl_00001_.png
+
+
+---
+
+### [2025-10-20 13:23:25] Job 54818843 Status Change
+**Old Status:** unknown  
+**New Status:** failed  
+**Backend:** sdxl  
+**Prompt:** "a majestic mountain landscape..."  
+
+**❌ Error:** Error while deserializing header: invalid UTF-8 in header: invalid utf-8 sequence of 1 bytes from index 14595
+
+
+---
+
+### [2025-10-20 13:23:55] Job c900a04b Status Change
+**Old Status:** unknown  
+**New Status:** done  
+**Backend:** sdxl  
+**Prompt:** "futuristic cyberpunk city at night, neon lights, r..."  
+**✅ Output:** F:\Drop\out\sdxl_00002_.png
+
+
+---
+
+### [2025-10-20 13:25:25] Job d888cd70 Status Change
+**Old Status:** unknown  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:25:25] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:25:35] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:25:35] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:25:45] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 404
+
+---
+
+### [2025-10-20 13:25:45] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:25:55] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:25:55] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:26:05] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:26:05] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:26:15] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:26:15] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:26:25] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:26:25] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:26:35] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:26:35] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:26:45] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:26:45] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:26:55] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:26:55] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:27:05] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 404
+
+---
+
+### [2025-10-20 13:27:05] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:27:15] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:27:15] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:27:25] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:27:25] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:27:35] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:27:35] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:27:45] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 404
+
+---
+
+### [2025-10-20 13:27:45] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:27:55] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:27:55] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:28:05] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:28:05] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:28:15] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:28:15] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:28:25] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:28:25] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:28:35] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:28:35] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:28:45] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 404
+
+---
+
+### [2025-10-20 13:28:45] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:28:55] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:28:55] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:29:05] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:29:05] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:29:15] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:29:15] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:29:25] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 404
+
+---
+
+### [2025-10-20 13:29:25] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:29:35] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:29:35] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:29:45] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:29:45] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:29:55] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:29:55] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:30:05] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:30:05] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:30:15] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:30:15] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:30:25] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:30:25] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:30:35] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:30:35] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:30:45] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:30:45] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:30:55] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:30:55] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:31:05] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:31:05] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:31:15] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:31:15] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:31:25] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:31:25] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:31:35] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:31:35] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:31:45] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 404
+
+---
+
+### [2025-10-20 13:31:45] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---

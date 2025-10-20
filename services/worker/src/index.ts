@@ -2,6 +2,11 @@ import { readdir, readFile, writeFile, mkdir } from 'fs/promises'
 import { existsSync } from 'fs'
 import { join } from 'path'
 import pino from 'pino'
+import dotenv from 'dotenv'
+
+// Load environment variables from .env.local files
+dotenv.config({ path: join(process.cwd(), '.env.local') })
+dotenv.config({ path: join(process.cwd(), 'apps/admin/.env.local') })
 
 type JobStatus = 'created' | 'queued' | 'running' | 'done' | 'failed'
 type Backend = 'flux' | 'sdxl' | 'sd35' | 'svd'

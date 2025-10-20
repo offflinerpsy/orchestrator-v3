@@ -74,15 +74,14 @@ export async function generateFlux(params: FluxGenerateParams): Promise<FluxTask
     raw: payload.raw
   })
 
-  const response = await fetch(`${FLUX_API_URL}/flux-pro-1.1-ultra`, {
+  const response = await fetchWithRetry(`${FLUX_API_URL}/flux-pro-1.1-ultra`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'X-Key': env.BFL_API_KEY,
     },
     body: JSON.stringify(payload),
-    signal: AbortSignal.timeout(30000), // 30s timeout
-  })
+  }, { attempts: 3, baseMs: 500 })
 
   if (!response.ok) {
     const errorText = await response.text()
@@ -112,12 +111,12 @@ export async function pollFlux(taskId: string): Promise<FluxPollResponse> {
     throw new Error('BFL_API_KEY не настроен')
   }
 
-  const response = await fetch(`${FLUX_API_URL}/get_result?id=${taskId}`, {
+  const response = await fetchWithRetry(`${FLUX_API_URL}/get_result?id=${taskId}`, {
+    method: 'GET',
     headers: {
       'X-Key': env.BFL_API_KEY,
     },
-    signal: AbortSignal.timeout(10000), // 10s timeout
-  })
+  }, { attempts: 5, baseMs: 300 })
 
   if (!response.ok) {
     const errorText = await response.text()
@@ -126,4 +125,26 @@ export async function pollFlux(taskId: string): Promise<FluxPollResponse> {
 
   const data = await response.json()
   return data
+}
+
+type RetryOptions = { attempts: number, baseMs: number }
+
+async function fetchWithRetry(url: string, init: RequestInit, opts: RetryOptions) {
+  let lastErr: any
+  for (let i = 0; i < opts.attempts; i++) {
+    try {
+      const controller = new AbortController()
+      const timeout = setTimeout(() => controller.abort(), 30000)
+      const r = await fetch(url, { ...init, signal: controller.signal })
+      clearTimeout(timeout)
+      if (r.ok) return r
+      lastErr = new Error(`HTTP ${r.status}: ${await r.text()}`)
+      // 4xx should not be retried except 429
+      if (r.status >= 400 && r.status < 500 && r.status !== 429) break
+    } catch (e: any) {
+      lastErr = e
+    }
+    await new Promise(res => setTimeout(res, opts.baseMs * Math.pow(2, i)))
+  }
+  throw lastErr
 }
