@@ -23,7 +23,7 @@
 'use client'
 
 import { useState, useCallback, useRef, useEffect } from 'react'
-import { MessageSquare, Send, Menu, Clock, Download } from 'lucide-react'
+import { MessageSquare, Send, Menu, Clock, Download, X } from 'lucide-react'
 import { useBuilderHotkeys } from '@/lib/hotkeys'
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from '@/components/ui/tooltip'
 import {
@@ -32,6 +32,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { JobQueue } from './JobQueue'
 
 type Message = {
   role: 'user' | 'assistant'
@@ -43,6 +44,7 @@ type SlashCommand = '/design' | '/select' | '/gen' | '/apply' | '/undo'
 export function ChatSidebar() {
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
+  const [showJobQueue, setShowJobQueue] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
 
   // Context7: react-hotkeys-hook integration
@@ -256,7 +258,7 @@ export function ChatSidebar() {
                   </button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  <DropdownMenuItem onClick={() => console.log('Очередь задач (P3)')}>
+                  <DropdownMenuItem onClick={() => setShowJobQueue(true)}>
                     <Clock className="h-4 w-4 mr-2" />
                     Очередь задач
                   </DropdownMenuItem>
@@ -332,6 +334,29 @@ export function ChatSidebar() {
         </div>
       </form>
       </div>
+
+      {/* JobQueue Modal (P3) */}
+      {showJobQueue && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-background border rounded-lg shadow-xl w-full max-w-2xl h-[600px] flex flex-col">
+            {/* Modal Header */}
+            <div className="px-4 py-3 border-b flex items-center justify-between">
+              <h2 className="font-semibold">Очередь задач</h2>
+              <button
+                onClick={() => setShowJobQueue(false)}
+                className="p-1 hover:bg-muted rounded"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+
+            {/* JobQueue Component */}
+            <div className="flex-1 overflow-hidden">
+              <JobQueue />
+            </div>
+          </div>
+        </div>
+      )}
     </TooltipProvider>
   )
 }

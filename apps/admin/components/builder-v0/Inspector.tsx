@@ -52,6 +52,8 @@ export function Inspector() {
   const [isGenerating, setIsGenerating] = useState(false)
   const [generatePrompt, setGeneratePrompt] = useState('')
   const [generatedJobs, setGeneratedJobs] = useState<Array<{ jobId: string; prompt: string; status: string; imageUrl?: string }>>([])
+  const [galleryPage, setGalleryPage] = useState(0)
+  const IMAGES_PER_PAGE = 10
 
   // Listen for element selection from CanvasPreview
   useEffect(() => {
@@ -348,41 +350,72 @@ export function Inspector() {
 
             {tab === 'actions' && (
               <div className="space-y-4">
-                {/* Generated Images Gallery */}
+                {/* Generated Images Gallery (P3: Pagination from Context7) */}
                 {generatedJobs.length > 0 && (
                   <div>
-                    <label className="text-sm font-medium">Сгенерированные изображения</label>
-                    <div className="mt-2 space-y-2 max-h-64 overflow-y-auto">
-                      {generatedJobs.map(job => (
-                        <div key={job.jobId} className="p-2 border rounded-md bg-background">
-                          <div className="text-xs text-muted-foreground mb-1">
-                            {job.prompt.slice(0, 40)}...
-                          </div>
-                          {job.status === 'done' && job.imageUrl && (
-                            <div className="relative group">
-                              <img 
-                                src={job.imageUrl} 
-                                alt={job.prompt}
-                                className="w-full rounded-md cursor-pointer hover:opacity-80"
-                                onClick={() => {
-                                  navigator.clipboard.writeText(job.imageUrl!)
-                                  alert(`✅ URL скопирован: ${job.imageUrl}`)
-                                }}
-                              />
-                              <div className="absolute bottom-1 right-1 bg-black/70 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100">
-                                Клик = копировать URL
-                              </div>
-                            </div>
-                          )}
-                          {job.status === 'queued' && (
-                            <div className="text-xs text-yellow-500">⏳ В очереди...</div>
-                          )}
-                          {job.status === 'failed' && (
-                            <div className="text-xs text-red-500">❌ Ошибка генерации</div>
-                          )}
-                        </div>
-                      ))}
+                    <div className="flex items-center justify-between">
+                      <label className="text-sm font-medium">Сгенерированные изображения</label>
+                      <span className="text-xs text-muted-foreground">
+                        {generatedJobs.length} шт.
+                      </span>
                     </div>
+                    <div className="mt-2 space-y-2 max-h-64 overflow-y-auto">
+                      {generatedJobs
+                        .slice(galleryPage * IMAGES_PER_PAGE, (galleryPage + 1) * IMAGES_PER_PAGE)
+                        .map(job => (
+                          <div key={job.jobId} className="p-2 border rounded-md bg-background">
+                            <div className="text-xs text-muted-foreground mb-1">
+                              {job.prompt.slice(0, 40)}...
+                            </div>
+                            {job.status === 'done' && job.imageUrl && (
+                              <div className="relative group">
+                                <img 
+                                  src={job.imageUrl} 
+                                  alt={job.prompt}
+                                  className="w-full rounded-md cursor-pointer hover:opacity-80"
+                                  onClick={() => {
+                                    navigator.clipboard.writeText(job.imageUrl!)
+                                    alert(`✅ URL скопирован: ${job.imageUrl}`)
+                                  }}
+                                />
+                                <div className="absolute bottom-1 right-1 bg-black/70 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100">
+                                  Клик = копировать URL
+                                </div>
+                              </div>
+                            )}
+                            {job.status === 'queued' && (
+                              <div className="text-xs text-yellow-500">⏳ В очереди...</div>
+                            )}
+                            {job.status === 'failed' && (
+                              <div className="text-xs text-red-500">❌ Ошибка генерации</div>
+                            )}
+                          </div>
+                        ))
+                      }
+                    </div>
+
+                    {/* Pagination (Context7 pattern) */}
+                    {generatedJobs.length > IMAGES_PER_PAGE && (
+                      <div className="flex items-center justify-between mt-2 text-xs">
+                        <button
+                          onClick={() => setGalleryPage(p => Math.max(0, p - 1))}
+                          disabled={galleryPage === 0}
+                          className="px-2 py-1 border rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-muted"
+                        >
+                          ← Назад
+                        </button>
+                        <span className="text-muted-foreground">
+                          Стр. {galleryPage + 1} из {Math.ceil(generatedJobs.length / IMAGES_PER_PAGE)}
+                        </span>
+                        <button
+                          onClick={() => setGalleryPage(p => Math.min(Math.ceil(generatedJobs.length / IMAGES_PER_PAGE) - 1, p + 1))}
+                          disabled={galleryPage >= Math.ceil(generatedJobs.length / IMAGES_PER_PAGE) - 1}
+                          className="px-2 py-1 border rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-muted"
+                        >
+                          Вперёд →
+                        </button>
+                      </div>
+                    )}
                   </div>
                 )}
 
