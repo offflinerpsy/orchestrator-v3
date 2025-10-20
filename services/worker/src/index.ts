@@ -246,7 +246,8 @@ async function buildComfyWorkflow(prompt: string, backend: Backend): Promise<any
 async function execute(job: Job) {
   job.status = 'running'
   job.startedAt = new Date().toISOString()
-  job.logs.push('[worker] start execution')
+  ;(job as any).retriedCount = ((job as any).retriedCount || 0) + 1
+  job.logs.push(`[worker] start execution (attempt ${(job as any).retriedCount})`)
   await saveJob(job)
 
   try {
@@ -340,6 +341,15 @@ async function main() {
         const job = await loadJob(file)
         logger.info({ msg: 'found job', id: job.id, status: job.status, backend: job.backend })
         if (job.status === 'created' || job.status === 'queued') {
+          // Prevent infinite retry loops: max 3 retries
+          const retriedCount = (job as any).retriedCount || 0
+          if (retriedCount >= 3) {
+            logger.warn({ msg: 'job exceeded max retries, marking as failed', id: job.id })
+            job.status = 'failed'
+            job.result = { error: 'Exceeded max retries (3)' }
+            await saveJob(job)
+            continue
+          }
           await execute(job)
         }
       }
