@@ -11,7 +11,15 @@
     "lint": "next lint",
     "test:smoke": "playwright test",
     "test:ui": "playwright test --ui",
-    "test:report": "playwright show-report"
+    "test:report": "playwright show-report",
+    "revisor:build": "pnpm build",
+    "revisor:start": "pnpm start",
+    "revisor:wait": "wait-on http://127.0.0.1:3000",
+    "revisor:test": "playwright test -c playwright.audit.config.ts",
+    "revisor:lhci": "lhci autorun --collect.url=http://127.0.0.1:3000 --upload.target=filesystem --upload.outputDir=reports/lhci",
+    "revisor:axe": "node tests/a11y/run-axe.mjs",
+    "revisor:all": "concurrently -k -s first \"pnpm revisor:start\" \"pnpm revisor:wait && pnpm revisor:test && pnpm revisor:lhci && pnpm revisor:axe\"",
+    "revisor:report": "node scripts/audit-summarize.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
