@@ -15,7 +15,10 @@
 
 'use client'
 
+import { useState } from 'react'
 import { PanelGroup, Panel, PanelResizeHandle } from 'react-resizable-panels'
+import { useHotkeys } from 'react-hotkeys-hook'
+import { CommandPalette } from '@/components/builder-v0/CommandPalette'
 
 // Note: metadata export moved to page.tsx (client components can't export metadata)
 
@@ -24,6 +27,14 @@ export default function BuilderV0Layout({
 }: {
   children: React.ReactNode
 }) {
+  const [showCommandPalette, setShowCommandPalette] = useState(false)
+
+  // ⌘K / Ctrl+K to toggle Command Palette (Context7 pattern)
+  useHotkeys('mod+k', (e) => {
+    e.preventDefault()
+    setShowCommandPalette(prev => !prev)
+  }, { enableOnFormTags: false })
+
   return (
     <div className="h-screen overflow-hidden">
       <PanelGroup direction="horizontal" className="h-full">
@@ -64,6 +75,12 @@ export default function BuilderV0Layout({
           {/* Inspector rendered by page.tsx */}
         </Panel>
       </PanelGroup>
+
+      {/* P5: Command Palette (⌘K / Ctrl+K) */}
+      <CommandPalette 
+        isOpen={showCommandPalette} 
+        onClose={() => setShowCommandPalette(false)} 
+      />
     </div>
   )
 }
