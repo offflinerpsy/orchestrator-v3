@@ -39,7 +39,7 @@ type Message = {
   content: string
 }
 
-type SlashCommand = '/design' | '/select' | '/gen' | '/apply' | '/undo'
+type SlashCommand = '/design' | '/select' | '/gen' | '/apply' | '/undo' | '/import'
 
 export function ChatSidebar() {
   const [messages, setMessages] = useState<Message[]>([])
@@ -173,6 +173,33 @@ export function ChatSidebar() {
       case '/undo':
         response = 'Отмена последнего изменения...'
         // TODO: Undo last change
+        break
+
+      case '/import':
+        // Parse: /import shadcn button
+        // Parse: /import hyperui hero-1
+        const importMatch = args.match(/^(shadcn|hyperui)\s+(\S+)$/)
+        if (importMatch) {
+          const [, source, component] = importMatch
+          response = `📦 Импорт ${component} из ${source}...`
+          
+          fetch('/api/templates/import', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ source, component }),
+          })
+            .then(res => res.json())
+            .then(data => {
+              if (data.success) {
+                alert(`✅ Импортировано:\n- Файлов: ${data.files.length}\n- Зависимостей: ${data.dependencies.length}`)
+              } else {
+                alert(`❌ Ошибка: ${data.error}`)
+              }
+            })
+            .catch(err => alert(`❌ Ошибка: ${err.message}`))
+        } else {
+          response = 'Использование: /import shadcn <component> | /import hyperui <component>'
+        }
         break
 
       default:

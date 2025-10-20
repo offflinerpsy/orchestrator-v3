@@ -22,13 +22,14 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import { Eye, Pencil, Settings, Wand2, Info, FileText, Palette, Zap } from 'lucide-react'
+import { Eye, Pencil, Settings, Wand2, Info, FileText, Palette, Zap, Download } from 'lucide-react'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip'
+import { TemplateGallery } from './TemplateGallery'
 
 /**
  * Inspector Component — Modern React 19 patterns
@@ -36,7 +37,7 @@ import {
  * Based on Context7 best practices for client components
  */
 
-type Tab = 'content' | 'style' | 'actions'
+type Tab = 'content' | 'style' | 'actions' | 'templates'
 
 interface SelectedElement {
   locator: string
@@ -258,6 +259,25 @@ export function Inspector() {
             <p>AI генерация изображений через ComfyUI</p>
           </TooltipContent>
         </Tooltip>
+
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <button
+              onClick={() => setTab('templates')}
+              className={`flex-1 px-4 py-3 text-sm font-medium flex items-center justify-center gap-2 ${
+                tab === 'templates'
+                  ? 'border-b-2 border-primary'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              <Download className="h-4 w-4" />
+              Шаблоны
+            </button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Импорт компонентов из shadcn/ui и HyperUI</p>
+          </TooltipContent>
+        </Tooltip>
       </div>
 
       {/* Content */}
@@ -464,10 +484,17 @@ export function Inspector() {
                 )}
               </div>
             )}
+
+            {/* P4: Templates Tab */}
+            {tab === 'templates' && (
+              <div className="h-full -m-4">
+                <TemplateGallery />
+              </div>
+            )}
           </>
         )}
       </div>
-      </div>
+    </div>
     </TooltipProvider>
   )
 }
