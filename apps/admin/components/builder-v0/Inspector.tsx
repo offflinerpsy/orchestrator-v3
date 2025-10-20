@@ -51,6 +51,7 @@ export function Inspector() {
   const [editedContent, setEditedContent] = useState('')
   const [isGenerating, setIsGenerating] = useState(false)
   const [generatePrompt, setGeneratePrompt] = useState('')
+  const [generatedJobs, setGeneratedJobs] = useState<Array<{ jobId: string; prompt: string; status: string; imageUrl?: string }>>([])
 
   // Listen for element selection from CanvasPreview
   useEffect(() => {
@@ -62,6 +63,43 @@ export function Inspector() {
 
     window.addEventListener('element-selected' as any, handleSelection)
     return () => window.removeEventListener('element-selected' as any, handleSelection)
+  }, [])
+
+  // Listen for image generation events from ChatSidebar
+  useEffect(() => {
+    const handleGeneration = (event: CustomEvent) => {
+      const { jobId, prompt } = event.detail
+      setGeneratedJobs(prev => [...prev, { jobId, prompt, status: 'queued' }])
+      
+      // Poll job status
+      const pollInterval = setInterval(async () => {
+        try {
+          const res = await fetch('/api/jobs')
+          const data = await res.json()
+          const job = data.jobs?.find((j: any) => j.id === jobId)
+          
+          if (job && job.status === 'done' && job.result?.url) {
+            setGeneratedJobs(prev => prev.map(j => 
+              j.jobId === jobId ? { ...j, status: 'done', imageUrl: job.result.url } : j
+            ))
+            clearInterval(pollInterval)
+          } else if (job && job.status === 'failed') {
+            setGeneratedJobs(prev => prev.map(j => 
+              j.jobId === jobId ? { ...j, status: 'failed' } : j
+            ))
+            clearInterval(pollInterval)
+          }
+        } catch (err) {
+          console.error('[Inspector] Job poll error:', err)
+        }
+      }, 2000)
+      
+      // Cleanup after 60 seconds
+      setTimeout(() => clearInterval(pollInterval), 60000)
+    }
+
+    window.addEventListener('image-generation-started' as any, handleGeneration)
+    return () => window.removeEventListener('image-generation-started' as any, handleGeneration)
   }, [])
 
   // Update edited content when selection changes
@@ -310,6 +348,44 @@ export function Inspector() {
 
             {tab === 'actions' && (
               <div className="space-y-4">
+                {/* Generated Images Gallery */}
+                {generatedJobs.length > 0 && (
+                  <div>
+                    <label className="text-sm font-medium">Сгенерированные изображения</label>
+                    <div className="mt-2 space-y-2 max-h-64 overflow-y-auto">
+                      {generatedJobs.map(job => (
+                        <div key={job.jobId} className="p-2 border rounded-md bg-background">
+                          <div className="text-xs text-muted-foreground mb-1">
+                            {job.prompt.slice(0, 40)}...
+                          </div>
+                          {job.status === 'done' && job.imageUrl && (
+                            <div className="relative group">
+                              <img 
+                                src={job.imageUrl} 
+                                alt={job.prompt}
+                                className="w-full rounded-md cursor-pointer hover:opacity-80"
+                                onClick={() => {
+                                  navigator.clipboard.writeText(job.imageUrl!)
+                                  alert(`✅ URL скопирован: ${job.imageUrl}`)
+                                }}
+                              />
+                              <div className="absolute bottom-1 right-1 bg-black/70 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100">
+                                Клик = копировать URL
+                              </div>
+                            </div>
+                          )}
+                          {job.status === 'queued' && (
+                            <div className="text-xs text-yellow-500">⏳ В очереди...</div>
+                          )}
+                          {job.status === 'failed' && (
+                            <div className="text-xs text-red-500">❌ Ошибка генерации</div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 {selectedElement.elementType === 'image' && (
                   <>
                     <div>

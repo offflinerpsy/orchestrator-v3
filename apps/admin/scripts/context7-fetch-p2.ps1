@@ -1,21 +1,21 @@
-# Context7 API queries for P1 (Design Mode)
-# Usage: pwsh .\scripts\context7-fetch-p1.ps1
+# Context7 API queries for P2 (FLUX + ComfyUI Image Generation)
+# Usage: pwsh .\scripts\context7-fetch-p2.ps1
 
 $apiKey = "ctx7sk-cfe7b2ec-ee89-4d42-ba6f-834aab27e928"
 $outputDir = "docs/_artifacts"
 
 $queries = @(
     @{
-        name = "react-iframe-postmessage"
-        query = "React iframe postMessage communication patterns modern TypeScript"
+        name = "flux-api-integration"
+        query = "FLUX API image generation REST TypeScript modern patterns"
     },
     @{
-        name = "dom-inspector-overlay"
-        query = "DOM element inspector overlay highlight CSS selector"
+        name = "comfyui-websocket"
+        query = "ComfyUI WebSocket integration prompt queue workflow"
     },
     @{
-        name = "css-selector-matching"
-        query = "JavaScript CSS selector matching querySelector live NodeList"
+        name = "image-generation-workflows"
+        query = "React image generation UI polling status WebSocket"
     }
 )
 
@@ -43,4 +43,4 @@ foreach ($q in $queries) {
     Start-Sleep -Milliseconds 500
 }
 
-Write-Host "`n[Context7] P1 queries complete!" -ForegroundColor Green
+Write-Host "`n[Context7] P2 queries complete!" -ForegroundColor Green

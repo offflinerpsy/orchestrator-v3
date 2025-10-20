@@ -99,8 +99,31 @@ export function ChatSidebar() {
         const genPrompt = genParts.slice(1).join(' ')
 
         if (genType === 'image' && genPrompt) {
-          response = `Запущена генерация изображения: "${genPrompt}"`
-          // TODO: Trigger generation
+          // Trigger generation via Worker API
+          fetch('/api/generate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              backend: 'sdxl', // or 'flux' if ALLOW_GENERATION=true
+              prompt: genPrompt,
+              params: { width: 1024, height: 1024 },
+              runNow: true
+            })
+          })
+            .then(res => res.json())
+            .then(data => {
+              if (data.success) {
+                window.dispatchEvent(new CustomEvent('image-generation-started', { 
+                  detail: { jobId: data.jobId, prompt: genPrompt } 
+                }))
+                console.log('[ChatSidebar] Generation job created:', data.jobId)
+              } else {
+                console.error('[ChatSidebar] Generation failed:', data.error)
+              }
+            })
+            .catch(err => console.error('[ChatSidebar] /gen error:', err))
+          
+          response = `🎨 Запущена генерация: "${genPrompt.slice(0, 50)}..."\nПроверьте панель Inspector для результата.`
         } else {
           response = 'Использование: /gen image <prompt>'
         }
