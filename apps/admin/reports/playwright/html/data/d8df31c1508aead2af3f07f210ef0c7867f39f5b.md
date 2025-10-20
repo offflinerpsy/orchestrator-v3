@@ -1,0 +1,64 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - generic [ref=e4]:
+    - separator [ref=e6]
+    - generic [ref=e7]:
+      - generic [ref=e8]:
+        - generic [ref=e9]:
+          - generic [ref=e10]:
+            - img [ref=e11]
+            - heading "Чат Билдера" [level=2] [ref=e13]
+            - button [ref=e15] [cursor=pointer]:
+              - img [ref=e16]
+          - paragraph [ref=e17]: Используйте слэш-команды для управления
+        - generic [ref=e18]:
+          - generic [ref=e19]: /design on
+          - generic [ref=e20]: Design Mode включен. Кликните на элемент в превью для редактирования.
+          - generic [ref=e21]: /select body > div
+          - generic [ref=e22]: "Выбран элемент: body > div"
+        - generic [ref=e24]:
+          - textbox "Message" [active] [ref=e25]:
+            - /placeholder: Введите команду или вопрос... (Ctrl+K для фокуса)
+          - button [ref=e26] [cursor=pointer]:
+            - img [ref=e27]
+      - generic [ref=e30]:
+        - generic [ref=e31]:
+          - button "Просмотр" [ref=e32] [cursor=pointer]:
+            - img [ref=e33]
+            - text: Просмотр
+          - button "Дизайн" [ref=e36] [cursor=pointer]:
+            - img [ref=e37]
+            - text: Дизайн
+          - generic [ref=e40]: Наведите курсор на элемент для выбора
+        - generic [ref=e41]:
+          - iframe [ref=e42]:
+            
+          - generic [ref=e44]:
+            - img [ref=e45]
+            - generic [ref=e47]: Design Mode
+            - generic [ref=e48]: (loading...)
+      - generic [ref=e49]:
+        - generic [ref=e50]:
+          - button "Содержимое" [ref=e51] [cursor=pointer]:
+            - img [ref=e52]
+            - text: Содержимое
+          - button "Стиль" [ref=e55] [cursor=pointer]:
+            - img [ref=e56]
+            - text: Стиль
+          - button "Действия" [ref=e62] [cursor=pointer]:
+            - img [ref=e63]
+            - text: Действия
+          - button "Шаблоны" [ref=e65] [cursor=pointer]:
+            - img [ref=e66]
+            - text: Шаблоны
+        - generic [ref=e70]:
+          - paragraph [ref=e71]: Ничего не выбрано
+          - paragraph [ref=e72]:
+            - text: Включите режим «Дизайн» и
+            - text: кликните на элемент
+    - separator [ref=e73]
+  - region "Notifications alt+T"
+  - alert [ref=e75]
+```

@@ -15,8 +15,8 @@ const envSchema = z.object({
   // Hugging Face Token (optional for production, required for model downloads)
   HF_TOKEN: z.string().optional(),
 
-  // Black Forest Labs FLUX API Key (required for FLUX generation)
-  BFL_API_KEY: z.string().min(1, 'BFL_API_KEY is required for FLUX generation'),
+  // Black Forest Labs FLUX API Key (optional for FLUX generation)
+  BFL_API_KEY: z.string().optional(),
 
   // ComfyUI Service URL (default: http://127.0.0.1:8188)
   COMFY_URL: z.string().url().default('http://127.0.0.1:8188'),

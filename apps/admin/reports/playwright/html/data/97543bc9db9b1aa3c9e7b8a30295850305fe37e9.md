@@ -1,0 +1,56 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - generic [ref=e4]:
+    - separator [ref=e6]
+    - generic [ref=e7]:
+      - generic [ref=e8]:
+        - generic [ref=e9]:
+          - generic [ref=e10]:
+            - img [ref=e11]
+            - heading "Чат Билдера" [level=2] [ref=e13]
+            - button [ref=e15] [cursor=pointer]:
+              - img [ref=e16]
+          - paragraph [ref=e17]: Используйте слэш-команды для управления
+        - generic [ref=e18]:
+          - generic [ref=e19]: /gen image test sunset
+          - generic [ref=e20]: "🎨 Запущена генерация: \"test sunset...\" Проверьте панель Inspector для результата."
+        - generic [ref=e22]:
+          - textbox "Message" [active] [ref=e23]:
+            - /placeholder: Введите команду или вопрос... (Ctrl+K для фокуса)
+          - button [ref=e24] [cursor=pointer]:
+            - img [ref=e25]
+      - generic [ref=e28]:
+        - generic [ref=e29]:
+          - button "Просмотр" [ref=e30] [cursor=pointer]:
+            - img [ref=e31]
+            - text: Просмотр
+          - button "Дизайн" [ref=e34] [cursor=pointer]:
+            - img [ref=e35]
+            - text: Дизайн
+        - iframe [ref=e39]:
+          
+      - generic [ref=e40]:
+        - generic [ref=e41]:
+          - button "Содержимое" [ref=e42] [cursor=pointer]:
+            - img [ref=e43]
+            - text: Содержимое
+          - button "Стиль" [ref=e46] [cursor=pointer]:
+            - img [ref=e47]
+            - text: Стиль
+          - button "Действия" [ref=e53] [cursor=pointer]:
+            - img [ref=e54]
+            - text: Действия
+          - button "Шаблоны" [ref=e56] [cursor=pointer]:
+            - img [ref=e57]
+            - text: Шаблоны
+        - generic [ref=e61]:
+          - paragraph [ref=e62]: Ничего не выбрано
+          - paragraph [ref=e63]:
+            - text: Включите режим «Дизайн» и
+            - text: кликните на элемент
+    - separator [ref=e64]
+  - region "Notifications alt+T"
+  - alert [ref=e66]
+```

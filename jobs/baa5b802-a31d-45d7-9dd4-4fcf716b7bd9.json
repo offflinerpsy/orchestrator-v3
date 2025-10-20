@@ -1,0 +1,23 @@
+{
+  "id": "baa5b802-a31d-45d7-9dd4-4fcf716b7bd9",
+  "backend": "sdxl",
+  "status": "queued",
+  "input": {
+    "backend": "sdxl",
+    "prompt": "test sunset",
+    "params": {
+      "width": 1024,
+      "height": 1024
+    },
+    "runNow": true
+  },
+  "prompt": "test sunset",
+  "params": {
+    "width": 1024,
+    "height": 1024
+  },
+  "createdAt": "2025-10-20T22:18:48.828Z",
+  "logs": [
+    "Job created with backend: sdxl"
+  ]
+}

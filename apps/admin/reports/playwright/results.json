@@ -78,7 +78,7 @@
           "specs": [
             {
               "title": "should activate design mode via /design on command",
-              "ok": false,
+              "ok": true,
               "tags": [],
               "tests": [
                 {
@@ -91,53 +91,36 @@
                     {
                       "workerIndex": 0,
                       "parallelIndex": 0,
-                      "status": "failed",
-                      "duration": 9566,
-                      "error": {
-                        "message": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/builder-v0\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/builder-v0\", waiting until \"load\"\u001b[22m\n",
-                        "stack": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/builder-v0\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/builder-v0\", waiting until \"load\"\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts:16:16",
-                        "location": {
-                          "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts",
-                          "column": 16,
-                          "line": 16
-                        },
-                        "snippet": "\u001b[0m \u001b[90m 14 |\u001b[39m test\u001b[33m.\u001b[39mdescribe(\u001b[32m'Builder v0 — Design Mode'\u001b[39m\u001b[33m,\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m 15 |\u001b[39m   test(\u001b[32m'should activate design mode via /design on command'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 16 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/builder-v0'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 17 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\n \u001b[90m 18 |\u001b[39m     \n \u001b[90m 19 |\u001b[39m     \u001b[90m// Шаг 1: Найти chat input\u001b[39m\u001b[0m"
-                      },
-                      "errors": [
+                      "status": "passed",
+                      "duration": 6971,
+                      "errors": [],
+                      "stdout": [
                         {
-                          "location": {
-                            "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts",
-                            "column": 16,
-                            "line": 16
-                          },
-                          "message": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/builder-v0\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/builder-v0\", waiting until \"load\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 14 |\u001b[39m test\u001b[33m.\u001b[39mdescribe(\u001b[32m'Builder v0 — Design Mode'\u001b[39m\u001b[33m,\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m 15 |\u001b[39m   test(\u001b[32m'should activate design mode via /design on command'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 16 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/builder-v0'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 17 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\n \u001b[90m 18 |\u001b[39m     \n \u001b[90m 19 |\u001b[39m     \u001b[90m// Шаг 1: Найти chat input\u001b[39m\u001b[0m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts:16:16\u001b[22m"
+                          "text": "[REVISOR] Design overlay not found outside iframe, may be inside\n"
                         }
                       ],
-                      "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-20T21:47:32.919Z",
-                      "annotations": [],
-                      "attachments": [
+                      "steps": [
                         {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\design-mode-Builder-v0-—-D-d872e--mode-via-design-on-command-chromium\\test-failed-1.png"
+                          "title": "Type /design on command",
+                          "duration": 2180
                         },
                         {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\design-mode-Builder-v0-—-D-d872e--mode-via-design-on-command-chromium\\video.webm"
+                          "title": "Verify design overlay is active",
+                          "duration": 54
+                        },
+                        {
+                          "title": "Deactivate design mode",
+                          "duration": 1079
                         }
                       ],
-                      "errorLocation": {
-                        "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts",
-                        "column": 16,
-                        "line": 16
-                      }
+                      "startTime": "2025-10-20T22:18:44.798Z",
+                      "annotations": [],
+                      "attachments": []
                     }
                   ],
-                  "status": "unexpected"
+                  "status": "expected"
                 }
               ],
               "id": "55945d4776bf10cf79e7-ea742d138e4731e46391",
@@ -161,31 +144,47 @@
                       "workerIndex": 1,
                       "parallelIndex": 1,
                       "status": "failed",
-                      "duration": 4628,
+                      "duration": 12441,
                       "error": {
-                        "message": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/builder-v0\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/builder-v0\", waiting until \"load\"\u001b[22m\n",
-                        "stack": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/builder-v0\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/builder-v0\", waiting until \"load\"\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts:62:16",
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[role=\"tabpanel\"]')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[role=\"tabpanel\"]')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[role=\"tabpanel\"]')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[role=\"tabpanel\"]')\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts:79:31\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts:72:5",
                         "location": {
                           "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts",
-                          "column": 16,
-                          "line": 62
+                          "column": 31,
+                          "line": 79
                         },
-                        "snippet": "\u001b[0m \u001b[90m 60 |\u001b[39m   \n \u001b[90m 61 |\u001b[39m   test(\u001b[32m'should select element and show properties'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 62 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/builder-v0'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 63 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\n \u001b[90m 64 |\u001b[39m     \n \u001b[90m 65 |\u001b[39m     \u001b[90m// Активировать design mode\u001b[39m\u001b[0m"
+                        "snippet": "\u001b[0m \u001b[90m 77 |\u001b[39m       \u001b[90m// Проверяем, что Inspector показывает properties (правая панель)\u001b[39m\n \u001b[90m 78 |\u001b[39m       \u001b[36mconst\u001b[39m inspector \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'[role=\"tabpanel\"]'\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 79 |\u001b[39m       \u001b[36mawait\u001b[39m expect(inspector)\u001b[33m.\u001b[39mtoBeVisible()\n \u001b[90m    |\u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 80 |\u001b[39m       \n \u001b[90m 81 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mscreenshot({ path\u001b[33m:\u001b[39m \u001b[32m'reports/playwright/screenshots/design-04-element-selected.png'\u001b[39m })\n \u001b[90m 82 |\u001b[39m     })\u001b[0m"
                       },
                       "errors": [
                         {
                           "location": {
                             "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts",
-                            "column": 16,
-                            "line": 62
+                            "column": 31,
+                            "line": 79
                           },
-                          "message": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/builder-v0\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/builder-v0\", waiting until \"load\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 60 |\u001b[39m   \n \u001b[90m 61 |\u001b[39m   test(\u001b[32m'should select element and show properties'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 62 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/builder-v0'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 63 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\n \u001b[90m 64 |\u001b[39m     \n \u001b[90m 65 |\u001b[39m     \u001b[90m// Активировать design mode\u001b[39m\u001b[0m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts:62:16\u001b[22m"
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[role=\"tabpanel\"]')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[role=\"tabpanel\"]')\u001b[22m\n\n\n\u001b[0m \u001b[90m 77 |\u001b[39m       \u001b[90m// Проверяем, что Inspector показывает properties (правая панель)\u001b[39m\n \u001b[90m 78 |\u001b[39m       \u001b[36mconst\u001b[39m inspector \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'[role=\"tabpanel\"]'\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 79 |\u001b[39m       \u001b[36mawait\u001b[39m expect(inspector)\u001b[33m.\u001b[39mtoBeVisible()\n \u001b[90m    |\u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 80 |\u001b[39m       \n \u001b[90m 81 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mscreenshot({ path\u001b[33m:\u001b[39m \u001b[32m'reports/playwright/screenshots/design-04-element-selected.png'\u001b[39m })\n \u001b[90m 82 |\u001b[39m     })\u001b[0m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts:79:31\u001b[22m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts:72:5\u001b[22m"
                         }
                       ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-20T21:47:38.140Z",
+                      "steps": [
+                        {
+                          "title": "Select element via /select command",
+                          "duration": 6552,
+                          "error": {
+                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[role=\"tabpanel\"]')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[role=\"tabpanel\"]')\u001b[22m\n",
+                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[role=\"tabpanel\"]')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[role=\"tabpanel\"]')\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts:79:31\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts:72:5",
+                            "location": {
+                              "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts",
+                              "column": 31,
+                              "line": 79
+                            },
+                            "snippet": "\u001b[0m \u001b[90m 77 |\u001b[39m       \u001b[90m// Проверяем, что Inspector показывает properties (правая панель)\u001b[39m\n \u001b[90m 78 |\u001b[39m       \u001b[36mconst\u001b[39m inspector \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'[role=\"tabpanel\"]'\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 79 |\u001b[39m       \u001b[36mawait\u001b[39m expect(inspector)\u001b[33m.\u001b[39mtoBeVisible()\n \u001b[90m    |\u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 80 |\u001b[39m       \n \u001b[90m 81 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mscreenshot({ path\u001b[33m:\u001b[39m \u001b[32m'reports/playwright/screenshots/design-04-element-selected.png'\u001b[39m })\n \u001b[90m 82 |\u001b[39m     })\u001b[0m"
+                          }
+                        }
+                      ],
+                      "startTime": "2025-10-20T22:18:44.763Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -197,12 +196,17 @@
                           "name": "video",
                           "contentType": "video/webm",
                           "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\design-mode-Builder-v0-—-D-3a289-element-and-show-properties-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\design-mode-Builder-v0-—-D-3a289-element-and-show-properties-chromium\\error-context.md"
                         }
                       ],
                       "errorLocation": {
                         "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts",
-                        "column": 16,
-                        "line": 62
+                        "column": 31,
+                        "line": 79
                       }
                     }
                   ],
@@ -216,7 +220,7 @@
             },
             {
               "title": "should apply changes to element (runtime patch)",
-              "ok": false,
+              "ok": true,
               "tags": [],
               "tests": [
                 {
@@ -229,53 +233,28 @@
                     {
                       "workerIndex": 2,
                       "parallelIndex": 2,
-                      "status": "failed",
-                      "duration": 8123,
-                      "error": {
-                        "message": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/builder-v0\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/builder-v0\", waiting until \"load\"\u001b[22m\n",
-                        "stack": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/builder-v0\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/builder-v0\", waiting until \"load\"\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts:86:16",
-                        "location": {
-                          "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts",
-                          "column": 16,
-                          "line": 86
-                        },
-                        "snippet": "\u001b[0m \u001b[90m 84 |\u001b[39m   \n \u001b[90m 85 |\u001b[39m   test(\u001b[32m'should apply changes to element (runtime patch)'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 86 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/builder-v0'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 87 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\n \u001b[90m 88 |\u001b[39m     \n \u001b[90m 89 |\u001b[39m     \u001b[36mconst\u001b[39m chatInput \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByTestId(\u001b[32m'chat-input'\u001b[39m)\u001b[0m"
-                      },
-                      "errors": [
-                        {
-                          "location": {
-                            "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts",
-                            "column": 16,
-                            "line": 86
-                          },
-                          "message": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/builder-v0\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/builder-v0\", waiting until \"load\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 84 |\u001b[39m   \n \u001b[90m 85 |\u001b[39m   test(\u001b[32m'should apply changes to element (runtime patch)'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 86 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/builder-v0'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 87 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\n \u001b[90m 88 |\u001b[39m     \n \u001b[90m 89 |\u001b[39m     \u001b[36mconst\u001b[39m chatInput \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByTestId(\u001b[32m'chat-input'\u001b[39m)\u001b[0m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts:86:16\u001b[22m"
-                        }
-                      ],
+                      "status": "passed",
+                      "duration": 8952,
+                      "errors": [],
                       "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-10-20T21:47:33.102Z",
-                      "annotations": [],
-                      "attachments": [
+                      "stderr": [
                         {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\design-mode-Builder-v0-—-D-0b95b-s-to-element-runtime-patch--chromium\\test-failed-1.png"
-                        },
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\design-mode-Builder-v0-—-D-0b95b-s-to-element-runtime-patch--chromium\\video.webm"
+                          "text": "[REVISOR WARNING] /apply command did not patch iframe (expected behavior?)\n"
                         }
                       ],
-                      "errorLocation": {
-                        "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts",
-                        "column": 16,
-                        "line": 86
-                      }
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Apply innerHTML change",
+                          "duration": 2125
+                        }
+                      ],
+                      "startTime": "2025-10-20T22:18:44.833Z",
+                      "annotations": [],
+                      "attachments": []
                     }
                   ],
-                  "status": "unexpected"
+                  "status": "expected"
                 }
               ],
               "id": "55945d4776bf10cf79e7-a274972178f8bf8dcd03",
@@ -316,31 +295,51 @@
                       "workerIndex": 3,
                       "parallelIndex": 3,
                       "status": "failed",
-                      "duration": 6888,
+                      "duration": 16690,
                       "error": {
-                        "message": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/builder-v0\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/builder-v0\", waiting until \"load\"\u001b[22m\n",
-                        "stack": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/builder-v0\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/builder-v0\", waiting until \"load\"\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\generation-comfy.spec.ts:10:16",
+                        "message": "TimeoutError: locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('tab', { name: /галерея|gallery/i })\u001b[22m\n",
+                        "stack": "TimeoutError: locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('tab', { name: /галерея|gallery/i })\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\generation-comfy.spec.ts:25:24\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\generation-comfy.spec.ts:22:16",
                         "location": {
                           "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\generation-comfy.spec.ts",
-                          "column": 16,
-                          "line": 10
+                          "column": 24,
+                          "line": 25
                         },
-                        "snippet": "\u001b[0m \u001b[90m  8 |\u001b[39m test\u001b[33m.\u001b[39mdescribe(\u001b[32m'Builder v0 — ComfyUI Generation'\u001b[39m\u001b[33m,\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m  9 |\u001b[39m   test(\u001b[32m'should submit generation job and receive result'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 10 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/builder-v0'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 11 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\n \u001b[90m 12 |\u001b[39m     \n \u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Submit /gen image command'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\u001b[0m"
+                        "snippet": "\u001b[0m \u001b[90m 23 |\u001b[39m       \u001b[90m// Переключиться на таб \"Галерея\" в Inspector\u001b[39m\n \u001b[90m 24 |\u001b[39m       \u001b[36mconst\u001b[39m galleryTab \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'tab'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[35m/галерея|gallery/i\u001b[39m })\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 25 |\u001b[39m       \u001b[36mawait\u001b[39m galleryTab\u001b[33m.\u001b[39mclick()\n \u001b[90m    |\u001b[39m                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 26 |\u001b[39m       \n \u001b[90m 27 |\u001b[39m       \u001b[90m// Ждём появление job card (может быть queued/running)\u001b[39m\n \u001b[90m 28 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m5000\u001b[39m)\u001b[0m"
                       },
                       "errors": [
                         {
                           "location": {
                             "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\generation-comfy.spec.ts",
-                            "column": 16,
-                            "line": 10
+                            "column": 24,
+                            "line": 25
                           },
-                          "message": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/builder-v0\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/builder-v0\", waiting until \"load\"\u001b[22m\n\n\n\u001b[0m \u001b[90m  8 |\u001b[39m test\u001b[33m.\u001b[39mdescribe(\u001b[32m'Builder v0 — ComfyUI Generation'\u001b[39m\u001b[33m,\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m  9 |\u001b[39m   test(\u001b[32m'should submit generation job and receive result'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 10 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/builder-v0'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 11 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\n \u001b[90m 12 |\u001b[39m     \n \u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Submit /gen image command'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\generation-comfy.spec.ts:10:16\u001b[22m"
+                          "message": "TimeoutError: locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('tab', { name: /галерея|gallery/i })\u001b[22m\n\n\n\u001b[0m \u001b[90m 23 |\u001b[39m       \u001b[90m// Переключиться на таб \"Галерея\" в Inspector\u001b[39m\n \u001b[90m 24 |\u001b[39m       \u001b[36mconst\u001b[39m galleryTab \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'tab'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[35m/галерея|gallery/i\u001b[39m })\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 25 |\u001b[39m       \u001b[36mawait\u001b[39m galleryTab\u001b[33m.\u001b[39mclick()\n \u001b[90m    |\u001b[39m                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 26 |\u001b[39m       \n \u001b[90m 27 |\u001b[39m       \u001b[90m// Ждём появление job card (может быть queued/running)\u001b[39m\n \u001b[90m 28 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m5000\u001b[39m)\u001b[0m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\generation-comfy.spec.ts:25:24\u001b[22m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\generation-comfy.spec.ts:22:16\u001b[22m"
                         }
                       ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-20T21:47:33.258Z",
+                      "steps": [
+                        {
+                          "title": "Submit /gen image command",
+                          "duration": 3199
+                        },
+                        {
+                          "title": "Check gallery for new job",
+                          "duration": 10008,
+                          "error": {
+                            "message": "TimeoutError: locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('tab', { name: /галерея|gallery/i })\u001b[22m\n",
+                            "stack": "TimeoutError: locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('tab', { name: /галерея|gallery/i })\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\generation-comfy.spec.ts:25:24\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\generation-comfy.spec.ts:22:16",
+                            "location": {
+                              "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\generation-comfy.spec.ts",
+                              "column": 24,
+                              "line": 25
+                            },
+                            "snippet": "\u001b[0m \u001b[90m 23 |\u001b[39m       \u001b[90m// Переключиться на таб \"Галерея\" в Inspector\u001b[39m\n \u001b[90m 24 |\u001b[39m       \u001b[36mconst\u001b[39m galleryTab \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'tab'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[35m/галерея|gallery/i\u001b[39m })\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 25 |\u001b[39m       \u001b[36mawait\u001b[39m galleryTab\u001b[33m.\u001b[39mclick()\n \u001b[90m    |\u001b[39m                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 26 |\u001b[39m       \n \u001b[90m 27 |\u001b[39m       \u001b[90m// Ждём появление job card (может быть queued/running)\u001b[39m\n \u001b[90m 28 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m5000\u001b[39m)\u001b[0m"
+                          }
+                        }
+                      ],
+                      "startTime": "2025-10-20T22:18:44.825Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -352,12 +351,17 @@
                           "name": "video",
                           "contentType": "video/webm",
                           "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\generation-comfy-Builder-v-cb312-tion-job-and-receive-result-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\generation-comfy-Builder-v-cb312-tion-job-and-receive-result-chromium\\error-context.md"
                         }
                       ],
                       "errorLocation": {
                         "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\generation-comfy.spec.ts",
-                        "column": 16,
-                        "line": 10
+                        "column": 24,
+                        "line": 25
                       }
                     }
                   ],
@@ -388,7 +392,7 @@
           "specs": [
             {
               "title": "should render diagnostics page with system stats",
-              "ok": false,
+              "ok": true,
               "tags": [],
               "tests": [
                 {
@@ -401,69 +405,35 @@
                     {
                       "workerIndex": 4,
                       "parallelIndex": 4,
-                      "status": "failed",
-                      "duration": 6702,
-                      "error": {
-                        "message": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/diagnostics\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/diagnostics\", waiting until \"load\"\u001b[22m\n",
-                        "stack": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/diagnostics\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/diagnostics\", waiting until \"load\"\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts:11:18\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts:10:16",
-                        "location": {
-                          "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts",
-                          "column": 18,
-                          "line": 11
-                        },
-                        "snippet": "\u001b[0m \u001b[90m  9 |\u001b[39m   test(\u001b[32m'should render diagnostics page with system stats'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 10 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Navigate to /diagnostics'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 11 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/diagnostics'\u001b[39m)\n \u001b[90m    |\u001b[39m                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 12 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\n \u001b[90m 13 |\u001b[39m       \n \u001b[90m 14 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mscreenshot({ path\u001b[33m:\u001b[39m \u001b[32m'reports/playwright/screenshots/health-01-diagnostics.png'\u001b[39m\u001b[33m,\u001b[39m fullPage\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\u001b[0m"
-                      },
-                      "errors": [
+                      "status": "passed",
+                      "duration": 2268,
+                      "errors": [],
+                      "stdout": [
                         {
-                          "location": {
-                            "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts",
-                            "column": 18,
-                            "line": 11
-                          },
-                          "message": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/diagnostics\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/diagnostics\", waiting until \"load\"\u001b[22m\n\n\n\u001b[0m \u001b[90m  9 |\u001b[39m   test(\u001b[32m'should render diagnostics page with system stats'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 10 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Navigate to /diagnostics'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 11 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/diagnostics'\u001b[39m)\n \u001b[90m    |\u001b[39m                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 12 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\n \u001b[90m 13 |\u001b[39m       \n \u001b[90m 14 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mscreenshot({ path\u001b[33m:\u001b[39m \u001b[32m'reports/playwright/screenshots/health-01-diagnostics.png'\u001b[39m\u001b[33m,\u001b[39m fullPage\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\u001b[0m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts:11:18\u001b[22m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts:10:16\u001b[22m"
+                          "text": "[REVISOR] /diagnostics rendered 6292 chars\n"
+                        },
+                        {
+                          "text": "[REVISOR] Found 1 sections in /diagnostics\n"
                         }
                       ],
-                      "stdout": [],
                       "stderr": [],
                       "retry": 0,
                       "steps": [
                         {
                           "title": "Navigate to /diagnostics",
-                          "duration": 2148,
-                          "error": {
-                            "message": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/diagnostics\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/diagnostics\", waiting until \"load\"\u001b[22m\n",
-                            "stack": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/diagnostics\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/diagnostics\", waiting until \"load\"\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts:11:18\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts:10:16",
-                            "location": {
-                              "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts",
-                              "column": 18,
-                              "line": 11
-                            },
-                            "snippet": "\u001b[0m \u001b[90m  9 |\u001b[39m   test(\u001b[32m'should render diagnostics page with system stats'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 10 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Navigate to /diagnostics'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 11 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/diagnostics'\u001b[39m)\n \u001b[90m    |\u001b[39m                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 12 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\n \u001b[90m 13 |\u001b[39m       \n \u001b[90m 14 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mscreenshot({ path\u001b[33m:\u001b[39m \u001b[32m'reports/playwright/screenshots/health-01-diagnostics.png'\u001b[39m\u001b[33m,\u001b[39m fullPage\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\u001b[0m"
-                          }
-                        }
-                      ],
-                      "startTime": "2025-10-20T21:47:33.005Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\health-Builder-v0-—-Health-b5c07-tics-page-with-system-stats-chromium\\test-failed-1.png"
+                          "duration": 1555
                         },
                         {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\health-Builder-v0-—-Health-b5c07-tics-page-with-system-stats-chromium\\video.webm"
+                          "title": "Verify system_stats are displayed",
+                          "duration": 19
                         }
                       ],
-                      "errorLocation": {
-                        "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts",
-                        "column": 18,
-                        "line": 11
-                      }
+                      "startTime": "2025-10-20T22:18:44.786Z",
+                      "annotations": [],
+                      "attachments": []
                     }
                   ],
-                  "status": "unexpected"
+                  "status": "expected"
                 }
               ],
               "id": "760d72a3746ac5132f88-f5ad55b4897786063b3c",
@@ -473,7 +443,7 @@
             },
             {
               "title": "should show readable message if ComfyUI offline",
-              "ok": false,
+              "ok": true,
               "tags": [],
               "tests": [
                 {
@@ -486,53 +456,28 @@
                     {
                       "workerIndex": 5,
                       "parallelIndex": 5,
-                      "status": "failed",
-                      "duration": 5482,
-                      "error": {
-                        "message": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/diagnostics\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/diagnostics\", waiting until \"load\"\u001b[22m\n",
-                        "stack": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/diagnostics\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/diagnostics\", waiting until \"load\"\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts:38:16",
-                        "location": {
-                          "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts",
-                          "column": 16,
-                          "line": 38
-                        },
-                        "snippet": "\u001b[0m \u001b[90m 36 |\u001b[39m   test(\u001b[32m'should show readable message if ComfyUI offline'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 37 |\u001b[39m     \u001b[90m// Этот тест проверяет fallback — если ComfyUI оффлайн, должно быть понятное сообщение\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 38 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/diagnostics'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 39 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\n \u001b[90m 40 |\u001b[39m     \n \u001b[90m 41 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Check for offline message'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\u001b[0m"
-                      },
-                      "errors": [
+                      "status": "passed",
+                      "duration": 2401,
+                      "errors": [],
+                      "stdout": [
                         {
-                          "location": {
-                            "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts",
-                            "column": 16,
-                            "line": 38
-                          },
-                          "message": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/diagnostics\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/diagnostics\", waiting until \"load\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 36 |\u001b[39m   test(\u001b[32m'should show readable message if ComfyUI offline'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 37 |\u001b[39m     \u001b[90m// Этот тест проверяет fallback — если ComfyUI оффлайн, должно быть понятное сообщение\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 38 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/diagnostics'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 39 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\n \u001b[90m 40 |\u001b[39m     \n \u001b[90m 41 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Check for offline message'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts:38:16\u001b[22m"
+                          "text": "[REVISOR] ComfyUI appears online or no offline indicator\n"
                         }
                       ],
-                      "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-20T21:47:33.377Z",
-                      "annotations": [],
-                      "attachments": [
+                      "steps": [
                         {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\health-Builder-v0-—-Health-ea3ea--message-if-ComfyUI-offline-chromium\\test-failed-1.png"
-                        },
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\health-Builder-v0-—-Health-ea3ea--message-if-ComfyUI-offline-chromium\\video.webm"
+                          "title": "Check for offline message",
+                          "duration": 26
                         }
                       ],
-                      "errorLocation": {
-                        "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts",
-                        "column": 16,
-                        "line": 38
-                      }
+                      "startTime": "2025-10-20T22:18:44.819Z",
+                      "annotations": [],
+                      "attachments": []
                     }
                   ],
-                  "status": "unexpected"
+                  "status": "expected"
                 }
               ],
               "id": "760d72a3746ac5132f88-765a4d57b6b29264a7c5",
@@ -559,7 +504,7 @@
           "specs": [
             {
               "title": "should open queue modal and verify SSE connection",
-              "ok": false,
+              "ok": true,
               "tags": [],
               "tests": [
                 {
@@ -572,53 +517,32 @@
                     {
                       "workerIndex": 6,
                       "parallelIndex": 6,
-                      "status": "failed",
-                      "duration": 5893,
-                      "error": {
-                        "message": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/builder-v0\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/builder-v0\", waiting until \"load\"\u001b[22m\n",
-                        "stack": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/builder-v0\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/builder-v0\", waiting until \"load\"\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\jobs-queue.spec.ts:10:16",
-                        "location": {
-                          "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\jobs-queue.spec.ts",
-                          "column": 16,
-                          "line": 10
-                        },
-                        "snippet": "\u001b[0m \u001b[90m  8 |\u001b[39m test\u001b[33m.\u001b[39mdescribe(\u001b[32m'Builder v0 — Jobs Queue (SSE)'\u001b[39m\u001b[33m,\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m  9 |\u001b[39m   test(\u001b[32m'should open queue modal and verify SSE connection'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 10 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/builder-v0'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 11 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\n \u001b[90m 12 |\u001b[39m     \n \u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Open queue modal'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\u001b[0m"
-                      },
-                      "errors": [
+                      "status": "passed",
+                      "duration": 10770,
+                      "errors": [],
+                      "stdout": [
                         {
-                          "location": {
-                            "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\jobs-queue.spec.ts",
-                            "column": 16,
-                            "line": 10
-                          },
-                          "message": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/builder-v0\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/builder-v0\", waiting until \"load\"\u001b[22m\n\n\n\u001b[0m \u001b[90m  8 |\u001b[39m test\u001b[33m.\u001b[39mdescribe(\u001b[32m'Builder v0 — Jobs Queue (SSE)'\u001b[39m\u001b[33m,\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m  9 |\u001b[39m   test(\u001b[32m'should open queue modal and verify SSE connection'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 10 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/builder-v0'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 11 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\n \u001b[90m 12 |\u001b[39m     \n \u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Open queue modal'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\jobs-queue.spec.ts:10:16\u001b[22m"
+                          "text": "[REVISOR] Found 3 jobs in queue modal\n"
                         }
                       ],
-                      "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-20T21:47:33.390Z",
-                      "annotations": [],
-                      "attachments": [
+                      "steps": [
                         {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\jobs-queue-Builder-v0-—-Jo-8a6cb-l-and-verify-SSE-connection-chromium\\test-failed-1.png"
+                          "title": "Open queue modal",
+                          "duration": 2504
                         },
                         {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\jobs-queue-Builder-v0-—-Jo-8a6cb-l-and-verify-SSE-connection-chromium\\video.webm"
+                          "title": "Check SSE events in network",
+                          "duration": 5078
                         }
                       ],
-                      "errorLocation": {
-                        "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\jobs-queue.spec.ts",
-                        "column": 16,
-                        "line": 10
-                      }
+                      "startTime": "2025-10-20T22:18:44.892Z",
+                      "annotations": [],
+                      "attachments": []
                     }
                   ],
-                  "status": "unexpected"
+                  "status": "expected"
                 }
               ],
               "id": "0ed089dc7e8d248549ea-d1050d33f4034e1ccbef",
@@ -659,47 +583,63 @@
                       "workerIndex": 7,
                       "parallelIndex": 7,
                       "status": "failed",
-                      "duration": 5177,
+                      "duration": 8580,
                       "error": {
-                        "message": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/builder-v0\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/builder-v0\", waiting until \"load\"\u001b[22m\n",
-                        "stack": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/builder-v0\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/builder-v0\", waiting until \"load\"\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts:19:18\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts:18:16",
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[role=\"tablist\"]')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[role=\"tablist\"]')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[role=\"tablist\"]')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[role=\"tablist\"]')\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts:51:26\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts:48:16",
                         "location": {
                           "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts",
-                          "column": 18,
-                          "line": 19
+                          "column": 26,
+                          "line": 51
                         },
-                        "snippet": "\u001b[0m \u001b[90m 17 |\u001b[39m     \u001b[90m// Шаг 1: Открыть главную страницу Builder v0\u001b[39m\n \u001b[90m 18 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Navigate to /builder-v0'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 19 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/builder-v0'\u001b[39m)\n \u001b[90m    |\u001b[39m                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 20 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'/builder-v0'\u001b[39m)\n \u001b[90m 21 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\n \u001b[90m 22 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveTitle(\u001b[35m/Orchestrator/i\u001b[39m)\u001b[0m"
+                        "snippet": "\u001b[0m \u001b[90m 49 |\u001b[39m       \u001b[90m// Ищем радикс-табы или просто кнопки с ролью \"tab\"\u001b[39m\n \u001b[90m 50 |\u001b[39m       \u001b[36mconst\u001b[39m tabs \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'[role=\"tablist\"]'\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 51 |\u001b[39m       \u001b[36mawait\u001b[39m expect(tabs)\u001b[33m.\u001b[39mtoBeVisible()\n \u001b[90m    |\u001b[39m                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 52 |\u001b[39m       \n \u001b[90m 53 |\u001b[39m       \u001b[90m// Проверяем, что есть хотя бы один таб (например, \"Вывод\" или \"Галерея\")\u001b[39m\n \u001b[90m 54 |\u001b[39m       \u001b[36mconst\u001b[39m tabButtons \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'[role=\"tab\"]'\u001b[39m)\u001b[0m"
                       },
                       "errors": [
                         {
                           "location": {
                             "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts",
-                            "column": 18,
-                            "line": 19
+                            "column": 26,
+                            "line": 51
                           },
-                          "message": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/builder-v0\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/builder-v0\", waiting until \"load\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 17 |\u001b[39m     \u001b[90m// Шаг 1: Открыть главную страницу Builder v0\u001b[39m\n \u001b[90m 18 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Navigate to /builder-v0'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 19 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/builder-v0'\u001b[39m)\n \u001b[90m    |\u001b[39m                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 20 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'/builder-v0'\u001b[39m)\n \u001b[90m 21 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\n \u001b[90m 22 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveTitle(\u001b[35m/Orchestrator/i\u001b[39m)\u001b[0m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts:19:18\u001b[22m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts:18:16\u001b[22m"
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[role=\"tablist\"]')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[role=\"tablist\"]')\u001b[22m\n\n\n\u001b[0m \u001b[90m 49 |\u001b[39m       \u001b[90m// Ищем радикс-табы или просто кнопки с ролью \"tab\"\u001b[39m\n \u001b[90m 50 |\u001b[39m       \u001b[36mconst\u001b[39m tabs \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'[role=\"tablist\"]'\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 51 |\u001b[39m       \u001b[36mawait\u001b[39m expect(tabs)\u001b[33m.\u001b[39mtoBeVisible()\n \u001b[90m    |\u001b[39m                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 52 |\u001b[39m       \n \u001b[90m 53 |\u001b[39m       \u001b[90m// Проверяем, что есть хотя бы один таб (например, \"Вывод\" или \"Галерея\")\u001b[39m\n \u001b[90m 54 |\u001b[39m       \u001b[36mconst\u001b[39m tabButtons \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'[role=\"tab\"]'\u001b[39m)\u001b[0m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts:51:26\u001b[22m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts:48:16\u001b[22m"
                         }
                       ],
-                      "stdout": [],
+                      "stdout": [
+                        {
+                          "text": "[REVISOR] Canvas iframe found and visible\n"
+                        }
+                      ],
                       "stderr": [],
                       "retry": 0,
                       "steps": [
                         {
                           "title": "Navigate to /builder-v0",
-                          "duration": 2148,
+                          "duration": 2702
+                        },
+                        {
+                          "title": "Verify ChatSidebar exists",
+                          "duration": 105
+                        },
+                        {
+                          "title": "Verify CanvasPreview iframe loaded",
+                          "duration": 88
+                        },
+                        {
+                          "title": "Verify Inspector tabs exist",
+                          "duration": 5010,
                           "error": {
-                            "message": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/builder-v0\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/builder-v0\", waiting until \"load\"\u001b[22m\n",
-                            "stack": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/builder-v0\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/builder-v0\", waiting until \"load\"\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts:19:18\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts:18:16",
+                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[role=\"tablist\"]')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[role=\"tablist\"]')\u001b[22m\n",
+                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[role=\"tablist\"]')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[role=\"tablist\"]')\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts:51:26\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts:48:16",
                             "location": {
                               "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts",
-                              "column": 18,
-                              "line": 19
+                              "column": 26,
+                              "line": 51
                             },
-                            "snippet": "\u001b[0m \u001b[90m 17 |\u001b[39m     \u001b[90m// Шаг 1: Открыть главную страницу Builder v0\u001b[39m\n \u001b[90m 18 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Navigate to /builder-v0'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 19 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/builder-v0'\u001b[39m)\n \u001b[90m    |\u001b[39m                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 20 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'/builder-v0'\u001b[39m)\n \u001b[90m 21 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\n \u001b[90m 22 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveTitle(\u001b[35m/Orchestrator/i\u001b[39m)\u001b[0m"
+                            "snippet": "\u001b[0m \u001b[90m 49 |\u001b[39m       \u001b[90m// Ищем радикс-табы или просто кнопки с ролью \"tab\"\u001b[39m\n \u001b[90m 50 |\u001b[39m       \u001b[36mconst\u001b[39m tabs \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'[role=\"tablist\"]'\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 51 |\u001b[39m       \u001b[36mawait\u001b[39m expect(tabs)\u001b[33m.\u001b[39mtoBeVisible()\n \u001b[90m    |\u001b[39m                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 52 |\u001b[39m       \n \u001b[90m 53 |\u001b[39m       \u001b[90m// Проверяем, что есть хотя бы один таб (например, \"Вывод\" или \"Галерея\")\u001b[39m\n \u001b[90m 54 |\u001b[39m       \u001b[36mconst\u001b[39m tabButtons \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'[role=\"tab\"]'\u001b[39m)\u001b[0m"
                           }
                         }
                       ],
-                      "startTime": "2025-10-20T21:47:37.944Z",
+                      "startTime": "2025-10-20T22:18:44.873Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -711,12 +651,17 @@
                           "name": "video",
                           "contentType": "video/webm",
                           "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\sanity-Builder-v0-—-Sanity-d10b0-main-page-with-three-panels-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\sanity-Builder-v0-—-Sanity-d10b0-main-page-with-three-panels-chromium\\error-context.md"
                         }
                       ],
                       "errorLocation": {
                         "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts",
-                        "column": 18,
-                        "line": 19
+                        "column": 26,
+                        "line": 51
                       }
                     }
                   ],
@@ -730,66 +675,59 @@
             },
             {
               "title": "should toggle between modes (Preview/Design)",
-              "ok": false,
+              "ok": true,
               "tags": [],
               "tests": [
                 {
                   "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "location": {
+                        "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts",
+                        "line": 117,
+                        "column": 12
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
                   "projectId": "chromium",
                   "projectName": "chromium",
                   "results": [
                     {
-                      "workerIndex": 8,
-                      "parallelIndex": 4,
-                      "status": "failed",
-                      "duration": 3028,
-                      "error": {
-                        "message": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/builder-v0\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/builder-v0\", waiting until \"load\"\u001b[22m\n",
-                        "stack": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/builder-v0\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/builder-v0\", waiting until \"load\"\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts:100:16",
-                        "location": {
-                          "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts",
-                          "column": 16,
-                          "line": 100
-                        },
-                        "snippet": "\u001b[0m \u001b[90m  98 |\u001b[39m\n \u001b[90m  99 |\u001b[39m   test(\u001b[32m'should toggle between modes (Preview/Design)'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 100 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/builder-v0'\u001b[39m)\n \u001b[90m     |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 101 |\u001b[39m     \n \u001b[90m 102 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Wait for page load'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m 103 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\u001b[0m"
-                      },
-                      "errors": [
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
+                      "status": "skipped",
+                      "duration": 2870,
+                      "errors": [],
+                      "stdout": [
                         {
-                          "location": {
-                            "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts",
-                            "column": 16,
-                            "line": 100
-                          },
-                          "message": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3002/builder-v0\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/builder-v0\", waiting until \"load\"\u001b[22m\n\n\n\u001b[0m \u001b[90m  98 |\u001b[39m\n \u001b[90m  99 |\u001b[39m   test(\u001b[32m'should toggle between modes (Preview/Design)'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 100 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/builder-v0'\u001b[39m)\n \u001b[90m     |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 101 |\u001b[39m     \n \u001b[90m 102 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Wait for page load'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m 103 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\u001b[0m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts:100:16\u001b[22m"
+                          "text": "[REVISOR] No visible mode toggle button — design mode activated via /design command\n"
                         }
                       ],
-                      "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-20T21:47:46.561Z",
-                      "annotations": [],
-                      "attachments": [
+                      "steps": [
                         {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\sanity-Builder-v0-—-Sanity-58817-tween-modes-Preview-Design--chromium\\test-failed-1.png"
-                        },
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\sanity-Builder-v0-—-Sanity-58817-tween-modes-Preview-Design--chromium\\video.webm"
+                          "title": "Wait for page load",
+                          "duration": 506
                         }
                       ],
-                      "errorLocation": {
-                        "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts",
-                        "column": 16,
-                        "line": 100
-                      }
+                      "startTime": "2025-10-20T22:18:47.656Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "location": {
+                            "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts",
+                            "line": 117,
+                            "column": 12
+                          }
+                        }
+                      ],
+                      "attachments": []
                     }
                   ],
-                  "status": "unexpected"
+                  "status": "skipped"
                 }
               ],
               "id": "c1bc3b82f35bec97f7ef-7c68d6290c2f2ea44c15",
@@ -804,11 +742,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-10-20T21:47:26.213Z",
-    "duration": 23884.642,
-    "expected": 0,
-    "skipped": 0,
-    "unexpected": 9,
+    "startTime": "2025-10-20T22:18:43.502Z",
+    "duration": 18613.713,
+    "expected": 5,
+    "skipped": 1,
+    "unexpected": 3,
     "flaky": 0
   }
 }
