@@ -8,7 +8,10 @@
     "build": "next build",
     "prestart": "node scripts/check-port.js",
     "start": "cross-env NODE_OPTIONS=\"--trace-uncaught --unhandled-rejections=strict\" next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:smoke": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:report": "playwright show-report"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -39,6 +42,7 @@
     "zod": "^4.1.12"
   },
   "devDependencies": {
+    "@playwright/test": "^1.56.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
