@@ -13,7 +13,7 @@ import { test, expect } from '@playwright/test'
 
 test.describe('Builder v0 — Design Mode', () => {
   test('should activate design mode via /design on command', async ({ page }) => {
-    await page.goto('/')
+    await page.goto('/builder-v0')
     
     // Шаг 1: Найти chat input
     await test.step('Type /design on command', async () => {
@@ -58,7 +58,7 @@ test.describe('Builder v0 — Design Mode', () => {
   })
   
   test('should select element and show properties', async ({ page }) => {
-    await page.goto('/')
+    await page.goto('/builder-v0')
     
     // Активировать design mode
     const chatInput = page.getByPlaceholder(/сообщение|message/i)
@@ -81,7 +81,7 @@ test.describe('Builder v0 — Design Mode', () => {
   })
   
   test('should apply changes to element (runtime patch)', async ({ page }) => {
-    await page.goto('/')
+    await page.goto('/builder-v0')
     
     const chatInput = page.getByPlaceholder(/сообщение|message/i)
     

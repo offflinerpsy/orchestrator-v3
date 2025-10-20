@@ -1,0 +1,48 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - heading "Diagnostics" [level=1] [ref=e6]
+      - paragraph [ref=e7]: System health checks and service status
+    - generic [ref=e10]:
+      - img [ref=e11]
+      - text: Loading system status...
+    - generic [ref=e15]:
+      - generic [ref=e16]: Generation Stats
+      - generic [ref=e17]: Loading...
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - generic [ref=e20]:
+          - generic [ref=e21]:
+            - img [ref=e22]
+            - text: Path Validation
+          - generic [ref=e24]: Проверка путей из paths.json и конфигурации ComfyUI
+        - generic [ref=e25]:
+          - button "Recheck Paths" [disabled]:
+            - img
+            - text: Recheck Paths
+      - generic [ref=e26]:
+        - generic [ref=e28]:
+          - img [ref=e29]
+          - text: ComfyUI Status
+        - generic [ref=e33]:
+          - generic [ref=e34]:
+            - img [ref=e35]
+            - text: Offline
+          - generic [ref=e37]: "Проверьте, что ComfyUI запущен на 127.0.0.1:8188 (endpoint: /system_stats)."
+          - generic [ref=e39]:
+            - button [disabled]:
+              - img
+            - button "Start" [disabled]:
+              - img
+              - text: Start
+            - button "Stop" [disabled]:
+              - img
+              - text: Stop
+    - generic [ref=e41]:
+      - generic [ref=e43]: Примечание
+      - generic [ref=e44]: Данные берутся из файла paths.json в корне проекта и из API ComfyUI.
+  - region "Notifications alt+T"
+```

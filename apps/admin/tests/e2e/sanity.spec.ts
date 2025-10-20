@@ -14,9 +14,9 @@ import { test, expect } from '@playwright/test'
 
 test.describe('Builder v0 — Sanity Check', () => {
   test('should render main page with three panels', async ({ page }) => {
-    // Шаг 1: Открыть главную страницу
-    await test.step('Navigate to /', async () => {
-      await page.goto('/')
+    // Шаг 1: Открыть главную страницу Builder v0
+    await test.step('Navigate to /builder-v0', async () => {
+      await page.goto('/builder-v0')
       await expect(page).toHaveTitle(/Orchestrator/i)
     })
 
@@ -76,7 +76,7 @@ test.describe('Builder v0 — Sanity Check', () => {
 
     // Шаг 5: Проверить CSP/X-Frame-Options заголовки
     await test.step('Check CSP and X-Frame-Options headers', async () => {
-      const response = await page.goto('/')
+      const response = await page.goto('/builder-v0')
       const headers = response?.headers() || {}
       
       const csp = headers['content-security-policy'] || 'NOT_SET'
@@ -107,7 +107,7 @@ test.describe('Builder v0 — Sanity Check', () => {
   })
 
   test('should toggle between modes (Preview/Design)', async ({ page }) => {
-    await page.goto('/')
+    await page.goto('/builder-v0')
     
     await test.step('Wait for page load', async () => {
       await page.waitForLoadState('networkidle')

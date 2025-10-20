@@ -1,0 +1,48 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - heading "Orchestrator V6" [level=1] [ref=e6]
+      - paragraph [ref=e7]: Ultra Builder — Your AI-powered design & code generation suite
+      - generic [ref=e8]:
+        - button "Запуск системы" [ref=e9] [cursor=pointer]:
+          - img
+          - text: Запуск системы
+        - link "Open Builder" [ref=e10] [cursor=pointer]:
+          - /url: /builder
+          - button "Open Builder" [ref=e11]:
+            - img
+            - text: Open Builder
+            - img
+    - generic [ref=e31]:
+      - generic [ref=e32]:
+        - generic [ref=e34]: Quick Actions
+        - generic [ref=e35]:
+          - link "Open Builder" [ref=e36] [cursor=pointer]:
+            - /url: /builder
+            - button "Open Builder" [ref=e37]:
+              - img
+              - text: Open Builder
+          - link "System Status" [ref=e38] [cursor=pointer]:
+            - /url: /status
+            - button "System Status" [ref=e39]:
+              - img
+              - text: System Status
+          - link "Import from Tilda" [ref=e40] [cursor=pointer]:
+            - /url: /site/import
+            - button "Import from Tilda" [ref=e41]:
+              - img
+              - text: Import from Tilda
+      - generic [ref=e42]:
+        - generic [ref=e44]: Documentation
+        - generic [ref=e45]:
+          - link "→ v0 UX Patterns" [ref=e46] [cursor=pointer]:
+            - /url: /docs/v0-ux-notes.md
+          - link "→ API Resources" [ref=e47] [cursor=pointer]:
+            - /url: /docs/links.md
+          - link "→ GitHub Repository" [ref=e48] [cursor=pointer]:
+            - /url: https://github.com
+  - region "Notifications alt+T"
+```

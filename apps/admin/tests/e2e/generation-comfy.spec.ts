@@ -7,7 +7,7 @@ import { test, expect } from '@playwright/test'
 
 test.describe('Builder v0 — ComfyUI Generation', () => {
   test('should submit generation job and receive result', async ({ page }) => {
-    await page.goto('/')
+    await page.goto('/builder-v0')
     
     await test.step('Submit /gen image command', async () => {
       const chatInput = page.getByPlaceholder(/сообщение|message/i)

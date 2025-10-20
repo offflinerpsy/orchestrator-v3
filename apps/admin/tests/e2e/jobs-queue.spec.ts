@@ -7,7 +7,7 @@ import { test, expect } from '@playwright/test'
 
 test.describe('Builder v0 — Jobs Queue (SSE)', () => {
   test('should open queue modal and verify SSE connection', async ({ page }) => {
-    await page.goto('/')
+    await page.goto('/builder-v0')
     
     await test.step('Open queue modal', async () => {
       // Ищем ≡ меню или кнопку "Очередь задач"
