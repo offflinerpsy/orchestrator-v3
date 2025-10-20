@@ -3,46 +3,65 @@
 ```yaml
 - generic [active] [ref=e1]:
   - generic [ref=e4]:
-    - generic [ref=e5]:
-      - heading "Orchestrator V6" [level=1] [ref=e6]
-      - paragraph [ref=e7]: Ultra Builder — Your AI-powered design & code generation suite
+    - separator [ref=e6]
+    - generic [ref=e7]:
       - generic [ref=e8]:
-        - button "Запуск системы" [ref=e9] [cursor=pointer]:
-          - img
-          - text: Запуск системы
-        - link "Open Builder" [ref=e10] [cursor=pointer]:
-          - /url: /builder
-          - button "Open Builder" [ref=e11]:
-            - img
-            - text: Open Builder
-            - img
-    - generic [ref=e31]:
-      - generic [ref=e32]:
-        - generic [ref=e34]: Quick Actions
-        - generic [ref=e35]:
-          - link "Open Builder" [ref=e36] [cursor=pointer]:
-            - /url: /builder
-            - button "Open Builder" [ref=e37]:
-              - img
-              - text: Open Builder
-          - link "System Status" [ref=e38] [cursor=pointer]:
-            - /url: /status
-            - button "System Status" [ref=e39]:
-              - img
-              - text: System Status
-          - link "Import from Tilda" [ref=e40] [cursor=pointer]:
-            - /url: /site/import
-            - button "Import from Tilda" [ref=e41]:
-              - img
-              - text: Import from Tilda
-      - generic [ref=e42]:
-        - generic [ref=e44]: Documentation
-        - generic [ref=e45]:
-          - link "→ v0 UX Patterns" [ref=e46] [cursor=pointer]:
-            - /url: /docs/v0-ux-notes.md
-          - link "→ API Resources" [ref=e47] [cursor=pointer]:
-            - /url: /docs/links.md
-          - link "→ GitHub Repository" [ref=e48] [cursor=pointer]:
-            - /url: https://github.com
+        - generic [ref=e9]:
+          - generic [ref=e10]:
+            - img [ref=e11]
+            - heading "Чат Билдера" [level=2] [ref=e13]
+            - button [ref=e15] [cursor=pointer]:
+              - img [ref=e16]
+          - paragraph [ref=e17]: Используйте слэш-команды для управления
+        - generic [ref=e19]:
+          - paragraph [ref=e20]: "Доступные команды:"
+          - list [ref=e21]:
+            - listitem [ref=e22]:
+              - code [ref=e23]: /design on
+              - text: — режим дизайна
+            - listitem [ref=e24]:
+              - code [ref=e25]: /select h1
+              - text: — выбрать элемент
+            - listitem [ref=e26]:
+              - code [ref=e27]: /gen image закат
+              - text: — сгенерировать картинку
+            - listitem [ref=e28]:
+              - code [ref=e29]: /apply
+              - text: — применить изменения
+        - generic [ref=e31]:
+          - textbox "Введите команду или вопрос... (Ctrl+K для фокуса)" [ref=e32]
+          - button [ref=e33] [cursor=pointer]:
+            - img [ref=e34]
+      - generic [ref=e37]:
+        - generic [ref=e38]:
+          - button "Просмотр" [ref=e39] [cursor=pointer]:
+            - img [ref=e40]
+            - text: Просмотр
+          - button "Дизайн" [ref=e43] [cursor=pointer]:
+            - img [ref=e44]
+            - text: Дизайн
+        - iframe [ref=e48]:
+          
+      - generic [ref=e49]:
+        - generic [ref=e50]:
+          - button "Содержимое" [ref=e51] [cursor=pointer]:
+            - img [ref=e52]
+            - text: Содержимое
+          - button "Стиль" [ref=e55] [cursor=pointer]:
+            - img [ref=e56]
+            - text: Стиль
+          - button "Действия" [ref=e62] [cursor=pointer]:
+            - img [ref=e63]
+            - text: Действия
+          - button "Шаблоны" [ref=e65] [cursor=pointer]:
+            - img [ref=e66]
+            - text: Шаблоны
+        - generic [ref=e70]:
+          - paragraph [ref=e71]: Ничего не выбрано
+          - paragraph [ref=e72]:
+            - text: Включите режим «Дизайн» и
+            - text: кликните на элемент
+    - separator [ref=e73]
   - region "Notifications alt+T"
+  - alert [ref=e75]
 ```

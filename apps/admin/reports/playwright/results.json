@@ -92,33 +92,54 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 58704,
+                      "duration": 20133,
                       "error": {
-                        "message": "TimeoutError: page.goto: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/\", waiting until \"load\"\u001b[22m\n",
-                        "stack": "TimeoutError: page.goto: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/\", waiting until \"load\"\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts:16:16",
+                        "message": "TimeoutError: locator.fill: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByPlaceholder(/сообщение|message/i)\u001b[22m\n",
+                        "stack": "TimeoutError: locator.fill: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByPlaceholder(/сообщение|message/i)\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts:21:23\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts:19:16",
                         "location": {
                           "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts",
-                          "column": 16,
-                          "line": 16
+                          "column": 23,
+                          "line": 21
                         },
-                        "snippet": "\u001b[0m \u001b[90m 14 |\u001b[39m test\u001b[33m.\u001b[39mdescribe(\u001b[32m'Builder v0 — Design Mode'\u001b[39m\u001b[33m,\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m 15 |\u001b[39m   test(\u001b[32m'should activate design mode via /design on command'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 16 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 17 |\u001b[39m     \n \u001b[90m 18 |\u001b[39m     \u001b[90m// Шаг 1: Найти chat input\u001b[39m\n \u001b[90m 19 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Type /design on command'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\u001b[0m"
+                        "snippet": "\u001b[0m \u001b[90m 19 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Type /design on command'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m 20 |\u001b[39m       \u001b[36mconst\u001b[39m chatInput \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[35m/сообщение|message/i\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 21 |\u001b[39m       \u001b[36mawait\u001b[39m chatInput\u001b[33m.\u001b[39mfill(\u001b[32m'/design on'\u001b[39m)\n \u001b[90m    |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 22 |\u001b[39m       \u001b[36mawait\u001b[39m chatInput\u001b[33m.\u001b[39mpress(\u001b[32m'Enter'\u001b[39m)\n \u001b[90m 23 |\u001b[39m       \n \u001b[90m 24 |\u001b[39m       \u001b[90m// Ждём 2 секунды (чтобы overlay активировался)\u001b[39m\u001b[0m"
                       },
                       "errors": [
                         {
                           "location": {
                             "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts",
-                            "column": 16,
-                            "line": 16
+                            "column": 23,
+                            "line": 21
                           },
-                          "message": "TimeoutError: page.goto: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/\", waiting until \"load\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 14 |\u001b[39m test\u001b[33m.\u001b[39mdescribe(\u001b[32m'Builder v0 — Design Mode'\u001b[39m\u001b[33m,\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m 15 |\u001b[39m   test(\u001b[32m'should activate design mode via /design on command'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 16 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 17 |\u001b[39m     \n \u001b[90m 18 |\u001b[39m     \u001b[90m// Шаг 1: Найти chat input\u001b[39m\n \u001b[90m 19 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Type /design on command'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts:16:16\u001b[22m"
+                          "message": "TimeoutError: locator.fill: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByPlaceholder(/сообщение|message/i)\u001b[22m\n\n\n\u001b[0m \u001b[90m 19 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Type /design on command'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m 20 |\u001b[39m       \u001b[36mconst\u001b[39m chatInput \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[35m/сообщение|message/i\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 21 |\u001b[39m       \u001b[36mawait\u001b[39m chatInput\u001b[33m.\u001b[39mfill(\u001b[32m'/design on'\u001b[39m)\n \u001b[90m    |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 22 |\u001b[39m       \u001b[36mawait\u001b[39m chatInput\u001b[33m.\u001b[39mpress(\u001b[32m'Enter'\u001b[39m)\n \u001b[90m 23 |\u001b[39m       \n \u001b[90m 24 |\u001b[39m       \u001b[90m// Ждём 2 секунды (чтобы overlay активировался)\u001b[39m\u001b[0m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts:21:23\u001b[22m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts:19:16\u001b[22m"
                         }
                       ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-20T21:23:28.762Z",
+                      "steps": [
+                        {
+                          "title": "Type /design on command",
+                          "duration": 10089,
+                          "error": {
+                            "message": "TimeoutError: locator.fill: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByPlaceholder(/сообщение|message/i)\u001b[22m\n",
+                            "stack": "TimeoutError: locator.fill: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByPlaceholder(/сообщение|message/i)\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts:21:23\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts:19:16",
+                            "location": {
+                              "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts",
+                              "column": 23,
+                              "line": 21
+                            },
+                            "snippet": "\u001b[0m \u001b[90m 19 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Type /design on command'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m 20 |\u001b[39m       \u001b[36mconst\u001b[39m chatInput \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[35m/сообщение|message/i\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 21 |\u001b[39m       \u001b[36mawait\u001b[39m chatInput\u001b[33m.\u001b[39mfill(\u001b[32m'/design on'\u001b[39m)\n \u001b[90m    |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 22 |\u001b[39m       \u001b[36mawait\u001b[39m chatInput\u001b[33m.\u001b[39mpress(\u001b[32m'Enter'\u001b[39m)\n \u001b[90m 23 |\u001b[39m       \n \u001b[90m 24 |\u001b[39m       \u001b[90m// Ждём 2 секунды (чтобы overlay активировался)\u001b[39m\u001b[0m"
+                          }
+                        }
+                      ],
+                      "startTime": "2025-10-20T21:28:20.245Z",
                       "annotations": [],
                       "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\design-mode-Builder-v0-—-D-d872e--mode-via-design-on-command-chromium\\test-failed-1.png"
+                        },
                         {
                           "name": "video",
                           "contentType": "video/webm",
@@ -132,8 +153,8 @@
                       ],
                       "errorLocation": {
                         "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts",
-                        "column": 16,
-                        "line": 16
+                        "column": 23,
+                        "line": 21
                       }
                     }
                   ],
@@ -161,36 +182,43 @@
                       "workerIndex": 1,
                       "parallelIndex": 1,
                       "status": "failed",
-                      "duration": 55223,
+                      "duration": 19657,
                       "error": {
-                        "message": "TimeoutError: page.goto: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/\", waiting until \"load\"\u001b[22m\n",
-                        "stack": "TimeoutError: page.goto: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/\", waiting until \"load\"\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts:61:16",
+                        "message": "TimeoutError: locator.fill: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByPlaceholder(/сообщение|message/i)\u001b[22m\n",
+                        "stack": "TimeoutError: locator.fill: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByPlaceholder(/сообщение|message/i)\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts:65:21",
                         "location": {
                           "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts",
-                          "column": 16,
-                          "line": 61
+                          "column": 21,
+                          "line": 65
                         },
-                        "snippet": "\u001b[0m \u001b[90m 59 |\u001b[39m   \n \u001b[90m 60 |\u001b[39m   test(\u001b[32m'should select element and show properties'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 61 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 62 |\u001b[39m     \n \u001b[90m 63 |\u001b[39m     \u001b[90m// Активировать design mode\u001b[39m\n \u001b[90m 64 |\u001b[39m     \u001b[36mconst\u001b[39m chatInput \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[35m/сообщение|message/i\u001b[39m)\u001b[0m"
+                        "snippet": "\u001b[0m \u001b[90m 63 |\u001b[39m     \u001b[90m// Активировать design mode\u001b[39m\n \u001b[90m 64 |\u001b[39m     \u001b[36mconst\u001b[39m chatInput \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[35m/сообщение|message/i\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 65 |\u001b[39m     \u001b[36mawait\u001b[39m chatInput\u001b[33m.\u001b[39mfill(\u001b[32m'/design on'\u001b[39m)\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 66 |\u001b[39m     \u001b[36mawait\u001b[39m chatInput\u001b[33m.\u001b[39mpress(\u001b[32m'Enter'\u001b[39m)\n \u001b[90m 67 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m2000\u001b[39m)\n \u001b[90m 68 |\u001b[39m     \u001b[0m"
                       },
                       "errors": [
                         {
                           "location": {
                             "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts",
-                            "column": 16,
-                            "line": 61
+                            "column": 21,
+                            "line": 65
                           },
-                          "message": "TimeoutError: page.goto: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/\", waiting until \"load\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 59 |\u001b[39m   \n \u001b[90m 60 |\u001b[39m   test(\u001b[32m'should select element and show properties'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 61 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 62 |\u001b[39m     \n \u001b[90m 63 |\u001b[39m     \u001b[90m// Активировать design mode\u001b[39m\n \u001b[90m 64 |\u001b[39m     \u001b[36mconst\u001b[39m chatInput \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[35m/сообщение|message/i\u001b[39m)\u001b[0m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts:61:16\u001b[22m"
-                        },
-                        {
-                          "message": "\u001b[31mTearing down \"context\" exceeded the test timeout of 30000ms.\u001b[39m"
+                          "message": "TimeoutError: locator.fill: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByPlaceholder(/сообщение|message/i)\u001b[22m\n\n\n\u001b[0m \u001b[90m 63 |\u001b[39m     \u001b[90m// Активировать design mode\u001b[39m\n \u001b[90m 64 |\u001b[39m     \u001b[36mconst\u001b[39m chatInput \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[35m/сообщение|message/i\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 65 |\u001b[39m     \u001b[36mawait\u001b[39m chatInput\u001b[33m.\u001b[39mfill(\u001b[32m'/design on'\u001b[39m)\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 66 |\u001b[39m     \u001b[36mawait\u001b[39m chatInput\u001b[33m.\u001b[39mpress(\u001b[32m'Enter'\u001b[39m)\n \u001b[90m 67 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m2000\u001b[39m)\n \u001b[90m 68 |\u001b[39m     \u001b[0m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts:65:21\u001b[22m"
                         }
                       ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-20T21:23:28.505Z",
+                      "startTime": "2025-10-20T21:28:20.805Z",
                       "annotations": [],
                       "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\design-mode-Builder-v0-—-D-3a289-element-and-show-properties-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\design-mode-Builder-v0-—-D-3a289-element-and-show-properties-chromium\\video.webm"
+                        },
                         {
                           "name": "error-context",
                           "contentType": "text/markdown",
@@ -199,8 +227,8 @@
                       ],
                       "errorLocation": {
                         "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts",
-                        "column": 16,
-                        "line": 61
+                        "column": 21,
+                        "line": 65
                       }
                     }
                   ],
@@ -228,36 +256,43 @@
                       "workerIndex": 2,
                       "parallelIndex": 2,
                       "status": "failed",
-                      "duration": 52874,
+                      "duration": 18659,
                       "error": {
-                        "message": "TimeoutError: page.goto: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/\", waiting until \"load\"\u001b[22m\n",
-                        "stack": "TimeoutError: page.goto: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/\", waiting until \"load\"\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts:84:16",
+                        "message": "TimeoutError: locator.fill: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByPlaceholder(/сообщение|message/i)\u001b[22m\n",
+                        "stack": "TimeoutError: locator.fill: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByPlaceholder(/сообщение|message/i)\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts:89:21",
                         "location": {
                           "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts",
-                          "column": 16,
-                          "line": 84
+                          "column": 21,
+                          "line": 89
                         },
-                        "snippet": "\u001b[0m \u001b[90m 82 |\u001b[39m   \n \u001b[90m 83 |\u001b[39m   test(\u001b[32m'should apply changes to element (runtime patch)'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 84 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 85 |\u001b[39m     \n \u001b[90m 86 |\u001b[39m     \u001b[36mconst\u001b[39m chatInput \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[35m/сообщение|message/i\u001b[39m)\n \u001b[90m 87 |\u001b[39m     \u001b[0m"
+                        "snippet": "\u001b[0m \u001b[90m 87 |\u001b[39m     \n \u001b[90m 88 |\u001b[39m     \u001b[90m// Design on\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 89 |\u001b[39m     \u001b[36mawait\u001b[39m chatInput\u001b[33m.\u001b[39mfill(\u001b[32m'/design on'\u001b[39m)\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 90 |\u001b[39m     \u001b[36mawait\u001b[39m chatInput\u001b[33m.\u001b[39mpress(\u001b[32m'Enter'\u001b[39m)\n \u001b[90m 91 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m2000\u001b[39m)\n \u001b[90m 92 |\u001b[39m     \u001b[0m"
                       },
                       "errors": [
                         {
                           "location": {
                             "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts",
-                            "column": 16,
-                            "line": 84
+                            "column": 21,
+                            "line": 89
                           },
-                          "message": "TimeoutError: page.goto: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/\", waiting until \"load\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 82 |\u001b[39m   \n \u001b[90m 83 |\u001b[39m   test(\u001b[32m'should apply changes to element (runtime patch)'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 84 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 85 |\u001b[39m     \n \u001b[90m 86 |\u001b[39m     \u001b[36mconst\u001b[39m chatInput \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[35m/сообщение|message/i\u001b[39m)\n \u001b[90m 87 |\u001b[39m     \u001b[0m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts:84:16\u001b[22m"
-                        },
-                        {
-                          "message": "\u001b[31mTearing down \"context\" exceeded the test timeout of 30000ms.\u001b[39m"
+                          "message": "TimeoutError: locator.fill: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByPlaceholder(/сообщение|message/i)\u001b[22m\n\n\n\u001b[0m \u001b[90m 87 |\u001b[39m     \n \u001b[90m 88 |\u001b[39m     \u001b[90m// Design on\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 89 |\u001b[39m     \u001b[36mawait\u001b[39m chatInput\u001b[33m.\u001b[39mfill(\u001b[32m'/design on'\u001b[39m)\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 90 |\u001b[39m     \u001b[36mawait\u001b[39m chatInput\u001b[33m.\u001b[39mpress(\u001b[32m'Enter'\u001b[39m)\n \u001b[90m 91 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m2000\u001b[39m)\n \u001b[90m 92 |\u001b[39m     \u001b[0m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts:89:21\u001b[22m"
                         }
                       ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-20T21:23:28.182Z",
+                      "startTime": "2025-10-20T21:28:20.974Z",
                       "annotations": [],
                       "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\design-mode-Builder-v0-—-D-0b95b-s-to-element-runtime-patch--chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\design-mode-Builder-v0-—-D-0b95b-s-to-element-runtime-patch--chromium\\video.webm"
+                        },
                         {
                           "name": "error-context",
                           "contentType": "text/markdown",
@@ -266,8 +301,8 @@
                       ],
                       "errorLocation": {
                         "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\design-mode.spec.ts",
-                        "column": 16,
-                        "line": 84
+                        "column": 21,
+                        "line": 89
                       }
                     }
                   ],
@@ -312,33 +347,54 @@
                       "workerIndex": 3,
                       "parallelIndex": 3,
                       "status": "failed",
-                      "duration": 53816,
+                      "duration": 22897,
                       "error": {
-                        "message": "TimeoutError: page.goto: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/\", waiting until \"load\"\u001b[22m\n",
-                        "stack": "TimeoutError: page.goto: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/\", waiting until \"load\"\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\generation-comfy.spec.ts:10:16",
+                        "message": "TimeoutError: locator.fill: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByPlaceholder(/сообщение|message/i)\u001b[22m\n",
+                        "stack": "TimeoutError: locator.fill: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByPlaceholder(/сообщение|message/i)\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\generation-comfy.spec.ts:14:23\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\generation-comfy.spec.ts:12:16",
                         "location": {
                           "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\generation-comfy.spec.ts",
-                          "column": 16,
-                          "line": 10
+                          "column": 23,
+                          "line": 14
                         },
-                        "snippet": "\u001b[0m \u001b[90m  8 |\u001b[39m test\u001b[33m.\u001b[39mdescribe(\u001b[32m'Builder v0 — ComfyUI Generation'\u001b[39m\u001b[33m,\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m  9 |\u001b[39m   test(\u001b[32m'should submit generation job and receive result'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 10 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 11 |\u001b[39m     \n \u001b[90m 12 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Submit /gen image command'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m 13 |\u001b[39m       \u001b[36mconst\u001b[39m chatInput \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[35m/сообщение|message/i\u001b[39m)\u001b[0m"
+                        "snippet": "\u001b[0m \u001b[90m 12 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Submit /gen image command'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m 13 |\u001b[39m       \u001b[36mconst\u001b[39m chatInput \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[35m/сообщение|message/i\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 14 |\u001b[39m       \u001b[36mawait\u001b[39m chatInput\u001b[33m.\u001b[39mfill(\u001b[32m'/gen image test sunset'\u001b[39m)\n \u001b[90m    |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 15 |\u001b[39m       \u001b[36mawait\u001b[39m chatInput\u001b[33m.\u001b[39mpress(\u001b[32m'Enter'\u001b[39m)\n \u001b[90m 16 |\u001b[39m       \n \u001b[90m 17 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m3000\u001b[39m) \u001b[90m// Дождаться создания job\u001b[39m\u001b[0m"
                       },
                       "errors": [
                         {
                           "location": {
                             "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\generation-comfy.spec.ts",
-                            "column": 16,
-                            "line": 10
+                            "column": 23,
+                            "line": 14
                           },
-                          "message": "TimeoutError: page.goto: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/\", waiting until \"load\"\u001b[22m\n\n\n\u001b[0m \u001b[90m  8 |\u001b[39m test\u001b[33m.\u001b[39mdescribe(\u001b[32m'Builder v0 — ComfyUI Generation'\u001b[39m\u001b[33m,\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m  9 |\u001b[39m   test(\u001b[32m'should submit generation job and receive result'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 10 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 11 |\u001b[39m     \n \u001b[90m 12 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Submit /gen image command'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m 13 |\u001b[39m       \u001b[36mconst\u001b[39m chatInput \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[35m/сообщение|message/i\u001b[39m)\u001b[0m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\generation-comfy.spec.ts:10:16\u001b[22m"
+                          "message": "TimeoutError: locator.fill: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByPlaceholder(/сообщение|message/i)\u001b[22m\n\n\n\u001b[0m \u001b[90m 12 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Submit /gen image command'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m 13 |\u001b[39m       \u001b[36mconst\u001b[39m chatInput \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[35m/сообщение|message/i\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 14 |\u001b[39m       \u001b[36mawait\u001b[39m chatInput\u001b[33m.\u001b[39mfill(\u001b[32m'/gen image test sunset'\u001b[39m)\n \u001b[90m    |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 15 |\u001b[39m       \u001b[36mawait\u001b[39m chatInput\u001b[33m.\u001b[39mpress(\u001b[32m'Enter'\u001b[39m)\n \u001b[90m 16 |\u001b[39m       \n \u001b[90m 17 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m3000\u001b[39m) \u001b[90m// Дождаться создания job\u001b[39m\u001b[0m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\generation-comfy.spec.ts:14:23\u001b[22m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\generation-comfy.spec.ts:12:16\u001b[22m"
                         }
                       ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-20T21:23:28.178Z",
+                      "steps": [
+                        {
+                          "title": "Submit /gen image command",
+                          "duration": 10121,
+                          "error": {
+                            "message": "TimeoutError: locator.fill: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByPlaceholder(/сообщение|message/i)\u001b[22m\n",
+                            "stack": "TimeoutError: locator.fill: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByPlaceholder(/сообщение|message/i)\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\generation-comfy.spec.ts:14:23\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\generation-comfy.spec.ts:12:16",
+                            "location": {
+                              "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\generation-comfy.spec.ts",
+                              "column": 23,
+                              "line": 14
+                            },
+                            "snippet": "\u001b[0m \u001b[90m 12 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Submit /gen image command'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m 13 |\u001b[39m       \u001b[36mconst\u001b[39m chatInput \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[35m/сообщение|message/i\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 14 |\u001b[39m       \u001b[36mawait\u001b[39m chatInput\u001b[33m.\u001b[39mfill(\u001b[32m'/gen image test sunset'\u001b[39m)\n \u001b[90m    |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 15 |\u001b[39m       \u001b[36mawait\u001b[39m chatInput\u001b[33m.\u001b[39mpress(\u001b[32m'Enter'\u001b[39m)\n \u001b[90m 16 |\u001b[39m       \n \u001b[90m 17 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m3000\u001b[39m) \u001b[90m// Дождаться создания job\u001b[39m\u001b[0m"
+                          }
+                        }
+                      ],
+                      "startTime": "2025-10-20T21:28:20.437Z",
                       "annotations": [],
                       "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\generation-comfy-Builder-v-cb312-tion-job-and-receive-result-chromium\\test-failed-1.png"
+                        },
                         {
                           "name": "video",
                           "contentType": "video/webm",
@@ -352,8 +408,8 @@
                       ],
                       "errorLocation": {
                         "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\generation-comfy.spec.ts",
-                        "column": 16,
-                        "line": 10
+                        "column": 23,
+                        "line": 14
                       }
                     }
                   ],
@@ -384,7 +440,7 @@
           "specs": [
             {
               "title": "should render diagnostics page with system stats",
-              "ok": false,
+              "ok": true,
               "tags": [],
               "tests": [
                 {
@@ -397,67 +453,35 @@
                     {
                       "workerIndex": 4,
                       "parallelIndex": 4,
-                      "status": "failed",
-                      "duration": 63386,
-                      "error": {
-                        "message": "TimeoutError: page.goto: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/diagnostics\", waiting until \"load\"\u001b[22m\n",
-                        "stack": "TimeoutError: page.goto: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/diagnostics\", waiting until \"load\"\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts:11:18\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts:10:16",
-                        "location": {
-                          "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts",
-                          "column": 18,
-                          "line": 11
-                        },
-                        "snippet": "\u001b[0m \u001b[90m  9 |\u001b[39m   test(\u001b[32m'should render diagnostics page with system stats'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 10 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Navigate to /diagnostics'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 11 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/diagnostics'\u001b[39m)\n \u001b[90m    |\u001b[39m                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 12 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\n \u001b[90m 13 |\u001b[39m       \n \u001b[90m 14 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mscreenshot({ path\u001b[33m:\u001b[39m \u001b[32m'reports/playwright/screenshots/health-01-diagnostics.png'\u001b[39m\u001b[33m,\u001b[39m fullPage\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\u001b[0m"
-                      },
-                      "errors": [
+                      "status": "passed",
+                      "duration": 11430,
+                      "errors": [],
+                      "stdout": [
                         {
-                          "location": {
-                            "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts",
-                            "column": 18,
-                            "line": 11
-                          },
-                          "message": "TimeoutError: page.goto: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/diagnostics\", waiting until \"load\"\u001b[22m\n\n\n\u001b[0m \u001b[90m  9 |\u001b[39m   test(\u001b[32m'should render diagnostics page with system stats'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 10 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Navigate to /diagnostics'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 11 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/diagnostics'\u001b[39m)\n \u001b[90m    |\u001b[39m                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 12 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\n \u001b[90m 13 |\u001b[39m       \n \u001b[90m 14 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mscreenshot({ path\u001b[33m:\u001b[39m \u001b[32m'reports/playwright/screenshots/health-01-diagnostics.png'\u001b[39m\u001b[33m,\u001b[39m fullPage\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\u001b[0m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts:11:18\u001b[22m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts:10:16\u001b[22m"
+                          "text": "[REVISOR] /diagnostics rendered 6292 chars\n"
                         },
                         {
-                          "message": "\u001b[31mTearing down \"context\" exceeded the test timeout of 30000ms.\u001b[39m"
+                          "text": "[REVISOR] Found 1 sections in /diagnostics\n"
                         }
                       ],
-                      "stdout": [],
                       "stderr": [],
                       "retry": 0,
                       "steps": [
                         {
                           "title": "Navigate to /diagnostics",
-                          "duration": 29718,
-                          "error": {
-                            "message": "TimeoutError: page.goto: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/diagnostics\", waiting until \"load\"\u001b[22m\n",
-                            "stack": "TimeoutError: page.goto: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/diagnostics\", waiting until \"load\"\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts:11:18\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts:10:16",
-                            "location": {
-                              "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts",
-                              "column": 18,
-                              "line": 11
-                            },
-                            "snippet": "\u001b[0m \u001b[90m  9 |\u001b[39m   test(\u001b[32m'should render diagnostics page with system stats'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 10 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Navigate to /diagnostics'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 11 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/diagnostics'\u001b[39m)\n \u001b[90m    |\u001b[39m                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 12 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\n \u001b[90m 13 |\u001b[39m       \n \u001b[90m 14 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mscreenshot({ path\u001b[33m:\u001b[39m \u001b[32m'reports/playwright/screenshots/health-01-diagnostics.png'\u001b[39m\u001b[33m,\u001b[39m fullPage\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\u001b[0m"
-                          }
-                        }
-                      ],
-                      "startTime": "2025-10-20T21:23:28.883Z",
-                      "annotations": [],
-                      "attachments": [
+                          "duration": 4299
+                        },
                         {
-                          "name": "error-context",
-                          "contentType": "text/markdown",
-                          "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\health-Builder-v0-—-Health-b5c07-tics-page-with-system-stats-chromium\\error-context.md"
+                          "title": "Verify system_stats are displayed",
+                          "duration": 86
                         }
                       ],
-                      "errorLocation": {
-                        "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts",
-                        "column": 18,
-                        "line": 11
-                      }
+                      "startTime": "2025-10-20T21:28:20.346Z",
+                      "annotations": [],
+                      "attachments": []
                     }
                   ],
-                  "status": "unexpected"
+                  "status": "expected"
                 }
               ],
               "id": "760d72a3746ac5132f88-f5ad55b4897786063b3c",
@@ -467,7 +491,7 @@
             },
             {
               "title": "should show readable message if ComfyUI offline",
-              "ok": false,
+              "ok": true,
               "tags": [],
               "tests": [
                 {
@@ -480,51 +504,28 @@
                     {
                       "workerIndex": 5,
                       "parallelIndex": 5,
-                      "status": "failed",
-                      "duration": 51114,
-                      "error": {
-                        "message": "TimeoutError: page.goto: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/diagnostics\", waiting until \"load\"\u001b[22m\n",
-                        "stack": "TimeoutError: page.goto: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/diagnostics\", waiting until \"load\"\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts:38:16",
-                        "location": {
-                          "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts",
-                          "column": 16,
-                          "line": 38
-                        },
-                        "snippet": "\u001b[0m \u001b[90m 36 |\u001b[39m   test(\u001b[32m'should show readable message if ComfyUI offline'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 37 |\u001b[39m     \u001b[90m// Этот тест проверяет fallback — если ComfyUI оффлайн, должно быть понятное сообщение\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 38 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/diagnostics'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 39 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\n \u001b[90m 40 |\u001b[39m     \n \u001b[90m 41 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Check for offline message'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\u001b[0m"
-                      },
-                      "errors": [
+                      "status": "passed",
+                      "duration": 9247,
+                      "errors": [],
+                      "stdout": [
                         {
-                          "location": {
-                            "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts",
-                            "column": 16,
-                            "line": 38
-                          },
-                          "message": "TimeoutError: page.goto: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/diagnostics\", waiting until \"load\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 36 |\u001b[39m   test(\u001b[32m'should show readable message if ComfyUI offline'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 37 |\u001b[39m     \u001b[90m// Этот тест проверяет fallback — если ComfyUI оффлайн, должно быть понятное сообщение\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 38 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/diagnostics'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 39 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\n \u001b[90m 40 |\u001b[39m     \n \u001b[90m 41 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Check for offline message'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts:38:16\u001b[22m"
-                        },
-                        {
-                          "message": "\u001b[31mTearing down \"context\" exceeded the test timeout of 30000ms.\u001b[39m"
+                          "text": "[REVISOR] ComfyUI appears online or no offline indicator\n"
                         }
                       ],
-                      "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-20T21:23:28.590Z",
-                      "annotations": [],
-                      "attachments": [
+                      "steps": [
                         {
-                          "name": "error-context",
-                          "contentType": "text/markdown",
-                          "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\health-Builder-v0-—-Health-ea3ea--message-if-ComfyUI-offline-chromium\\error-context.md"
+                          "title": "Check for offline message",
+                          "duration": 793
                         }
                       ],
-                      "errorLocation": {
-                        "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\health.spec.ts",
-                        "column": 16,
-                        "line": 38
-                      }
+                      "startTime": "2025-10-20T21:28:20.336Z",
+                      "annotations": [],
+                      "attachments": []
                     }
                   ],
-                  "status": "unexpected"
+                  "status": "expected"
                 }
               ],
               "id": "760d72a3746ac5132f88-765a4d57b6b29264a7c5",
@@ -565,36 +566,59 @@
                       "workerIndex": 6,
                       "parallelIndex": 6,
                       "status": "failed",
-                      "duration": 53830,
+                      "duration": 17517,
                       "error": {
-                        "message": "TimeoutError: page.goto: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/\", waiting until \"load\"\u001b[22m\n",
-                        "stack": "TimeoutError: page.goto: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/\", waiting until \"load\"\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\jobs-queue.spec.ts:10:16",
+                        "message": "TimeoutError: locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /очередь|queue/i })\u001b[22m\n",
+                        "stack": "TimeoutError: locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /очередь|queue/i })\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\jobs-queue.spec.ts:15:25\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\jobs-queue.spec.ts:12:16",
                         "location": {
                           "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\jobs-queue.spec.ts",
-                          "column": 16,
-                          "line": 10
+                          "column": 25,
+                          "line": 15
                         },
-                        "snippet": "\u001b[0m \u001b[90m  8 |\u001b[39m test\u001b[33m.\u001b[39mdescribe(\u001b[32m'Builder v0 — Jobs Queue (SSE)'\u001b[39m\u001b[33m,\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m  9 |\u001b[39m   test(\u001b[32m'should open queue modal and verify SSE connection'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 10 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 11 |\u001b[39m     \n \u001b[90m 12 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Open queue modal'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m 13 |\u001b[39m       \u001b[90m// Ищем ≡ меню или кнопку \"Очередь задач\"\u001b[39m\u001b[0m"
+                        "snippet": "\u001b[0m \u001b[90m 13 |\u001b[39m       \u001b[90m// Ищем ≡ меню или кнопку \"Очередь задач\"\u001b[39m\n \u001b[90m 14 |\u001b[39m       \u001b[36mconst\u001b[39m queueButton \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[35m/очередь|queue/i\u001b[39m })\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 15 |\u001b[39m       \u001b[36mawait\u001b[39m queueButton\u001b[33m.\u001b[39mclick()\n \u001b[90m    |\u001b[39m                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 16 |\u001b[39m       \n \u001b[90m 17 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m2000\u001b[39m)\n \u001b[90m 18 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mscreenshot({ path\u001b[33m:\u001b[39m \u001b[32m'reports/playwright/screenshots/queue-01-modal-open.png'\u001b[39m })\u001b[0m"
                       },
                       "errors": [
                         {
                           "location": {
                             "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\jobs-queue.spec.ts",
-                            "column": 16,
-                            "line": 10
+                            "column": 25,
+                            "line": 15
                           },
-                          "message": "TimeoutError: page.goto: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/\", waiting until \"load\"\u001b[22m\n\n\n\u001b[0m \u001b[90m  8 |\u001b[39m test\u001b[33m.\u001b[39mdescribe(\u001b[32m'Builder v0 — Jobs Queue (SSE)'\u001b[39m\u001b[33m,\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m  9 |\u001b[39m   test(\u001b[32m'should open queue modal and verify SSE connection'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 10 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 11 |\u001b[39m     \n \u001b[90m 12 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Open queue modal'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m 13 |\u001b[39m       \u001b[90m// Ищем ≡ меню или кнопку \"Очередь задач\"\u001b[39m\u001b[0m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\jobs-queue.spec.ts:10:16\u001b[22m"
-                        },
-                        {
-                          "message": "\u001b[31mTearing down \"context\" exceeded the test timeout of 30000ms.\u001b[39m"
+                          "message": "TimeoutError: locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /очередь|queue/i })\u001b[22m\n\n\n\u001b[0m \u001b[90m 13 |\u001b[39m       \u001b[90m// Ищем ≡ меню или кнопку \"Очередь задач\"\u001b[39m\n \u001b[90m 14 |\u001b[39m       \u001b[36mconst\u001b[39m queueButton \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[35m/очередь|queue/i\u001b[39m })\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 15 |\u001b[39m       \u001b[36mawait\u001b[39m queueButton\u001b[33m.\u001b[39mclick()\n \u001b[90m    |\u001b[39m                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 16 |\u001b[39m       \n \u001b[90m 17 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m2000\u001b[39m)\n \u001b[90m 18 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mscreenshot({ path\u001b[33m:\u001b[39m \u001b[32m'reports/playwright/screenshots/queue-01-modal-open.png'\u001b[39m })\u001b[0m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\jobs-queue.spec.ts:15:25\u001b[22m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\jobs-queue.spec.ts:12:16\u001b[22m"
                         }
                       ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-20T21:23:28.122Z",
+                      "steps": [
+                        {
+                          "title": "Open queue modal",
+                          "duration": 10028,
+                          "error": {
+                            "message": "TimeoutError: locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /очередь|queue/i })\u001b[22m\n",
+                            "stack": "TimeoutError: locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /очередь|queue/i })\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\jobs-queue.spec.ts:15:25\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\jobs-queue.spec.ts:12:16",
+                            "location": {
+                              "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\jobs-queue.spec.ts",
+                              "column": 25,
+                              "line": 15
+                            },
+                            "snippet": "\u001b[0m \u001b[90m 13 |\u001b[39m       \u001b[90m// Ищем ≡ меню или кнопку \"Очередь задач\"\u001b[39m\n \u001b[90m 14 |\u001b[39m       \u001b[36mconst\u001b[39m queueButton \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[35m/очередь|queue/i\u001b[39m })\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 15 |\u001b[39m       \u001b[36mawait\u001b[39m queueButton\u001b[33m.\u001b[39mclick()\n \u001b[90m    |\u001b[39m                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 16 |\u001b[39m       \n \u001b[90m 17 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m2000\u001b[39m)\n \u001b[90m 18 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mscreenshot({ path\u001b[33m:\u001b[39m \u001b[32m'reports/playwright/screenshots/queue-01-modal-open.png'\u001b[39m })\u001b[0m"
+                          }
+                        }
+                      ],
+                      "startTime": "2025-10-20T21:28:25.434Z",
                       "annotations": [],
                       "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\jobs-queue-Builder-v0-—-Jo-8a6cb-l-and-verify-SSE-connection-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\jobs-queue-Builder-v0-—-Jo-8a6cb-l-and-verify-SSE-connection-chromium\\video.webm"
+                        },
                         {
                           "name": "error-context",
                           "contentType": "text/markdown",
@@ -603,8 +627,8 @@
                       ],
                       "errorLocation": {
                         "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\jobs-queue.spec.ts",
-                        "column": 16,
-                        "line": 10
+                        "column": 25,
+                        "line": 15
                       }
                     }
                   ],
@@ -649,28 +673,25 @@
                       "workerIndex": 7,
                       "parallelIndex": 7,
                       "status": "failed",
-                      "duration": 53073,
+                      "duration": 18220,
                       "error": {
-                        "message": "TimeoutError: page.goto: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/\", waiting until \"load\"\u001b[22m\n",
-                        "stack": "TimeoutError: page.goto: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/\", waiting until \"load\"\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts:19:18\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts:18:16",
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByPlaceholder(/сообщение|message/i)\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByPlaceholder(/сообщение|message/i)\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByPlaceholder(/сообщение|message/i)\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByPlaceholder(/сообщение|message/i)\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts:28:31\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts:24:16",
                         "location": {
                           "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts",
-                          "column": 18,
-                          "line": 19
+                          "column": 31,
+                          "line": 28
                         },
-                        "snippet": "\u001b[0m \u001b[90m 17 |\u001b[39m     \u001b[90m// Шаг 1: Открыть главную страницу\u001b[39m\n \u001b[90m 18 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Navigate to /'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 19 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\n \u001b[90m    |\u001b[39m                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 20 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveTitle(\u001b[35m/Orchestrator/i\u001b[39m)\n \u001b[90m 21 |\u001b[39m     })\n \u001b[90m 22 |\u001b[39m\u001b[0m"
+                        "snippet": "\u001b[0m \u001b[90m 26 |\u001b[39m       \u001b[90m// Либо просто проверяем textarea для ввода\u001b[39m\n \u001b[90m 27 |\u001b[39m       \u001b[36mconst\u001b[39m chatInput \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[35m/сообщение|message/i\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 28 |\u001b[39m       \u001b[36mawait\u001b[39m expect(chatInput)\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 29 |\u001b[39m       \n \u001b[90m 30 |\u001b[39m       \u001b[90m// Screenshot для артефактов\u001b[39m\n \u001b[90m 31 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mscreenshot({ path\u001b[33m:\u001b[39m \u001b[32m'reports/playwright/screenshots/01-chat-sidebar.png'\u001b[39m\u001b[33m,\u001b[39m fullPage\u001b[33m:\u001b[39m \u001b[36mfalse\u001b[39m })\u001b[0m"
                       },
                       "errors": [
                         {
                           "location": {
                             "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts",
-                            "column": 18,
-                            "line": 19
+                            "column": 31,
+                            "line": 28
                           },
-                          "message": "TimeoutError: page.goto: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/\", waiting until \"load\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 17 |\u001b[39m     \u001b[90m// Шаг 1: Открыть главную страницу\u001b[39m\n \u001b[90m 18 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Navigate to /'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 19 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\n \u001b[90m    |\u001b[39m                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 20 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveTitle(\u001b[35m/Orchestrator/i\u001b[39m)\n \u001b[90m 21 |\u001b[39m     })\n \u001b[90m 22 |\u001b[39m\u001b[0m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts:19:18\u001b[22m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts:18:16\u001b[22m"
-                        },
-                        {
-                          "message": "\u001b[31mTearing down \"context\" exceeded the test timeout of 30000ms.\u001b[39m"
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByPlaceholder(/сообщение|message/i)\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByPlaceholder(/сообщение|message/i)\u001b[22m\n\n\n\u001b[0m \u001b[90m 26 |\u001b[39m       \u001b[90m// Либо просто проверяем textarea для ввода\u001b[39m\n \u001b[90m 27 |\u001b[39m       \u001b[36mconst\u001b[39m chatInput \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[35m/сообщение|message/i\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 28 |\u001b[39m       \u001b[36mawait\u001b[39m expect(chatInput)\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 29 |\u001b[39m       \n \u001b[90m 30 |\u001b[39m       \u001b[90m// Screenshot для артефактов\u001b[39m\n \u001b[90m 31 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mscreenshot({ path\u001b[33m:\u001b[39m \u001b[32m'reports/playwright/screenshots/01-chat-sidebar.png'\u001b[39m\u001b[33m,\u001b[39m fullPage\u001b[33m:\u001b[39m \u001b[36mfalse\u001b[39m })\u001b[0m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts:28:31\u001b[22m\n\u001b[2m    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts:24:16\u001b[22m"
                         }
                       ],
                       "stdout": [],
@@ -678,23 +699,37 @@
                       "retry": 0,
                       "steps": [
                         {
-                          "title": "Navigate to /",
-                          "duration": 19726,
+                          "title": "Navigate to /builder-v0",
+                          "duration": 2541
+                        },
+                        {
+                          "title": "Verify ChatSidebar exists",
+                          "duration": 10015,
                           "error": {
-                            "message": "TimeoutError: page.goto: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/\", waiting until \"load\"\u001b[22m\n",
-                            "stack": "TimeoutError: page.goto: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3002/\", waiting until \"load\"\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts:19:18\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts:18:16",
+                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByPlaceholder(/сообщение|message/i)\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByPlaceholder(/сообщение|message/i)\u001b[22m\n",
+                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByPlaceholder(/сообщение|message/i)\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByPlaceholder(/сообщение|message/i)\u001b[22m\n\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts:28:31\n    at C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts:24:16",
                             "location": {
                               "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts",
-                              "column": 18,
-                              "line": 19
+                              "column": 31,
+                              "line": 28
                             },
-                            "snippet": "\u001b[0m \u001b[90m 17 |\u001b[39m     \u001b[90m// Шаг 1: Открыть главную страницу\u001b[39m\n \u001b[90m 18 |\u001b[39m     \u001b[36mawait\u001b[39m test\u001b[33m.\u001b[39mstep(\u001b[32m'Navigate to /'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 19 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\n \u001b[90m    |\u001b[39m                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 20 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveTitle(\u001b[35m/Orchestrator/i\u001b[39m)\n \u001b[90m 21 |\u001b[39m     })\n \u001b[90m 22 |\u001b[39m\u001b[0m"
+                            "snippet": "\u001b[0m \u001b[90m 26 |\u001b[39m       \u001b[90m// Либо просто проверяем textarea для ввода\u001b[39m\n \u001b[90m 27 |\u001b[39m       \u001b[36mconst\u001b[39m chatInput \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[35m/сообщение|message/i\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 28 |\u001b[39m       \u001b[36mawait\u001b[39m expect(chatInput)\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 29 |\u001b[39m       \n \u001b[90m 30 |\u001b[39m       \u001b[90m// Screenshot для артефактов\u001b[39m\n \u001b[90m 31 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mscreenshot({ path\u001b[33m:\u001b[39m \u001b[32m'reports/playwright/screenshots/01-chat-sidebar.png'\u001b[39m\u001b[33m,\u001b[39m fullPage\u001b[33m:\u001b[39m \u001b[36mfalse\u001b[39m })\u001b[0m"
                           }
                         }
                       ],
-                      "startTime": "2025-10-20T21:23:28.413Z",
+                      "startTime": "2025-10-20T21:28:20.539Z",
                       "annotations": [],
                       "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\sanity-Builder-v0-—-Sanity-d10b0-main-page-with-three-panels-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Work\\Orchestrator\\apps\\admin\\test-results\\sanity-Builder-v0-—-Sanity-d10b0-main-page-with-three-panels-chromium\\video.webm"
+                        },
                         {
                           "name": "error-context",
                           "contentType": "text/markdown",
@@ -703,8 +738,8 @@
                       ],
                       "errorLocation": {
                         "file": "C:\\Work\\Orchestrator\\apps\\admin\\tests\\e2e\\sanity.spec.ts",
-                        "column": 18,
-                        "line": 19
+                        "column": 31,
+                        "line": 28
                       }
                     }
                   ],
@@ -738,10 +773,10 @@
                   "projectName": "chromium",
                   "results": [
                     {
-                      "workerIndex": 8,
-                      "parallelIndex": 1,
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
                       "status": "skipped",
-                      "duration": 2839,
+                      "duration": 3866,
                       "errors": [],
                       "stdout": [
                         {
@@ -753,10 +788,10 @@
                       "steps": [
                         {
                           "title": "Wait for page load",
-                          "duration": 1202
+                          "duration": 490
                         }
                       ],
-                      "startTime": "2025-10-20T21:24:40.294Z",
+                      "startTime": "2025-10-20T21:28:32.741Z",
                       "annotations": [
                         {
                           "type": "skip",
@@ -785,11 +820,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-10-20T21:23:20.310Z",
-    "duration": 83433.124,
-    "expected": 0,
+    "startTime": "2025-10-20T21:28:13.632Z",
+    "duration": 34284.695,
+    "expected": 2,
     "skipped": 1,
-    "unexpected": 8,
+    "unexpected": 6,
     "flaky": 0
   }
 }
