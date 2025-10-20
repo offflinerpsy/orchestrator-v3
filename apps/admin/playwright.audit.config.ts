@@ -35,8 +35,8 @@ export default defineConfig({
   
   // Настройки использования
   use: {
-    // Base URL (пересадка с 3000 на 3001 если нужно)
-    baseURL: 'http://127.0.0.1:3000',
+    // Base URL (port 3002 для REVISOR audit, избегаем конфликтов)
+    baseURL: 'http://127.0.0.1:3002',
     
     // Трейсы только при ретраях (чтобы не засорять диск)
     trace: 'on-first-retry', // https://playwright.dev/docs/trace-viewer

@@ -31,7 +31,7 @@ async function runAxe() {
     console.log(`[REVISOR AXE] Checking ${url}...`)
     
     try {
-      await page.goto(`http://127.0.0.1:3000${url}`, { waitUntil: 'networkidle' })
+      await page.goto(`http://127.0.0.1:3002${url}`, { waitUntil: 'networkidle' })
       
       // Inject axe-core
       await injectAxe(page)
