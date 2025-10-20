@@ -1,0 +1,28 @@
+{
+  "id": "9d414c23-8d15-4c6c-9b65-51a8aae8b9ec",
+  "backend": "sdxl",
+  "status": "done",
+  "input": {
+    "backend": "sdxl",
+    "prompt": "futuristic cyberpunk city at night, neon lights, rain",
+    "runNow": false
+  },
+  "prompt": "futuristic cyberpunk city at night, neon lights, rain",
+  "params": {},
+  "createdAt": "2025-10-20T13:07:13.544Z",
+  "logs": [
+    "Job created with backend: sdxl",
+    "[worker] start execution",
+    "[worker] comfy build workflow...",
+    "[worker] comfy submit...",
+    "[worker] comfy promptId: 2acff35a-2d3f-42ed-b110-427c0be9ee2d",
+    "[worker] comfy polling...",
+    "[worker] comfy saved: F:\\Drop\\out\\sdxl_00002_.png",
+    "[worker] completed"
+  ],
+  "startedAt": "2025-10-20T13:07:13.903Z",
+  "result": {
+    "file": "F:\\Drop\\out\\sdxl_00002_.png"
+  },
+  "finishedAt": "2025-10-20T13:07:23.976Z"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "20dbbfcb-e95c-4413-a1cc-d637c1c5206e",
+  "backend": "sdxl",
+  "status": "done",
+  "input": {
+    "backend": "sdxl",
+    "prompt": "mountain sunset",
+    "runNow": false
+  },
+  "prompt": "mountain sunset",
+  "params": {},
+  "createdAt": "2025-10-20T12:59:49.809Z",
+  "logs": [
+    "Job created with backend: sdxl",
+    "[worker] start execution",
+    "[worker] comfy build workflow...",
+    "[worker] comfy submit...",
+    "[worker] comfy promptId: d3b8df1e-87ae-423a-8d5c-9492511fbe53",
+    "[worker] comfy polling...",
+    "[worker] comfy saved: F:\\Drop\\out\\sdxl_00001_.png",
+    "[worker] completed"
+  ],
+  "startedAt": "2025-10-20T12:59:49.923Z",
+  "result": {
+    "file": "F:\\Drop\\out\\sdxl_00001_.png"
+  },
+  "finishedAt": "2025-10-20T13:00:10.049Z"
+}

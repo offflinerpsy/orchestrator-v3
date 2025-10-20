@@ -1,0 +1,26 @@
+{
+  "id": "54818843-9df0-4825-9d07-e944e102308d",
+  "backend": "sdxl",
+  "status": "failed",
+  "input": {
+    "backend": "sdxl",
+    "prompt": "a majestic mountain landscape",
+    "runNow": false
+  },
+  "prompt": "a majestic mountain landscape",
+  "params": {},
+  "createdAt": "2025-10-20T12:35:46.864Z",
+  "logs": [
+    "Job created with backend: sdxl",
+    "[worker] start execution",
+    "[worker] comfy build workflow...",
+    "[worker] comfy submit...",
+    "[worker] comfy promptId: 54ea9dc5-3c7a-4538-97be-f149bbc09e9a",
+    "[worker] error: Error while deserializing header: invalid UTF-8 in header: invalid utf-8 sequence of 1 bytes from index 14595\n"
+  ],
+  "startedAt": "2025-10-20T12:36:25.741Z",
+  "finishedAt": "2025-10-20T12:36:30.814Z",
+  "result": {
+    "error": "Error while deserializing header: invalid UTF-8 in header: invalid utf-8 sequence of 1 bytes from index 14595\n"
+  }
+}

@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PathValidator } from "@/components/path-validator";
 import { ComfyUIMonitor } from "@/components/comfyui-monitor";
 import { SystemStatus } from "@/components/system-status";
+import { GenerationStats } from "@/components/generation-stats";
 
 export default function DiagnosticsPage() {
 	return (
@@ -13,6 +14,10 @@ export default function DiagnosticsPage() {
 				</div>
 
 				<SystemStatus />
+
+				<div className="mt-6">
+					<GenerationStats />
+				</div>
 
 				<div className="grid gap-4 md:grid-cols-2 mt-6">
 					<PathValidator />
