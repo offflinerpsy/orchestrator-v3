@@ -161,6 +161,51 @@
         }, '*')
       }
     }
+    
+    // Handle DOM apply changes (innerHTML, className, style)
+    if (event.data.type === 'apply-changes') {
+      const { locator, changes } = event.data
+      
+      try {
+        const element = document.querySelector(locator)
+        
+        if (!element) {
+          throw new Error('Element not found')
+        }
+        
+        // Apply changes
+        if (changes.innerHTML !== undefined) {
+          element.innerHTML = changes.innerHTML
+        }
+        
+        if (changes.className !== undefined) {
+          element.className = changes.className
+        }
+        
+        if (changes.style && typeof changes.style === 'object') {
+          Object.assign(element.style, changes.style)
+        }
+        
+        console.log('[DesignMode] Applied changes:', { locator, changes })
+        
+        // Confirm to parent
+        window.parent.postMessage({
+          type: 'changes-applied',
+          locator,
+          success: true,
+          timestamp: Date.now()
+        }, '*')
+      } catch (error) {
+        console.error('[DesignMode] Error applying changes:', error)
+        window.parent.postMessage({
+          type: 'changes-applied',
+          locator,
+          success: false,
+          error: error.message,
+          timestamp: Date.now()
+        }, '*')
+      }
+    }
   })
   
   // Attach event listeners

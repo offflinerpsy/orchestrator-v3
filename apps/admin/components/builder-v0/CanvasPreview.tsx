@@ -28,6 +28,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { Eye, Pencil, Info } from 'lucide-react'
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from '@/components/ui/tooltip'
+import { DesignOverlay } from './DesignOverlay'
 
 type Mode = 'preview' | 'design'
 
@@ -122,15 +123,23 @@ export function CanvasPreview() {
         const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document
         if (!iframeDoc) return
 
-        // Check if overlay already injected
-        if (iframeDoc.querySelector('#design-mode-overlay')) return
+        // Check if script already exists
+        const existingScript = iframeDoc.querySelector('script[src*="design-mode-script"]')
+        if (existingScript) {
+          // Script loaded, send toggle message
+          iframe.contentWindow?.postMessage({ type: 'design-mode-toggle', enabled: true }, '*')
+          console.log('[CanvasPreview] Design mode enabled via postMessage')
+          return
+        }
 
-        // Inject overlay script
+        // Inject design-mode-script.js
         const script = iframeDoc.createElement('script')
-        script.id = 'design-mode-overlay'
-        script.textContent = `
-          ${getOverlayScript()}
-        `
+        script.src = '/design-mode-script.js'
+        script.onload = () => {
+          // Send toggle after script loads
+          iframe.contentWindow?.postMessage({ type: 'design-mode-toggle', enabled: true }, '*')
+          console.log('[CanvasPreview] Design mode script injected and enabled')
+        }
         iframeDoc.body.appendChild(script)
       }
 
@@ -139,6 +148,10 @@ export function CanvasPreview() {
       } else {
         iframe.addEventListener('load', injectOverlay)
       }
+    } else if (mode === 'preview' && iframeRef.current) {
+      // Disable design mode
+      iframeRef.current.contentWindow?.postMessage({ type: 'design-mode-toggle', enabled: false }, '*')
+      console.log('[CanvasPreview] Design mode disabled')
     }
   }, [mode])
 
@@ -202,6 +215,9 @@ export function CanvasPreview() {
           title="Site Preview"
           sandbox="allow-scripts allow-same-origin allow-forms"
         />
+        
+        {/* Design Mode Overlay */}
+        <DesignOverlay isDesignMode={mode === 'design'} />
       </div>
       </div>
     </TooltipProvider>

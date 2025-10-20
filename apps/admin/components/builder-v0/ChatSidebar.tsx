@@ -107,8 +107,42 @@ export function ChatSidebar() {
         break
 
       case '/apply':
-        response = 'Применение изменений...'
-        // TODO: Apply changes
+        // Parse: /apply <locator> innerHTML="<p>New content</p>" className="text-lg" style.color="red"
+        const applyMatch = args.match(/^(\S+)\s+(.+)$/)
+        if (applyMatch) {
+          const locator = applyMatch[1]
+          const changesStr = applyMatch[2]
+          const changes: any = {}
+          
+          // Parse changes (innerHTML, className, style.*)
+          const inHTMLMatch = changesStr.match(/innerHTML="([^"]+)"/)
+          if (inHTMLMatch) changes.innerHTML = inHTMLMatch[1]
+          
+          const classMatch = changesStr.match(/className="([^"]+)"/)
+          if (classMatch) changes.className = classMatch[1]
+          
+          const styleMatches = changesStr.matchAll(/style\.(\w+)="([^"]+)"/g)
+          const styleObj: any = {}
+          for (const match of styleMatches) {
+            styleObj[match[1]] = match[2]
+          }
+          if (Object.keys(styleObj).length > 0) changes.style = styleObj
+          
+          // Send to iframe via postMessage
+          const iframe = document.querySelector('iframe') as HTMLIFrameElement
+          if (iframe?.contentWindow) {
+            iframe.contentWindow.postMessage({
+              type: 'apply-changes',
+              locator,
+              changes
+            }, '*')
+            response = `Применяю изменения к ${locator}...`
+          } else {
+            response = 'Ошибка: iframe недоступен'
+          }
+        } else {
+          response = 'Использование: /apply <locator> innerHTML="..." className="..." style.color="..."'
+        }
         break
 
       case '/undo':
