@@ -4424,3 +4424,13 @@
 
 
 ---
+
+### [2025-10-20 17:25:39] Job 499b1737 Status Change
+**Old Status:** unknown  
+**New Status:** failed  
+**Backend:** svd  
+**Prompt:** "сделай реалистичное видео кометы которая падает на..."  
+
+**❌ Error:** HTTP 400: {"error": {"type": "invalid_prompt", "message": "Cannot execute because node VHS_VideoCombine does not exist.", "details": "Node ID '#6'", "extra_info": {}}, "node_errors": {}}
+
+---

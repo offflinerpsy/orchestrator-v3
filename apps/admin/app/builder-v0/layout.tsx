@@ -1,21 +1,23 @@
 /**
- * Builder v0-style Layout — Three-column Grid
+ * Builder v0-style Layout — Resizable Three-Panel Layout
  * 
  * Inspired by Dyad (https://github.com/dyad-sh/dyad)
  * Licensed under Apache-2.0
  * 
+ * Context7: react-resizable-panels (bvaughn/react-resizable-panels, 4410★)
+ * Modern pattern: ResizablePanelGroup with controlled panels
+ * 
  * Layout zones:
- * - Left: ChatSidebar (~380-420px) — chat history, slash commands
- * - Center: CanvasPreview — iframe with Next.js site preview
- * - Right: Inspector — content/style/actions tabs
+ * - Left: ChatSidebar (320-520px resizable) — chat history, slash commands
+ * - Center: CanvasPreview (flexible) — iframe with Next.js site preview
+ * - Right: Inspector (360px collapsible) — content/style/actions tabs
  */
 
-import { Metadata } from 'next'
+'use client'
 
-export const metadata: Metadata = {
-  title: 'Builder v0 — Orchestrator',
-  description: 'v0-style visual builder with local SDXL generation',
-}
+import { PanelGroup, Panel, PanelResizeHandle } from 'react-resizable-panels'
+
+// Note: metadata export moved to page.tsx (client components can't export metadata)
 
 export default function BuilderV0Layout({
   children,
@@ -24,10 +26,44 @@ export default function BuilderV0Layout({
 }) {
   return (
     <div className="h-screen overflow-hidden">
-      {/* Three-column grid: left (chat) | center (canvas) | right (inspector) */}
-      <div className="grid h-full" style={{ gridTemplateColumns: '380px 1fr 360px' }}>
-        {children}
-      </div>
+      <PanelGroup direction="horizontal" className="h-full">
+        {/* Left: Chat Sidebar (resizable 320-520px) */}
+        <Panel
+          id="chat-sidebar"
+          order={1}
+          defaultSize={25}
+          minSize={20}
+          maxSize={35}
+        >
+          {/* Chat content rendered by page.tsx */}
+        </Panel>
+
+        <PanelResizeHandle className="w-1 bg-border hover:bg-primary/20 transition-colors" />
+
+        {/* Center: Canvas/Preview (flexible) */}
+        <Panel
+          id="canvas"
+          order={2}
+          defaultSize={50}
+          minSize={30}
+        >
+          {children}
+        </Panel>
+
+        <PanelResizeHandle className="w-1 bg-border hover:bg-primary/20 transition-colors" />
+
+        {/* Right: Inspector (collapsible) */}
+        <Panel
+          id="inspector"
+          order={3}
+          defaultSize={25}
+          minSize={20}
+          maxSize={35}
+          collapsible
+        >
+          {/* Inspector rendered by page.tsx */}
+        </Panel>
+      </PanelGroup>
     </div>
   )
 }

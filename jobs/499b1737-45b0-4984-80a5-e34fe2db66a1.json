@@ -1,0 +1,27 @@
+{
+  "id": "499b1737-45b0-4984-80a5-e34fe2db66a1",
+  "backend": "svd",
+  "status": "failed",
+  "input": {
+    "backend": "svd",
+    "prompt": "сделай реалистичное видео кометы которая падает на землю в стиле фильме тарминатор 2\n",
+    "params": {},
+    "runNow": true
+  },
+  "prompt": "сделай реалистичное видео кометы которая падает на землю в стиле фильме тарминатор 2",
+  "params": {},
+  "createdAt": "2025-10-20T17:25:37.536Z",
+  "logs": [
+    "Job created with backend: svd",
+    "[worker] start execution (attempt 1)",
+    "[worker] comfy build workflow...",
+    "[worker] comfy submit...",
+    "[worker] error: HTTP 400: {\"error\": {\"type\": \"invalid_prompt\", \"message\": \"Cannot execute because node VHS_VideoCombine does not exist.\", \"details\": \"Node ID '#6'\", \"extra_info\": {}}, \"node_errors\": {}}"
+  ],
+  "startedAt": "2025-10-20T17:25:38.847Z",
+  "retriedCount": 1,
+  "finishedAt": "2025-10-20T17:25:38.873Z",
+  "result": {
+    "error": "HTTP 400: {\"error\": {\"type\": \"invalid_prompt\", \"message\": \"Cannot execute because node VHS_VideoCombine does not exist.\", \"details\": \"Node ID '#6'\", \"extra_info\": {}}, \"node_errors\": {}}"
+  }
+}

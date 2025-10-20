@@ -58,13 +58,26 @@ export class ComfyUIProvider implements ImageProvider {
    * Load workflow template (SDXL, SD3.5, etc.)
    */
   private async loadWorkflow(backend: string): Promise<any> {
-    // TODO: Load from workflows/{backend}-t2i.json
-    // For now, return minimal SDXL workflow structure
-    return {
-      // Minimal workflow will be implemented in P3
-      // This is a placeholder
-      '3': { class_type: 'KSampler', inputs: {} },
-      '75': { class_type: 'CLIPTextEncode', inputs: { text: 'PLACEHOLDER_POSITIVE' } },
+    // Load from workflows/{backend}-t2i.json
+    const workflowMap: Record<string, string> = {
+      'sdxl': '/workflows/t2i_sdxl.json',
+      'sd35': '/workflows/t2i_sd35.json',
+      'svd': '/workflows/t2i_svd.json'
+    }
+
+    const workflowPath = workflowMap[backend]
+    if (!workflowPath) {
+      throw new Error(`Unknown backend: ${backend}`)
+    }
+
+    try {
+      const response = await fetch(workflowPath)
+      if (!response.ok) {
+        throw new Error(`Failed to load workflow: ${response.statusText}`)
+      }
+      return await response.json()
+    } catch (error: any) {
+      throw new Error(`Workflow load error: ${error.message}`)
     }
   }
 
