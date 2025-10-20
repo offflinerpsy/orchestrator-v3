@@ -4,11 +4,11 @@ import path from 'path';
 
 export async function GET(
   request: Request,
-  { params }: { params: { filename: string } }
+  segmentData: { params: Promise<{ filename: string }> }
 ) {
   try {
     const dropOut = 'F:\\Drop\\out'; // Could read from paths.json
-    const filename = params.filename;
+    const { filename } = await segmentData.params;
     
     // Security: prevent path traversal
     if (filename.includes('..') || filename.includes('/') || filename.includes('\\')) {

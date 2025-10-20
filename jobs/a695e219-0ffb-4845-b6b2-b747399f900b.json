@@ -1,0 +1,35 @@
+{
+  "id": "a695e219-0ffb-4845-b6b2-b747399f900b",
+  "backend": "sdxl",
+  "status": "done",
+  "input": {
+    "backend": "sdxl",
+    "prompt": "Test cleanup: beautiful sunset over mountains",
+    "params": {
+      "width": 1024,
+      "height": 1024
+    }
+  },
+  "prompt": "Test cleanup: beautiful sunset over mountains",
+  "params": {
+    "width": 1024,
+    "height": 1024
+  },
+  "createdAt": "2025-10-20T14:18:49.174Z",
+  "logs": [
+    "Job created with backend: sdxl",
+    "[worker] start execution (attempt 1)",
+    "[worker] comfy build workflow...",
+    "[worker] comfy submit...",
+    "[worker] comfy promptId: f82053b0-b55f-489b-a4ac-46539f30f019",
+    "[worker] comfy polling...",
+    "[worker] comfy saved: F:\\Drop\\out\\sdxl_00004_.png",
+    "[worker] completed"
+  ],
+  "startedAt": "2025-10-20T14:18:51.057Z",
+  "retriedCount": 1,
+  "result": {
+    "file": "F:\\Drop\\out\\sdxl_00004_.png"
+  },
+  "finishedAt": "2025-10-20T14:19:01.154Z"
+}

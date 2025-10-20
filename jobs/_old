@@ -1,0 +1,26 @@
+{
+  "id": "056bdf54-a3d5-4665-bf05-9ddae162add9",
+  "backend": "sdxl",
+  "status": "failed",
+  "input": {
+    "backend": "sdxl",
+    "prompt": "бутылка воды на краю моря. красивый закат на фоне.",
+    "params": {},
+    "runNow": true
+  },
+  "prompt": "бутылка воды на краю моря. красивый закат на фоне.",
+  "params": {},
+  "createdAt": "2025-10-20T08:34:39.113Z",
+  "logs": [
+    "Job created with backend: sdxl",
+    "Job execution started",
+    "Calling ComfyUI API (sdxl) — прямой вызов...",
+    "Workflow loaded: 7 nodes",
+    "Error: ComfyUI /prompt error (400): {\"error\": {\"type\": \"prompt_outputs_failed_validation\", \"message\": \"Prompt outputs failed validation\", \"details\": \"\", \"extra_info\": {}}, \"node_errors\": {\"3\": {\"errors\": [{\"type\": \"value_not_in_list\", \"message\": \"Value not in list\", \"details\": \"sampler_name: 'euler_a' not in (list of length 42)\", \"extra_info\": {\"input_name\": \"sampler_name\", \"input_config\": null, \"received_value\": \"euler_a\"}}], \"dependent_outputs\": [\"74\"], \"class_type\": \"KSampler\"}}}"
+  ],
+  "startedAt": "2025-10-20T08:34:39.114Z",
+  "finishedAt": "2025-10-20T08:34:39.123Z",
+  "result": {
+    "error": "ComfyUI /prompt error (400): {\"error\": {\"type\": \"prompt_outputs_failed_validation\", \"message\": \"Prompt outputs failed validation\", \"details\": \"\", \"extra_info\": {}}, \"node_errors\": {\"3\": {\"errors\": [{\"type\": \"value_not_in_list\", \"message\": \"Value not in list\", \"details\": \"sampler_name: 'euler_a' not in (list of length 42)\", \"extra_info\": {\"input_name\": \"sampler_name\", \"input_config\": null, \"received_value\": \"euler_a\"}}], \"dependent_outputs\": [\"74\"], \"class_type\": \"KSampler\"}}}"
+  }
+}

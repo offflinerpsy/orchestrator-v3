@@ -1,0 +1,8 @@
+{
+  "backend": "sdxl",
+  "prompt": "Test cleanup: beautiful sunset over mountains",
+  "params": {
+    "width": 1024,
+    "height": 1024
+  }
+}

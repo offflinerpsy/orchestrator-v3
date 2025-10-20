@@ -1,0 +1,30 @@
+{
+  "id": "aed591b2-afaf-4771-8160-1805b9b6220f",
+  "backend": "sdxl",
+  "status": "failed",
+  "input": {
+    "backend": "sdxl",
+    "prompt": "Хочу картинку с бутылкой крафтового оливкого масла, которую фермер держит в руках. фермер пожилого возраста, в морщинах. гиперрелистичность фото.",
+    "params": {},
+    "runNow": true
+  },
+  "prompt": "Хочу картинку с бутылкой крафтового оливкого масла, которую фермер держит в руках. фермер пожилого возраста, в морщинах. гиперрелистичность фото.",
+  "params": {},
+  "createdAt": "2025-10-20T14:04:34.048Z",
+  "logs": [
+    "Job created with backend: sdxl",
+    "Job execution started",
+    "Calling ComfyUI API (sdxl) — прямой вызов...",
+    "Workflow loaded: 7 nodes",
+    "KSampler[3].sampler_name before submit: euler",
+    "KSampler[3].sampler_name after normalize: euler",
+    "ComfyUI prompt ID: 1afcbbb1-0297-401b-a61d-e2e6954c1c69",
+    "Error: ComfyUI generation timeout (10 minutes)"
+  ],
+  "startedAt": "2025-10-20T14:04:34.050Z",
+  "progress": 100,
+  "finishedAt": "2025-10-20T14:14:35.217Z",
+  "result": {
+    "error": "ComfyUI generation timeout (10 minutes)"
+  }
+}

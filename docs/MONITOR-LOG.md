@@ -3054,3 +3054,1373 @@
 
 
 ---
+
+### [2025-10-20 13:49:33] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:49:33] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:49:43] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 404
+
+---
+
+### [2025-10-20 13:49:43] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:49:53] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:49:53] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:50:03] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:50:03] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:50:13] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** done  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+**✅ Output:** F:\Drop\out\flux_d888cd70-fda8-4a29-98b1-a316c3e8307b.jpg
+
+
+---
+
+### [2025-10-20 13:50:13] Job d888cd70 Status Change
+**Old Status:** done  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:50:23] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:50:23] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:50:33] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:50:33] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:50:43] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 404
+
+---
+
+### [2025-10-20 13:50:43] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:50:53] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:50:53] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:51:03] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:51:03] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:51:13] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:51:13] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:51:24] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:51:24] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:51:34] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:51:34] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:51:44] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:51:44] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:51:54] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:51:54] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:52:04] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:52:04] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:52:14] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:52:14] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:52:24] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:52:24] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:52:34] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:52:34] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:52:44] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:52:44] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:52:54] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:52:54] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:53:04] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:53:04] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:53:14] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:53:14] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:53:24] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:53:24] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:53:34] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:53:34] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:53:44] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:53:44] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:53:54] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:53:54] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:54:04] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:54:04] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:54:14] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:54:14] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:54:24] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:54:24] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:54:34] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:54:34] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:54:44] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:54:44] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:54:54] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:54:54] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:55:04] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:55:04] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:55:14] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:55:14] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:55:24] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:55:24] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:55:34] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:55:34] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:55:44] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:55:44] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:55:54] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:55:54] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:56:04] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:56:04] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:56:14] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:56:14] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:56:24] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:56:24] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:56:34] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:56:34] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:56:44] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:56:44] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:56:54] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:56:54] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:57:04] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:57:04] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:57:14] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:57:14] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:57:24] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:57:24] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:57:34] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:57:34] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:57:44] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:57:44] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:57:54] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:57:54] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:58:04] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:58:04] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:58:14] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:58:14] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:58:24] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:58:24] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:58:34] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:58:34] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:58:44] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:58:44] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:58:54] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:58:54] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:59:04] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:59:04] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:59:14] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:59:14] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:59:24] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:59:24] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:59:34] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:59:34] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:59:44] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 13:59:44] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:59:54] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** running  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 13:59:54] Job d888cd70 Status Change
+**Old Status:** running  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 14:00:04] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 14:00:04] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 14:00:14] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 14:00:14] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 14:00:24] Job d888cd70 Status Change
+**Old Status:** created  
+**New Status:** failed  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+**❌ Error:** HTTP 402: {"detail":"Insufficient credits"}
+
+---
+
+### [2025-10-20 14:00:24] Job d888cd70 Status Change
+**Old Status:** failed  
+**New Status:** created  
+**Backend:** flux  
+**Prompt:** "a majestic eagle soaring over snowy mountains..."  
+
+
+
+---
+
+### [2025-10-20 14:04:35] Job aed591b2 Status Change
+**Old Status:** unknown  
+**New Status:** running  
+**Backend:** sdxl  
+**Prompt:** "Хочу картинку с бутылкой крафтового оливкого масла..."  
+
+
+
+---
+
+### [2025-10-20 14:08:55] Job aed591b2 Status Change
+**Old Status:** running  
+**New Status:** done  
+**Backend:** sdxl  
+**Prompt:** "Хочу картинку с бутылкой крафтового оливкого масла..."  
+**✅ Output:** F:\Drop\out\sdxl_00003_.png
+
+
+---
+
+### [2025-10-20 14:14:35] Job aed591b2 Status Change
+**Old Status:** done  
+**New Status:** failed  
+**Backend:** sdxl  
+**Prompt:** "Хочу картинку с бутылкой крафтового оливкого масла..."  
+
+**❌ Error:** ComfyUI generation timeout (10 minutes)
+
+---
+
+### [2025-10-20 14:18:56] Job a695e219 Status Change
+**Old Status:** unknown  
+**New Status:** running  
+**Backend:** sdxl  
+**Prompt:** "Test cleanup: beautiful sunset over mountains..."  
+
+
+
+---
+
+### [2025-10-20 14:19:06] Job a695e219 Status Change
+**Old Status:** running  
+**New Status:** done  
+**Backend:** sdxl  
+**Prompt:** "Test cleanup: beautiful sunset over mountains..."  
+**✅ Output:** F:\Drop\out\sdxl_00004_.png
+
+
+---
