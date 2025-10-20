@@ -22,8 +22,16 @@
 
 'use client'
 
-import { useState, useCallback } from 'react'
-import { MessageSquare, Send } from 'lucide-react'
+import { useState, useCallback, useRef, useEffect } from 'react'
+import { MessageSquare, Send, Menu, Clock, Download } from 'lucide-react'
+import { useBuilderHotkeys } from '@/lib/hotkeys'
+import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from '@/components/ui/tooltip'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
 
 type Message = {
   role: 'user' | 'assistant'
@@ -35,6 +43,25 @@ type SlashCommand = '/design' | '/select' | '/gen' | '/apply' | '/undo'
 export function ChatSidebar() {
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  // Context7: react-hotkeys-hook integration
+  useBuilderHotkeys({
+    onFocusChat: useCallback(() => {
+      inputRef.current?.focus()
+    }, []),
+    onSubmitMessage: useCallback(() => {
+      if (input.trim()) {
+        handleSubmit(new Event('submit') as any)
+      }
+    }, [input]),
+    onToggleLogs: useCallback(() => {
+      console.log('[ChatSidebar] Toggle logs (P3 feature)')
+    }, []),
+    onEscape: useCallback(() => {
+      inputRef.current?.blur()
+    }, []),
+  })
 
   // Modern pattern: memoized slash command processor
   const processSlashCommand = useCallback((command: string): string => {
@@ -157,17 +184,41 @@ export function ChatSidebar() {
   }, [input, processSlashCommand])
 
   return (
-    <div className="flex flex-col border-r bg-muted/20">
-      {/* Header */}
-      <div className="border-b p-4">
-        <div className="flex items-center gap-2">
-          <MessageSquare className="h-5 w-5" />
-          <h2 className="font-semibold">Чат Билдера</h2>
+    <TooltipProvider>
+      <div className="flex flex-col h-full">
+        {/* Header */}
+        <div className="border-b p-4">
+          <div className="flex items-center gap-2">
+            <MessageSquare className="h-5 w-5" />
+            <h2 className="font-semibold">Чат Билдера</h2>
+            <div className="ml-auto">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button className="p-1.5 hover:bg-muted rounded-md">
+                    <Menu className="h-4 w-4" />
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem onClick={() => console.log('Очередь задач (P3)')}>
+                    <Clock className="h-4 w-4 mr-2" />
+                    Очередь задач
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => console.log('История (P3)')}>
+                    <MessageSquare className="h-4 w-4 mr-2" />
+                    История диалогов
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => console.log('Экспорт (P3)')}>
+                    <Download className="h-4 w-4 mr-2" />
+                    Экспорт диалога
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+          </div>
+          <p className="text-xs text-muted-foreground mt-1">
+            Используйте слэш-команды для управления
+          </p>
         </div>
-        <p className="text-xs text-muted-foreground mt-1">
-          Используйте слэш-команды для управления
-        </p>
-      </div>
 
       {/* Messages */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
@@ -201,20 +252,29 @@ export function ChatSidebar() {
       <form onSubmit={handleSubmit} className="border-t p-4">
         <div className="flex gap-2">
           <input
+            ref={inputRef}
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Введите команду или вопрос..."
+            placeholder="Введите команду или вопрос... (Ctrl+K для фокуса)"
             className="flex-1 px-3 py-2 rounded-md border bg-background text-sm"
           />
-          <button
-            type="submit"
-            className="px-3 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90"
-          >
-            <Send className="h-4 w-4" />
-          </button>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <button
+                type="submit"
+                className="px-3 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90"
+              >
+                <Send className="h-4 w-4" />
+              </button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Отправить (Ctrl+Enter)</p>
+            </TooltipContent>
+          </Tooltip>
         </div>
       </form>
-    </div>
+      </div>
+    </TooltipProvider>
   )
 }
