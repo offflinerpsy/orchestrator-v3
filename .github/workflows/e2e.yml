@@ -1,0 +1,112 @@
+name: E2E Tests (Playwright)
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+env:
+  NODE_VERSION: '20.x'
+  PNPM_VERSION: '8'
+
+jobs:
+  e2e:
+    name: Playwright E2E Suite
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright browsers
+        run: pnpx playwright install --with-deps chromium
+        working-directory: apps/admin
+
+      - name: Build admin app
+        run: pnpm --filter admin build
+        env:
+          NODE_ENV: production
+          # Mock keys for build (not used in tests)
+          BFL_API_KEY: ${{ secrets.BFL_API_KEY || 'mock-key-for-build' }}
+
+      - name: Start admin server (background)
+        run: pnpm --filter admin start &
+        env:
+          NODE_ENV: production
+          PORT: 3002
+          BFL_API_KEY: ${{ secrets.BFL_API_KEY || 'mock-key-for-build' }}
+
+      - name: Wait for server ready
+        run: |
+          timeout 60 bash -c 'until curl -sf http://localhost:3002 > /dev/null; do sleep 2; done' || exit 1
+
+      - name: Run Playwright E2E tests
+        run: pnpm --filter admin test:e2e
+        env:
+          CI: true
+          # Tests use audit config (port 3002, retries: 2, trace on failure)
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: apps/admin/playwright-report/
+          retention-days: 14
+
+      - name: Upload test results (JSON)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: apps/admin/test-results/
+          retention-days: 14
+
+      - name: Upload traces
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-traces
+          path: apps/admin/test-results/**/*.zip
+          retention-days: 7
+
+      - name: Comment PR with report link
+        if: github.event_name == 'pull_request' && always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const reportPath = 'apps/admin/playwright-report/index.html';
+            const runUrl = `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            
+            let comment = `## 🎭 Playwright E2E Results\n\n`;
+            comment += `**Run:** [View workflow](${runUrl})\n\n`;
+            
+            if (fs.existsSync(reportPath)) {
+              comment += `📊 HTML report available in [artifacts](${runUrl}#artifacts)\n`;
+            }
+            
+            if (context.payload.pull_request) {
+              github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.pull_request.number,
+                body: comment
+              });
+            }
