@@ -1,25 +1,66 @@
-# 📊 ORCHESTRATOR v3 — COMPLETE PROJECT STATUS REPORT
-**Generated**: 2025-01-21 | **Branch**: main | **Status**: 🚀 Production Ready (P0-P6 Complete)
+# 📊 ORCHESTRATOR v3 — PROJECT STATUS REPORT
+**Generated**: 2025-10-21 | **Branch**: main | **Status**: � Stabilization Phase
 
 ---
 
 ## 🎯 EXECUTIVE SUMMARY
 
-**Builder v0 Complete**: Dyad-style v0 builder с Context7 modern patterns для **ВСЕХ** библиотек.
+**Builder v0**: Feature-complete (P0–P6), undergoing E2E stabilization.
 
 **Build Size**: **19.8 kB** (страница `/builder-v0`)
-**Features**: P0-P6 (6 фаз) полностью реализованы и закоммичены
-**Context7 Integration**: 19 queries (95% success rate)
-**Commits**: 8 производственных коммитов на branch main
+**Features**: Resizable layout, design mode, FLUX/ComfyUI generation, SSE queue, template import, command palette
+**Testing**: REVISOR pipeline established (Playwright + LHCI + Axe); 8/9 E2E passing, LHCI blocked (port access issue)
 
 **Current State**: 
-- ✅ Production-ready (P0-P6)
-- 🔄 P7 In Progress (Playwright E2E tests — Context7 queries fetched, config updated)
-- ⏸️ **PAUSED** по запросу пользователя для анализа
+- ✅ Core features operational (P0-P6)
+- 🔄 Stabilization: E2E locators, SSE hardening, idempotency
+- ⚠️ LHCI failing with `CHROME_INTERSTITIAL_ERROR` on Windows
+- 📋 **Latest**: [`MEMORY-LATEST.md`](./PROJECT-MEMORY/MEMORY-LATEST.md) | [`PROJECT-MAP.md`](./PROJECT-MAP.md)
 
 ---
 
-## 📂 PROJECT STRUCTURE
+## � TEST REPORTS
+
+### Playwright E2E (Latest Run)
+- **Passed**: 8/9 tests
+- **Failed**: 1 (generation-comfy: gallery visibility assertion)
+- **HTML Report**: [`apps/admin/reports/playwright/html/index.html`](../apps/admin/reports/playwright/html/index.html)
+- **Details**: See [`docs/_artifacts/revisor-round3/summary.md`](./_artifacts/revisor-round3/summary.md)
+
+### Lighthouse CI
+- **Status**: ❌ Blocked (`CHROME_INTERSTITIAL_ERROR` — port 3002 access issue on Windows localhost)
+- **Config**: [`apps/admin/lighthouserc.json`](../apps/admin/lighthouserc.json)
+- **Next Steps**: Test against deployed domain or resolve loopback binding
+
+### Axe Accessibility
+- **Status**: ⏸️ Not executed (pipeline aborted after LHCI failure)
+- **Runner**: [`apps/admin/tests/a11y/run-axe.mjs`](../apps/admin/tests/a11y/run-axe.mjs)
+
+---
+
+## 🛠️ ONGOING WORK
+
+### Stabilization Tasks
+1. **SSE Hardening**: Add `id:`/`retry:` fields, `Last-Event-ID` support, heartbeat docs
+2. **Idempotency**: Implement `Idempotency-Key` header for job creation APIs
+3. **Canvas Wait Strategy**: Explicit `frameLocator().getByText(...).waitFor()` in tests
+4. **LHCI Workaround**: Switch to real deployed URL or fix localhost binding
+
+### Documentation Refresh
+- ✅ `PROJECT-INDEX.md` — Entry point created
+- ✅ `PROJECT-MAP.md` — Artifact catalog created
+- ✅ `PROJECT-MEMORY/MEMORY-LATEST.md` — Snapshot created
+- ✅ `STATUS/DIFF-SUMMARY.md` — Git log snapshot created
+- 🔄 `PROJECT-STATUS-FULL.md` — Updated (this file)
+- ⏸️ ADRs — To be added for SSE/idempotency decisions
+- ⏸️ CHANGELOG.md — Unreleased section pending
+
+---
+
+For detailed system architecture, see [`MEMORY-LATEST.md`](./PROJECT-MEMORY/MEMORY-LATEST.md).  
+For complete artifact map, see [`PROJECT-MAP.md`](./PROJECT-MAP.md).  
+For navigation, return to [`PROJECT-INDEX.md`](./PROJECT-INDEX.md).
+
 
 ### Root Directory
 ```
