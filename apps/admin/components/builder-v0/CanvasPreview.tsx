@@ -157,7 +157,7 @@ export function CanvasPreview() {
 
   return (
     <TooltipProvider>
-      <div className="flex flex-col bg-background">
+      <div className="flex flex-col h-full bg-background">
         {/* Toolbar */}
         <div className="border-b px-4 py-2 flex items-center gap-2">
           <Tooltip>

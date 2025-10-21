@@ -200,7 +200,7 @@ export function Inspector() {
 
   return (
     <TooltipProvider>
-      <div className="flex flex-col border-l bg-muted/20">
+      <div className="flex flex-col h-full border-l bg-muted/20">
       {/* Tabs - ARIA-compliant tablist pattern */}
       <div className="border-b flex" role="tablist" aria-label="Inspector sections">
         <Tooltip>
