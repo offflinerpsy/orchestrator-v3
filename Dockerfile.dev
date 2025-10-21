@@ -1,0 +1,47 @@
+# Development Dockerfile for Orchestrator Admin Panel
+# Optimized for Windows/WSL2 with hot-reload support
+# Refs: https://nextjs.org/docs/app/guides/self-hosting
+#       https://syntackle.com/blog/the-issue-of-watching-file-changes-in-docker/
+
+FROM node:20-bookworm-slim
+
+LABEL maintainer="orchestrator-v3"
+LABEL description="Development container for Next.js 15 admin panel"
+
+WORKDIR /app
+
+# Environment setup for dev mode
+ENV NODE_ENV=development \
+    NEXT_TELEMETRY_DISABLED=1 \
+    # Enable polling for file watching on Docker (Windows/WSL2 compatibility)
+    # Refs: https://github.com/paulmillr/chokidar
+    #       https://stackoverflow.com/q/38318188
+    CHOKIDAR_USEPOLLING=true \
+    WATCHPACK_POLLING=true \
+    # Increase poll interval to reduce CPU usage (default: 100ms)
+    CHOKIDAR_INTERVAL=300
+
+# Install pnpm via Corepack (built-in with Node 20)
+# Ref: https://pnpm.io/installation#using-corepack
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+# Copy dependency manifests first (better layer caching)
+COPY package.json pnpm-lock.yaml .npmrc* ./
+COPY apps/admin/package.json ./apps/admin/
+
+# Install ALL dependencies (including devDependencies like cross-env)
+RUN pnpm install --frozen-lockfile
+
+# Copy source code into image (for Docker testing)
+# In production dev workflow, mount as volume in docker-compose
+COPY . .
+
+EXPOSE 3002
+
+# Health check for container orchestration
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+  CMD node -e "require('http').get('http://localhost:3002/api/health', (r) => process.exit(r.statusCode === 200 ? 0 : 1))"
+
+# Start dev server from apps/admin directory  
+# Use pnpm exec to run next from installed dependencies
+CMD ["sh", "-c", "cd /app/apps/admin && pnpm exec next dev -p 3002 --hostname 0.0.0.0"]

@@ -1,0 +1,42 @@
+{
+  "name": "Orchestrator Admin Dev",
+  "dockerComposeFile": "../docker-compose.dev.yml",
+  "service": "admin",
+  "workspaceFolder": "/app",
+  "shutdownAction": "stopCompose",
+  
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "ms-vscode.vscode-typescript-next"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        }
+      }
+    }
+  },
+  
+  "forwardPorts": [3002],
+  "portsAttributes": {
+    "3002": {
+      "label": "Admin Dev Server",
+      "onAutoForward": "notify"
+    }
+  },
+  
+  "remoteUser": "node",
+  
+  "postCreateCommand": "echo '✅ Dev container ready! Run: pnpm dev' && pnpm --version",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {}
+  }
+}

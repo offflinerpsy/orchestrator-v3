@@ -56,6 +56,20 @@ export function CanvasPreview() {
   const [selectedElement, setSelectedElement] = useState<SelectedElement | null>(null)
   const iframeRef = useRef<HTMLIFrameElement>(null)
   const [previewUrl, setPreviewUrl] = useState('http://localhost:3001')
+  const [showGallery, setShowGallery] = useState(true) // Show gallery by default
+  const [images, setImages] = useState<any[]>([])
+
+  // Load images from Canvas API
+  useEffect(() => {
+    fetch('/api/canvas/list')
+      .then(res => res.json())
+      .then(data => {
+        if (data.images) {
+          setImages(data.images)
+        }
+      })
+      .catch(err => console.error('[CanvasPreview] Failed to load images:', err))
+  }, [])
 
   // Modern pattern: typed event handlers with useCallback
   const handleToggle = useCallback((event: DesignModeToggleEvent) => {
@@ -206,19 +220,59 @@ export function CanvasPreview() {
         )}
       </div>
 
-      {/* iframe Preview */}
-      <div className="flex-1 relative">
-        <iframe
-          ref={iframeRef}
-          src={previewUrl}
-          className="w-full h-full border-0"
-          title="Site Preview"
-          sandbox="allow-scripts allow-same-origin allow-forms"
-          data-testid="canvas-iframe"
-        />
-        
-        {/* Design Mode Overlay */}
-        <DesignOverlay isDesignMode={mode === 'design'} />
+      {/* iframe Preview or Gallery */}
+      <div className="flex-1 relative overflow-auto">
+        {showGallery && images.length > 0 ? (
+          <div className="p-6 grid grid-cols-2 gap-4">
+            {images.map((img: any) => (
+              <div key={img.filename} className="group relative aspect-square rounded-lg overflow-hidden border bg-muted hover:ring-2 hover:ring-primary transition-all">
+                <img 
+                  src={img.url} 
+                  alt={img.filename}
+                  className="w-full h-full object-cover cursor-pointer"
+                  onClick={() => {
+                    setPreviewUrl(img.url)
+                    setShowGallery(false)
+                  }}
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-3">
+                  <p className="text-white text-xs font-medium truncate">{img.filename}</p>
+                  <p className="text-white/70 text-[10px]">{new Date(img.created).toLocaleString('ru-RU')}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : showGallery && images.length === 0 ? (
+          <div className="flex items-center justify-center h-full">
+            <div className="text-center text-muted-foreground">
+              <Info className="h-12 w-12 mx-auto mb-3 opacity-50" />
+              <p className="text-sm font-medium">Нет сгенерированных изображений</p>
+              <p className="text-xs mt-1">Используйте чат для создания изображений</p>
+            </div>
+          </div>
+        ) : (
+          <>
+            <iframe
+              ref={iframeRef}
+              src={previewUrl}
+              className="w-full h-full border-0"
+              title="Site Preview"
+              sandbox="allow-scripts allow-same-origin allow-forms"
+              data-testid="canvas-iframe"
+            />
+            
+            {/* Design Mode Overlay */}
+            <DesignOverlay isDesignMode={mode === 'design'} />
+            
+            {/* Back to Gallery button */}
+            <button
+              onClick={() => setShowGallery(true)}
+              className="absolute top-4 left-4 px-3 py-2 rounded-md bg-background/90 backdrop-blur text-sm hover:bg-background shadow-lg"
+            >
+              ← Назад к галерее
+            </button>
+          </>
+        )}
       </div>
       </div>
     </TooltipProvider>

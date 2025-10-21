@@ -1,0 +1,57 @@
+# Production Docker Compose for Orchestrator V3
+# Hybrid mode: Admin panel in Docker, ComfyUI on Windows host
+#
+# Usage:
+#   docker compose up -d              # Start in background
+#   docker compose logs -f admin      # View logs
+#   docker compose down               # Stop and remove
+#
+# Prerequisites:
+#   - ComfyUI running on host (Windows Service or manual)
+#   - F:\Models directory with checkpoints
+#   - F:\Drop\out directory for outputs
+#
+# Refs: https://docs.docker.com/compose/
+
+services:
+  admin:
+    image: orchestrator-admin:prod
+    container_name: orchestrator-prod
+    ports:
+      - "3002:3002"
+    volumes:
+      # Mount host directories for file access
+      - F:\Models:/models:ro          # Read-only access to models
+      - F:\Drop\out:/output            # Read-write access to generated images
+      - ./jobs:/app/jobs               # Job queue storage
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+      - PORT=3002
+      - MODELS_PATH=/models
+      - OUTPUT_PATH=/output
+    env_file:
+      # Load secrets (HF_TOKEN, BFL_API_KEY, COMFYUI_URL)
+      - .env.local
+    extra_hosts:
+      # Allow container to access ComfyUI on Windows host
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+    # Use init to handle zombie processes
+    init: true
+    # Health check
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3002/api/health', (r) => process.exit(r.statusCode === 200 ? 0 : 1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    # Resource limits (adjust based on your system)
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+        reservations:
+          cpus: '0.5'
+          memory: 512M

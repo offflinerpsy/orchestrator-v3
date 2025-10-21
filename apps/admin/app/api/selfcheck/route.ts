@@ -14,7 +14,8 @@ export async function GET() {
 
   // 1. ComfyUI check
   try {
-    const res = await fetch('http://127.0.0.1:8188/system_stats', { 
+    const comfyUrl = process.env.COMFYUI_URL || 'http://127.0.0.1:8188';
+    const res = await fetch(`${comfyUrl}/system_stats`, { 
       signal: AbortSignal.timeout(2000) 
     });
     checks.comfyui = res.ok;

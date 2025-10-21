@@ -5,7 +5,8 @@ export const revalidate = 0;
 
 export async function GET() {
 	try {
-		const r = await fetch('http://127.0.0.1:8188/system_stats', { signal: AbortSignal.timeout(3000), cache: 'no-store' as RequestCache });
+		const comfyUrl = process.env.COMFYUI_URL || 'http://127.0.0.1:8188';
+		const r = await fetch(`${comfyUrl}/system_stats`, { signal: AbortSignal.timeout(3000), cache: 'no-store' as RequestCache });
 		if (!r.ok) return NextResponse.json({ online: false });
 		const stats = await r.json();
 		return NextResponse.json({ online: true, stats });

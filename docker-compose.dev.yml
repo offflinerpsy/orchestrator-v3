@@ -1,0 +1,58 @@
+# Development Docker Compose for Orchestrator V3
+# Windows/WSL2 optimized with polling-based file watching
+# 
+# Usage:
+#   pnpm dev:docker          # Start dev server in container
+#   pnpm dev:docker:down     # Stop and cleanup
+#
+# For VS Code Dev Containers: 
+#   Command Palette → "Dev Containers: Open Folder in Container"
+#
+# Refs: https://docs.docker.com/desktop/features/wsl/
+#       https://code.visualstudio.com/docs/devcontainers/containers
+
+services:
+  admin:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: orchestrator-admin-dev
+    ports:
+      - "3002:3002"
+    volumes:
+      # Mount entire project for hot-reload
+      # IMPORTANT: For best performance on Windows, clone repo to WSL2 filesystem
+      # e.g., \\wsl$\Ubuntu\home\user\orchestrator-v3
+      - .:/app
+      # Preserve node_modules inside container (don't overwrite with host)
+      - /app/node_modules
+      # Mount host directories for ComfyUI models and outputs (Windows paths)
+      - F:\Models:/models:ro          # Read-only access to models
+      - F:\Drop\out:/output            # Read-write access to generated images
+      - ./jobs:/app/jobs               # Job queue storage
+    environment:
+      - NODE_ENV=development
+      - NEXT_TELEMETRY_DISABLED=1
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+      - CHOKIDAR_INTERVAL=300
+      - MODELS_PATH=/models
+      - OUTPUT_PATH=/output
+    env_file:
+      # Load secrets from .env.local if exists
+      - .env.local
+    extra_hosts:
+      # Allow container to access host services (ComfyUI on Windows)
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+    # Use init to handle zombie processes
+    init: true
+    # Resource limits (optional, adjust as needed)
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 4G
+        reservations:
+          cpus: '1'
+          memory: 2G
