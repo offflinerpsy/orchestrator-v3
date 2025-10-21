@@ -16,10 +16,12 @@
     "revisor:start": "cross-env NODE_OPTIONS=\"--trace-uncaught\" next start -p 3002",
     "revisor:wait": "wait-on http://127.0.0.1:3002",
     "revisor:test": "playwright test -c playwright.audit.config.ts",
+    "revisor:report": "playwright show-report --port=9323",
+    "revisor:artifacts": "node -e \"const fs=require('fs'),p=require('path');const dst=p.resolve('../../docs/_artifacts/revisor-round4/report');fs.rmSync(dst,{recursive:true,force:true});fs.mkdirSync(dst,{recursive:true});fs.cpSync('playwright-report',dst,{recursive:true});console.log('✅ Report copied to',dst);\"",
     "revisor:lhci": "lhci autorun --collect.url=http://127.0.0.1:3002 --upload.target=filesystem --upload.outputDir=reports/lhci",
     "revisor:axe": "node tests/a11y/run-axe.mjs",
     "revisor:all": "concurrently -k -s first \"pnpm revisor:start\" \"pnpm revisor:wait && pnpm revisor:test && pnpm revisor:lhci && pnpm revisor:axe\"",
-    "revisor:report": "node scripts/audit-summarize.mjs"
+    "revisor:summary": "node scripts/audit-summarize.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

@@ -26,9 +26,9 @@ export default defineConfig({
   
   // Репортеры
   reporter: [
+    ['html', { open: 'never', outputFolder: 'playwright-report' }], // HTML report, НЕ открывать автоматически
     ['list'], // Console output
-    ['html', { outputFolder: 'reports/playwright/html' }], // HTML report
-    ['json', { outputFile: 'reports/playwright/results.json' }], // JSON для парсинга
+    ['json', { outputFile: 'test-results/results.json' }], // JSON для парсинга
     // Раскомментировать если нужен Allure:
     // ['allure-playwright', { outputFolder: 'reports/allure-results' }],
   ],
