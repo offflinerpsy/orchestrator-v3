@@ -201,11 +201,15 @@ export function Inspector() {
   return (
     <TooltipProvider>
       <div className="flex flex-col border-l bg-muted/20">
-      {/* Tabs */}
-      <div className="border-b flex">
+      {/* Tabs - ARIA-compliant tablist pattern */}
+      <div className="border-b flex" role="tablist" aria-label="Inspector sections">
         <Tooltip>
           <TooltipTrigger asChild>
             <button
+              role="tab"
+              aria-selected={tab === 'content'}
+              aria-controls="inspector-panel"
+              data-testid="content-tab"
               onClick={() => setTab('content')}
               className={`flex-1 px-4 py-3 text-sm font-medium flex items-center justify-center gap-2 ${
                 tab === 'content'
@@ -225,6 +229,10 @@ export function Inspector() {
         <Tooltip>
           <TooltipTrigger asChild>
             <button
+              role="tab"
+              aria-selected={tab === 'style'}
+              aria-controls="inspector-panel"
+              data-testid="style-tab"
               onClick={() => setTab('style')}
               className={`flex-1 px-4 py-3 text-sm font-medium flex items-center justify-center gap-2 ${
                 tab === 'style'
@@ -244,6 +252,10 @@ export function Inspector() {
         <Tooltip>
           <TooltipTrigger asChild>
             <button
+              role="tab"
+              aria-selected={tab === 'actions'}
+              aria-controls="inspector-panel"
+              data-testid="actions-tab"
               onClick={() => setTab('actions')}
               className={`flex-1 px-4 py-3 text-sm font-medium flex items-center justify-center gap-2 ${
                 tab === 'actions'
@@ -263,6 +275,10 @@ export function Inspector() {
         <Tooltip>
           <TooltipTrigger asChild>
             <button
+              role="tab"
+              aria-selected={tab === 'templates'}
+              aria-controls="inspector-panel"
+              data-testid="templates-tab"
               onClick={() => setTab('templates')}
               className={`flex-1 px-4 py-3 text-sm font-medium flex items-center justify-center gap-2 ${
                 tab === 'templates'
@@ -280,8 +296,95 @@ export function Inspector() {
         </Tooltip>
       </div>
 
-      {/* Content */}
-      <div className="flex-1 overflow-y-auto p-4">
+      {/* Content - ARIA tabpanel */}
+      <div 
+        role="tabpanel" 
+        id="inspector-panel"
+        aria-labelledby={`${tab}-tab`}
+        data-testid="inspector-panel"
+        className="flex-1 overflow-y-auto p-4"
+      >
+        {/* Actions tab: always show gallery, regardless of selection */}
+        {tab === 'actions' && (
+          <div className="space-y-4 mb-6">
+            {/* Generated Images Gallery */}
+            <div>
+              <div className="flex items-center justify-between">
+                <label className="text-sm font-medium">Сгенерированные изображения</label>
+                <span className="text-xs text-muted-foreground">
+                  {generatedJobs.length} шт.
+                </span>
+              </div>
+              <div
+                data-testid="gallery-grid"
+                className={
+                  generatedJobs.length > 0
+                    ? 'mt-2 space-y-2 max-h-64 overflow-y-auto'
+                    : 'mt-2 text-sm text-muted-foreground text-center py-4 border rounded-md'
+                }
+              >
+                {generatedJobs.length > 0 ? (
+                  generatedJobs
+                    .slice(galleryPage * IMAGES_PER_PAGE, (galleryPage + 1) * IMAGES_PER_PAGE)
+                    .map(job => (
+                      <div key={job.jobId} className="p-2 border rounded-md bg-background">
+                        <div className="text-xs text-muted-foreground mb-1">
+                          {job.prompt.slice(0, 40)}...
+                        </div>
+                        {job.status === 'done' && job.imageUrl && (
+                          <div className="relative group">
+                            <img
+                              src={job.imageUrl}
+                              alt={job.prompt}
+                              className="w-full rounded-md cursor-pointer hover:opacity-80"
+                              onClick={() => {
+                                navigator.clipboard.writeText(job.imageUrl!)
+                                alert(`✅ URL скопирован: ${job.imageUrl}`)
+                              }}
+                            />
+                            <div className="absolute bottom-1 right-1 bg-black/70 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100">
+                              Клик = копировать URL
+                            </div>
+                          </div>
+                        )}
+                        {job.status === 'queued' && (
+                          <div className="text-xs text-yellow-500">⏳ В очереди...</div>
+                        )}
+                        {job.status === 'failed' && (
+                          <div className="text-xs text-red-500">❌ Ошибка генерации</div>
+                        )}
+                      </div>
+                    ))
+                ) : (
+                  <span>Пока нет сгенерированных изображений</span>
+                )}
+              </div>
+
+              {generatedJobs.length > IMAGES_PER_PAGE && (
+                <div className="flex items-center justify-between mt-2 text-xs">
+                  <button
+                    onClick={() => setGalleryPage(p => Math.max(0, p - 1))}
+                    disabled={galleryPage === 0}
+                    className="px-2 py-1 border rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-muted"
+                  >
+                    ← Назад
+                  </button>
+                  <span className="text-muted-foreground">
+                    Стр. {galleryPage + 1} из {Math.ceil(generatedJobs.length / IMAGES_PER_PAGE)}
+                  </span>
+                  <button
+                    onClick={() => setGalleryPage(p => Math.min(Math.ceil(generatedJobs.length / IMAGES_PER_PAGE) - 1, p + 1))}
+                    disabled={galleryPage >= Math.ceil(generatedJobs.length / IMAGES_PER_PAGE) - 1}
+                    className="px-2 py-1 border rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-muted"
+                  >
+                    Вперёд →
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
         {!selectedElement ? (
           <div className="text-sm text-muted-foreground text-center py-8">
             <p>Ничего не выбрано</p>
@@ -368,77 +471,9 @@ export function Inspector() {
               </div>
             )}
 
-            {tab === 'actions' && (
+            {tab === 'actions' && selectedElement.elementType === 'image' && (
               <div className="space-y-4">
-                {/* Generated Images Gallery (P3: Pagination from Context7) */}
-                {generatedJobs.length > 0 && (
-                  <div>
-                    <div className="flex items-center justify-between">
-                      <label className="text-sm font-medium">Сгенерированные изображения</label>
-                      <span className="text-xs text-muted-foreground">
-                        {generatedJobs.length} шт.
-                      </span>
-                    </div>
-                    <div className="mt-2 space-y-2 max-h-64 overflow-y-auto" data-testid="gallery-grid">
-                      {generatedJobs
-                        .slice(galleryPage * IMAGES_PER_PAGE, (galleryPage + 1) * IMAGES_PER_PAGE)
-                        .map(job => (
-                          <div key={job.jobId} className="p-2 border rounded-md bg-background">
-                            <div className="text-xs text-muted-foreground mb-1">
-                              {job.prompt.slice(0, 40)}...
-                            </div>
-                            {job.status === 'done' && job.imageUrl && (
-                              <div className="relative group">
-                                <img 
-                                  src={job.imageUrl} 
-                                  alt={job.prompt}
-                                  className="w-full rounded-md cursor-pointer hover:opacity-80"
-                                  onClick={() => {
-                                    navigator.clipboard.writeText(job.imageUrl!)
-                                    alert(`✅ URL скопирован: ${job.imageUrl}`)
-                                  }}
-                                />
-                                <div className="absolute bottom-1 right-1 bg-black/70 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100">
-                                  Клик = копировать URL
-                                </div>
-                              </div>
-                            )}
-                            {job.status === 'queued' && (
-                              <div className="text-xs text-yellow-500">⏳ В очереди...</div>
-                            )}
-                            {job.status === 'failed' && (
-                              <div className="text-xs text-red-500">❌ Ошибка генерации</div>
-                            )}
-                          </div>
-                        ))
-                      }
-                    </div>
-
-                    {/* Pagination (Context7 pattern) */}
-                    {generatedJobs.length > IMAGES_PER_PAGE && (
-                      <div className="flex items-center justify-between mt-2 text-xs">
-                        <button
-                          onClick={() => setGalleryPage(p => Math.max(0, p - 1))}
-                          disabled={galleryPage === 0}
-                          className="px-2 py-1 border rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-muted"
-                        >
-                          ← Назад
-                        </button>
-                        <span className="text-muted-foreground">
-                          Стр. {galleryPage + 1} из {Math.ceil(generatedJobs.length / IMAGES_PER_PAGE)}
-                        </span>
-                        <button
-                          onClick={() => setGalleryPage(p => Math.min(Math.ceil(generatedJobs.length / IMAGES_PER_PAGE) - 1, p + 1))}
-                          disabled={galleryPage >= Math.ceil(generatedJobs.length / IMAGES_PER_PAGE) - 1}
-                          className="px-2 py-1 border rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-muted"
-                        >
-                          Вперёд →
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                )}
-
+                {/* Generation form only (Gallery moved outside selectedElement check) */}
                 {selectedElement.elementType === 'image' && (
                   <>
                     <div>
@@ -476,11 +511,6 @@ export function Inspector() {
                       </p>
                     </div>
                   </>
-                )}
-                {selectedElement.elementType !== 'image' && (
-                  <p className="text-sm text-muted-foreground">
-                    Генерация доступна только для изображений
-                  </p>
                 )}
               </div>
             )}
