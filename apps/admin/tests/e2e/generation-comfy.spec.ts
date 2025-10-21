@@ -20,9 +20,9 @@ test.describe('Builder v0 — ComfyUI Generation', () => {
     })
     
     await test.step('Check gallery for new job', async () => {
-      // Переключиться на таб "Галерея" в Inspector
-      const galleryTab = page.getByRole('tab', { name: /галерея|gallery/i })
-      await galleryTab.click()
+      // Переключиться на таб "Действия" (там находится галерея)
+      const actionsTab = page.getByTestId('actions-tab')
+      await actionsTab.click()
       
       // Ждём появление job card (может быть queued/running)
       await page.waitForTimeout(5000)
