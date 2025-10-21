@@ -1,0 +1,36 @@
+
+> admin@0.1.0 revisor:test C:\Work\Orchestrator\apps\admin
+> playwright test -c playwright.audit.config.ts
+
+
+Running 9 tests using 8 workers
+
+[REVISOR] /diagnostics rendered 6292 chars
+[REVISOR] Found 1 sections in /diagnostics
+[REVISOR] ComfyUI appears online or no offline indicator
+  тЬУ  7 [chromium] тА║ tests\e2e\health.spec.ts:9:7 тА║ Builder v0 тАФ Health Check тА║ should render diagnostics page with system stats (1.6s)
+  тЬУ  5 [chromium] тА║ tests\e2e\health.spec.ts:36:7 тА║ Builder v0 тАФ Health Check тА║ should show readable message if ComfyUI offline (1.7s)
+[REVISOR] Canvas iframe found and visible
+[REVISOR] Found 4 tabs in Inspector
+[REVISOR] No visible mode toggle button тАФ design mode activated via /design command
+  -  9 [chromium] тА║ tests\e2e\sanity.spec.ts:99:7 тА║ Builder v0 тАФ Sanity Check тА║ should toggle between modes (Preview/Design)
+[REVISOR] CSP: NOT_SET
+[REVISOR] X-Frame-Options: NOT_SET
+  тЬУ  6 [chromium] тА║ tests\e2e\sanity.spec.ts:16:7 тА║ Builder v0 тАФ Sanity Check тА║ should render main page with three panels (5.9s)
+[REVISOR] Design overlay not found outside iframe, may be inside
+  тЬУ  4 [chromium] тА║ tests\e2e\design-mode.spec.ts:15:7 тА║ Builder v0 тАФ Design Mode тА║ should activate design mode via /design on command (6.4s)
+  тЬУ  1 [chromium] тА║ tests\e2e\design-mode.spec.ts:61:7 тА║ Builder v0 тАФ Design Mode тА║ should select element and show properties (6.8s)
+[REVISOR WARNING] /apply command did not patch iframe (expected behavior?)
+  тЬУ  3 [chromium] тА║ tests\e2e\design-mode.spec.ts:85:7 тА║ Builder v0 тАФ Design Mode тА║ should apply changes to element (runtime patch) (8.8s)
+[REVISOR] Found 9 jobs in queue modal
+  тЬУ  8 [chromium] тА║ tests\e2e\jobs-queue.spec.ts:9:7 тА║ Builder v0 тАФ Jobs Queue (SSE) тА║ should open queue modal and verify SSE connection (11.2s)
+[REVISOR] Found 1 job(s) in gallery
+  тЬУ  2 [chromium] тА║ tests\e2e\generation-comfy.spec.ts:9:7 тА║ Builder v0 тАФ ComfyUI Generation тА║ should submit generation job and receive result (11.7s)
+
+  1 skipped
+  8 passed (14.1s)
+
+To open last HTML report run:
+[36m[39m
+[36m  pnpm exec playwright show-report[39m
+[36m[39m
