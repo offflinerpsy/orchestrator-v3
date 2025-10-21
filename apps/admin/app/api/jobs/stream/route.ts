@@ -7,6 +7,8 @@
  * Modern patterns (Context7: SSE React hooks)
  * - Content-Type: text/event-stream with charset=utf-8
  * - X-Accel-Buffering: no (nginx compatibility)
+ * - Event IDs (monotonic counter) for client reconnect (Last-Event-ID)
+ * - Retry hint (3s) for automatic reconnection
  * - Heartbeat comments (: ping) every 30s
  * - Double \n\n event separator
  * 
@@ -26,8 +28,14 @@ function getJobsDir() {
   return resolvePath('jobs')
 }
 
+let globalEventId = 0 // Monotonic event ID counter
+
 export async function GET(request: NextRequest) {
   const encoder = new TextEncoder()
+  
+  // Support Last-Event-ID for reconnection
+  const lastEventId = request.headers.get('Last-Event-ID')
+  let eventId = lastEventId ? parseInt(lastEventId, 10) + 1 : globalEventId++
   
   const stream = new ReadableStream({
     async start(controller) {
@@ -36,7 +44,8 @@ export async function GET(request: NextRequest) {
         controller.enqueue(encoder.encode(data))
       }
 
-      // Send initial connection event
+      // Send retry hint (3s) and initial connection event
+      send(`retry: 3000\n`)
       send(`: connected\n\n`)
 
       let lastJobStates = new Map<string, string>()
@@ -50,7 +59,14 @@ export async function GET(request: NextRequest) {
 
           for (const file of jobFiles) {
             const jobPath = join(jobsDir, file)
-            const content = await readFile(jobPath, 'utf-8')
+            const rawContent = await readFile(jobPath, 'utf-8')
+            const content = rawContent.trim()
+
+            // Skip files that are still being written (no closing brace yet)
+            if (!content || !content.endsWith('}')) {
+              continue
+            }
+
             const job = JSON.parse(content)
 
             const jobId = job.id
@@ -60,7 +76,8 @@ export async function GET(request: NextRequest) {
             if (lastJobStates.get(jobId) !== currentState) {
               lastJobStates.set(jobId, currentState)
 
-              // SSE format: data: ...\n\n
+              // SSE format with id: event: data: \n\n
+              send(`id: ${eventId++}\n`)
               send(`event: job-update\n`)
               send(`data: ${JSON.stringify(job)}\n\n`)
             }
